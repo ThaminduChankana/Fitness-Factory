@@ -23,17 +23,12 @@ const adminSchema = mongoose.Schema(
 		telephone: {
 			type: String,
 			required: true,
-			unique: true,
 		},
 		address: {
 			type: String,
 			required: true,
 		},
 		email: {
-			type: String,
-			required: true,
-		},
-		previousRef: {
 			type: String,
 			required: true,
 		},
