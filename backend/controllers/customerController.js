@@ -6,7 +6,6 @@ const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
 const registerCustomer = asyncHandler(async (req, res) => {
-
 	const { name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate } = req.body;
 
 	const customerExists = await Customer.findOne({ nic });
