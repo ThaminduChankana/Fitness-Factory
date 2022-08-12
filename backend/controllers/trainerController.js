@@ -6,7 +6,6 @@ const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
 const registerTrainer = asyncHandler(async (req, res) => {
-
 	const { name, dob, nic, gender, telephone, address, email, password, qualifications, yrsexp, pic, regDate } =
 		req.body;
 
