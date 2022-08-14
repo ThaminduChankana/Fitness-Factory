@@ -7,7 +7,6 @@ const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
 const registerAdmin = asyncHandler(async (req, res) => {
-
 	const { name, dob, nic, telephone, address, email, password, pic } = req.body;
 
 	const adminExists = await Admin.findOne({ nic });

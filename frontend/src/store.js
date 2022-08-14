@@ -33,7 +33,7 @@ import {
 } from "./reducers/customerReducers";
 
 const reducer = combineReducers({
-    admin_Login: adminLoginReducer,
+	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
 	adminView: adminViewReducer,
 	adminUpdate: adminUpdateReducer,
@@ -58,9 +58,13 @@ const reducer = combineReducers({
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
 
-const trainerInfoFromStorage = localStorage.getItem("trainerInfo") ? JSON.parse(localStorage.getItem("trainerInfo")) : null;
+const trainerInfoFromStorage = localStorage.getItem("trainerInfo")
+	? JSON.parse(localStorage.getItem("trainerInfo"))
+	: null;
 
-const customerInfoFromStorage = localStorage.getItem("customerInfo") ? JSON.parse(localStorage.getItem("customerInfo"))	: null;
+const customerInfoFromStorage = localStorage.getItem("customerInfo")
+	? JSON.parse(localStorage.getItem("customerInfo"))
+	: null;
 
 const initialState = {
 	admin_Login: { adminInfo: adminInfoFromStorage },
