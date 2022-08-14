@@ -38,21 +38,7 @@ const CustomerRegisterScreen = () => {
 			setMessage("Passwords do not match");
 		} else {
 			dispatch(
-				customerRegister(
-					name,
-					dob,
-					nic,
-					gender,
-					telephone,
-					address,
-					email,
-					password,
-					height,
-					weight,
-					bmi,
-					pic,
-					regDate,
-				)
+				customerRegister(name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate)
 			);
 		}
 	};
@@ -69,7 +55,7 @@ const CustomerRegisterScreen = () => {
 		setEmail("johndoe@gmail.com");
 		setHeight(180);
 		setWeight(75);
-		setBmi(23.1)
+		setBmi(23.1);
 		setRegDate("2022-05-19");
 	};
 
@@ -85,7 +71,7 @@ const CustomerRegisterScreen = () => {
 		setEmail("");
 		setHeight("");
 		setWeight("");
-		setBmi("")
+		setBmi("");
 		setRegDate("");
 	};
 	const postDetails = (pics) => {
@@ -136,11 +122,11 @@ const CustomerRegisterScreen = () => {
 						className="profileCont"
 						style={{
 							borderRadius: 45,
-						borderWidth: 2.0,
-						marginTop: 20,
-						paddingInline: 10,
-						paddingLeft: 25,
-						paddingRight: 25,
+							borderWidth: 2.0,
+							marginTop: 20,
+							paddingInline: 10,
+							paddingLeft: 25,
+							paddingRight: 25,
 							background: "rgba(231, 238, 238, 0.8)",
 						}}
 					>
@@ -288,7 +274,6 @@ const CustomerRegisterScreen = () => {
 											<Form.Label>Registration Date</Form.Label>
 											<Form.Control type="date" value={regDate} onChange={(e) => setRegDate(e.target.value)} required />
 										</Form.Group>
-											
 										<Button
 											variant="primary"
 											type="submit"
