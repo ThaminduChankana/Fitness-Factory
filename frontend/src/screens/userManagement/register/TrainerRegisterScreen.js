@@ -93,8 +93,8 @@ const TrainerRegisterScreen = () => {
 			const data = new FormData();
 			data.append("file", pics);
 			data.append("upload_preset", "trainerProfile");
-			data.append("cloud_name", "bytesquad2022");
-			fetch("https://api.cloudinary.com/v1_1/bytesquad2022/image/upload", {
+			data.append("cloud_name", "bytesquad202202");
+			fetch("https://api.cloudinary.com/v1_1/bytesquad202202/image/upload", {
 				method: "post",
 				body: data,
 			})
