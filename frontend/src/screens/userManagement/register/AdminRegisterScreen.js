@@ -1,14 +1,14 @@
-import React from 'react'
 import { useState } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../../components/Loading";
+import Loading from "../../../components/Loading"
 import ErrorMessage from "../../../components/ErrorMessage";
 import { adminRegister } from "../../../actions/adminActions";
 import MainScreen from "../../../components/MainScreen";
 
+
 const AdminRegisterScreen = () => {
-  const [name, setName] = useState("");
+	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
 	const [telephone, setTelephone] = useState("");
@@ -20,9 +20,8 @@ const AdminRegisterScreen = () => {
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 
-
-  const dispatch = useDispatch();
-  const adminRegistration = useSelector((state) => state.adminRegistration);
+	const dispatch = useDispatch();
+	const adminRegistration = useSelector((state) => state.adminRegistration);
 	const { loading, error } = adminRegistration;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
@@ -38,7 +37,18 @@ const AdminRegisterScreen = () => {
 		}
 	};
 
-  const resetHandler = async (e) => {
+	const demoHandler = async (e) => {
+		e.preventDefault();
+
+		setName("John Doe");
+		setDob("1950-06-06");
+		setNic("195045656585");
+		setTelephone("0777777777");
+		setAddress("Colombo");
+		setEmail("johndoe@gmail.com");
+	};
+
+	const resetHandler = async (e) => {
 		e.preventDefault();
 
 		setName("");
@@ -49,7 +59,7 @@ const AdminRegisterScreen = () => {
 		setEmail("");
 	};
 
-  const postDetails = (pics) => {
+	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
 			return setPicMessage("Please Select an Image");
 		}
@@ -74,9 +84,9 @@ const AdminRegisterScreen = () => {
 			return setPicMessage("Please Select an Image");
 		}
 	};
-  
-  return (
-    <div className="registerBg">
+	if (adminInfo) {
+		return (
+			<div className="registerBg">
 				<MainScreen title="REGISTER - ADMIN">
 					<Button
 						style={{
@@ -99,15 +109,19 @@ const AdminRegisterScreen = () => {
 							borderWidth: 2.0,
 							marginTop: 20,
 							paddingInline: 10,
+              paddingLeft:25,
+              paddingRight:25,
 							background: "rgba(231, 238, 238, 0.8)",
 						}}
 					>
 						<div className="loginContainer">
+              <br></br>
 							<div>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
 								{loading && <Loading />}
 							</div>
+              <br></br>
 							<Row className="AdminProfileContainer">
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
@@ -219,6 +233,16 @@ const AdminRegisterScreen = () => {
 											Reset
 										</Button>
 										&emsp;
+										<Button
+											variant="info"
+											onClick={demoHandler}
+											style={{
+												fontSize: 15,
+												marginTop: 10,
+											}}
+										>
+											Demo
+										</Button>
 									</Form>
 								</Col>
 								<Col
@@ -243,13 +267,21 @@ const AdminRegisterScreen = () => {
 									/>
 								</Col>
 							</Row>
+              <br></br>
 						</div>
 					</Card>
 					<br></br>
 				</MainScreen>
 			</div>
-  )
+		);
+	} else {
+		return (
+			<div className="denied">
+				<MainScreen />
+				<br></br>
+			</div>
+		);
+	}
 };
-
 
 export default AdminRegisterScreen;
