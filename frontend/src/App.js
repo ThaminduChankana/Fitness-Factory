@@ -1,25 +1,19 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import AdminRegisterScreen from "./screens/userManagement/register/AdminRegisterScreen";
+import TrainerRegisterScreen from "./screens/userManagement/register/TrainerRegisterScreen";
+import CustomerRegisterScreen from "./screens/userManagement/register/CustomerRegisterScreen";
+
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Route path="/admin-register" component={AdminRegisterScreen} exact />
+			<Route path="/trainer-register" component={TrainerRegisterScreen} exact />
+			<Route path="/customer-register" component={CustomerRegisterScreen} exact />
+		</BrowserRouter>
+	);
+};
 
 export default App;

@@ -45,7 +45,7 @@ const trainerSchema = mongoose.Schema(
 			required: true,
 		},
 		yrsexp: {
-			type: Number,
+			type: String,
 			required: true,
 		},
 		pic: {
