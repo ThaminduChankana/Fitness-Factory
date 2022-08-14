@@ -110,7 +110,7 @@ export const customerListReducer = (state = { customers: [] }, action) => {
 	}
 };
 
-export const customerListForDoctorReducer = (state = { customers: [] }, action) => {
+export const customerListForTrainerReducer = (state = { customers: [] }, action) => {
 	switch (action.type) {
 		case CUSTOMER_LIST_FOR_TRAINER_REQUEST:
 			return { loading: true };
