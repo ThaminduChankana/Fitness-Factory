@@ -1,68 +1,41 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { customerRegister } from "../../../actions/customerActions";
+import { adminUpdateProfile } from "../../../actions/adminActions";
 import MainScreen from "../../../components/MainScreen";
 
-const CustomerRegisterScreen = () => {
+const AdminEditScreen = () => {
 	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
-	const [gender, setGender] = useState("");
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
 	const [email, setEmail] = useState("");
 	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
 	const [password, setPassword] = useState("");
 	const [confirmpassword, setConfirmPassword] = useState("");
-	const [height, setHeight] = useState("");
-	const [weight, setWeight] = useState("");
-	const [bmi, setBmi] = useState("");
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
-	const [regDate, setRegDate] = useState("");
 
 	const dispatch = useDispatch();
-	const customerRegistration = useSelector((state) => state.customerRegistration);
-	const { loading, error } = customerRegistration;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const submitHandler = async (e) => {
-		e.preventDefault();
+	const adminUpdate = useSelector((state) => state.adminUpdate);
+	const { loading, error } = adminUpdate;
 
-		if (password !== confirmpassword) {
-			setMessage("Passwords do not match");
-		} else {
-			dispatch(
-				customerRegister(name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate)
-			);
-		}
-	};
-
-	const calculateBmi = async (e) => {
-		let bmi = Number(weight / (height / 100) ** 2).toFixed(2);
-		setBmi(bmi);
-	};
-
-	const demoHandler = async (e) => {
-		e.preventDefault();
-
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
-		setGender("Male");
-		setTelephone("0777777777");
-		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
-		setHeight(180);
-		setWeight(75);
-		setBmi(23.1);
-		setRegDate("2022-05-19");
-	};
+	useEffect(() => {
+		setName(adminInfo.name);
+		setDob(adminInfo.dob);
+		setNic(adminInfo.nic);
+		setTelephone(adminInfo.telephone);
+		setAddress(adminInfo.address);
+		setEmail(adminInfo.email);
+		setPic(adminInfo.pic);
+	}, [adminInfo]);
 
 	const resetHandler = async (e) => {
 		e.preventDefault();
@@ -70,15 +43,11 @@ const CustomerRegisterScreen = () => {
 		setName("");
 		setDob("");
 		setNic("");
-		setGender("");
 		setTelephone("");
 		setAddress("");
 		setEmail("");
-		setHeight("");
-		setWeight("");
-		setBmi("");
-		setRegDate("");
 	};
+
 	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
 			return setPicMessage("Please Select an Image");
@@ -87,7 +56,7 @@ const CustomerRegisterScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "customerProfile");
+			data.append("upload_preset", "adminProfile");
 			data.append("cloud_name", "bytesquad202202");
 			fetch("https://api.cloudinary.com/v1_1/bytesquad202202/image/upload", {
 				method: "post",
@@ -105,19 +74,39 @@ const CustomerRegisterScreen = () => {
 		}
 	};
 
+	const submitHandler = async (e) => {
+		e.preventDefault();
+
+		if (password !== confirmpassword) {
+			setMessage("Passwords do not match");
+		} else {
+			const adminUpdatedInfo = {
+				name,
+				dob,
+				nic,
+				telephone,
+				address,
+				email,
+				pic,
+				password,
+			};
+			dispatch(adminUpdateProfile(adminUpdatedInfo));
+		}
+	};
+
 	return (
 		<div className="registerBg">
-			<MainScreen title="REGISTER - CUSTOMER">
+			<MainScreen title="EDIT - ADMIN">
 				<Button
 					style={{
 						float: "left",
 						marginTop: 5,
 						fontSize: 15,
 					}}
-					href="/admin-customers"
+					href="/admin"
 				>
 					{" "}
-					Back to customers List
+					Back to Dashboard
 				</Button>
 				<br></br>
 
@@ -142,10 +131,10 @@ const CustomerRegisterScreen = () => {
 							{loading && <Loading />}
 						</div>
 						<br></br>
-						<Row className="customerProfileContainer">
+						<Row className="AdminProfileContainer">
 							<Col md={6}>
 								<Form onSubmit={submitHandler}>
-									<Form.Group controlId="customerName">
+									<Form.Group controlId="adminName">
 										<Form.Label>Name</Form.Label>
 										<Form.Control
 											type="name"
@@ -155,25 +144,11 @@ const CustomerRegisterScreen = () => {
 											required
 										/>
 									</Form.Group>
-									<Form.Group controlId="customerDob">
+									<Form.Group controlId="adminDob">
 										<Form.Label>Date Of Birth</Form.Label>
 										<Form.Control type="date" value={dob} onChange={(e) => setDob(e.target.value)} required />
 									</Form.Group>
-									<div className="form-group">
-										<label className="customerGender">Gender</label>
-										<select
-											className="form-control"
-											id="customerGender"
-											value={gender}
-											onChange={(e) => setGender(e.target.value)}
-											required
-										>
-											<option>Select Gender</option>
-											<option value={gender.Male}>Male</option>
-											<option value={gender.Female}>Female</option>
-										</select>
-									</div>
-									<Form.Group controlId="customerFormBasicNic">
+									<Form.Group controlId="adminFormBasicNic">
 										<Form.Label>NIC Number</Form.Label>
 										<Form.Control
 											type="text"
@@ -183,7 +158,7 @@ const CustomerRegisterScreen = () => {
 											required
 										/>
 									</Form.Group>
-									<Form.Group controlId="customerFormBasicTelephone">
+									<Form.Group controlId="adminFormBasicTelephone">
 										<Form.Label>Telephone</Form.Label>
 										<Form.Control
 											type="text"
@@ -194,7 +169,7 @@ const CustomerRegisterScreen = () => {
 											maxLength={10}
 										/>
 									</Form.Group>
-									<Form.Group controlId="customerFormBasicAddress">
+									<Form.Group controlId="adminFormBasicAddress">
 										<Form.Label>Address</Form.Label>
 										<Form.Control
 											type="textArea"
@@ -204,7 +179,7 @@ const CustomerRegisterScreen = () => {
 											required
 										/>
 									</Form.Group>
-									<Form.Group controlId="doctorFormBasicEmail">
+									<Form.Group controlId="adminFormBasicEmail">
 										<Form.Label>Email</Form.Label>
 										<Form.Control
 											type="email"
@@ -231,6 +206,7 @@ const CustomerRegisterScreen = () => {
 											value={confirmpassword}
 											placeholder="Confirm Password"
 											onChange={(e) => setConfirmPassword(e.target.value)}
+											required
 										/>
 									</Form.Group>
 									{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
@@ -244,56 +220,6 @@ const CustomerRegisterScreen = () => {
 											custom
 										/>
 									</Form.Group>
-									<Form.Group controlId="customerFormBasicHeight">
-										<Form.Label>Height (cm)</Form.Label>
-										<Form.Control
-											type="text"
-											value={height}
-											placeholder="Enter Height In Centimeters"
-											onChange={(e) => setHeight(e.target.value)}
-											required
-										/>
-									</Form.Group>
-									<Form.Group controlId="customerFormBasicWeight">
-										<Form.Label>Weight (kg)</Form.Label>
-										<Form.Control
-											type="text"
-											value={weight}
-											placeholder="Enter Weight In Kilograms"
-											onChange={(e) => setWeight(e.target.value)}
-											required
-										/>
-									</Form.Group>
-									<Form.Group controlId="customerFormBasicWeight">
-										<Row>
-											<Col>
-												<Form.Label>BMI</Form.Label>
-												<Form.Control
-													type="text"
-													value={bmi}
-													placeholder="BMI"
-													onChange={(e) => setBmi(e.target.value)}
-													required
-												/>
-											</Col>
-											<Col>
-												<Button
-													variant="success"
-													onClick={calculateBmi}
-													style={{
-														fontSize: 12,
-														marginTop: 30,
-													}}
-												>
-													Calculate
-												</Button>
-											</Col>
-										</Row>
-									</Form.Group>
-									<Form.Group controlId="customerRegDate">
-										<Form.Label>Registration Date</Form.Label>
-										<Form.Control type="date" value={regDate} onChange={(e) => setRegDate(e.target.value)} required />
-									</Form.Group>
 									<Button
 										variant="primary"
 										type="submit"
@@ -302,7 +228,7 @@ const CustomerRegisterScreen = () => {
 											marginTop: 10,
 										}}
 									>
-										Register
+										Update
 									</Button>
 									&emsp;
 									<Button
@@ -314,17 +240,6 @@ const CustomerRegisterScreen = () => {
 										}}
 									>
 										Reset
-									</Button>
-									&emsp;
-									<Button
-										variant="info"
-										onClick={demoHandler}
-										style={{
-											fontSize: 15,
-											marginTop: 10,
-										}}
-									>
-										Demo
 									</Button>
 								</Form>
 							</Col>
@@ -359,4 +274,4 @@ const CustomerRegisterScreen = () => {
 	);
 };
 
-export default CustomerRegisterScreen;
+export default AdminEditScreen;
