@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { customerRegister } from "../../../actions/customerActions";
+import { customerUpdateProfile } from "../../../actions/customerActions";
 import MainScreen from "../../../components/MainScreen";
 
-const CustomerRegisterScreen = () => {
+const CustomerEditScreen = () => {
 	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
@@ -25,43 +25,31 @@ const CustomerRegisterScreen = () => {
 	const [regDate, setRegDate] = useState("");
 
 	const dispatch = useDispatch();
-	const customerRegistration = useSelector((state) => state.customerRegistration);
-	const { loading, error } = customerRegistration;
 
-	const admin_Login = useSelector((state) => state.admin_Login);
-	const { adminInfo } = admin_Login;
+	const customer_Login = useSelector((state) => state.customer_Login);
+	const { customerInfo } = customer_Login;
 
-	const submitHandler = async (e) => {
-		e.preventDefault();
+	const customerUpdate = useSelector((state) => state.customerUpdate);
+	const { loading, error } = customerUpdate;
 
-		if (password !== confirmpassword) {
-			setMessage("Passwords do not match");
-		} else {
-			dispatch(
-				customerRegister(name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate)
-			);
-		}
-	};
+	useEffect(() => {
+		setName(customerInfo.name);
+		setDob(customerInfo.dob);
+		setNic(customerInfo.nic);
+		setGender(customerInfo.gender);
+		setTelephone(customerInfo.telephone);
+		setAddress(customerInfo.address);
+		setEmail(customerInfo.email);
+		setHeight(customerInfo.height);
+		setWeight(customerInfo.weight);
+		setBmi(customerInfo.bmi);
+		setPic(customerInfo.pic);
+		setRegDate(customerInfo.regDate);
+	}, [customerInfo]);
 
 	const calculateBmi = async (e) => {
 		let bmi = Number(weight / (height / 100) ** 2).toFixed(2);
 		setBmi(bmi);
-	};
-
-	const demoHandler = async (e) => {
-		e.preventDefault();
-
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
-		setGender("Male");
-		setTelephone("0777777777");
-		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
-		setHeight(180);
-		setWeight(75);
-		setBmi(23.1);
-		setRegDate("2022-05-19");
 	};
 
 	const resetHandler = async (e) => {
@@ -79,6 +67,7 @@ const CustomerRegisterScreen = () => {
 		setBmi("");
 		setRegDate("");
 	};
+
 	const postDetails = (pics) => {
 		if (pics === "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg") {
 			return setPicMessage("Please Select an Image");
@@ -105,9 +94,34 @@ const CustomerRegisterScreen = () => {
 		}
 	};
 
+	const submitHandler = async (e) => {
+		e.preventDefault();
+
+		if (password !== confirmpassword) {
+			setMessage("Passwords do not match");
+		} else {
+			const customerUpdatedInfo = {
+				name,
+				dob,
+				nic,
+				gender,
+				telephone,
+				address,
+				email,
+				password,
+				height,
+				weight,
+				bmi,
+				pic,
+				regDate,
+			};
+			dispatch(customerUpdateProfile(customerUpdatedInfo));
+		}
+	};
+
 	return (
 		<div className="registerBg">
-			<MainScreen title="REGISTER - CUSTOMER">
+			<MainScreen title="EDIT - CUSTOMER">
 				<Button
 					style={{
 						float: "left",
@@ -302,7 +316,7 @@ const CustomerRegisterScreen = () => {
 											marginTop: 10,
 										}}
 									>
-										Register
+										Update
 									</Button>
 									&emsp;
 									<Button
@@ -314,17 +328,6 @@ const CustomerRegisterScreen = () => {
 										}}
 									>
 										Reset
-									</Button>
-									&emsp;
-									<Button
-										variant="info"
-										onClick={demoHandler}
-										style={{
-											fontSize: 15,
-											marginTop: 10,
-										}}
-									>
-										Demo
 									</Button>
 								</Form>
 							</Col>
@@ -359,4 +362,4 @@ const CustomerRegisterScreen = () => {
 	);
 };
 
-export default CustomerRegisterScreen;
+export default CustomerEditScreen;
