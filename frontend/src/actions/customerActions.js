@@ -346,7 +346,7 @@ export const customerViewProfileById =
 	};
 
 export const customerUpdateProfileById =
-	(id, name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, message, pic, regDate) =>
+	(id, name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate, message) =>
 	async (dispatch, getState) => {
 		try {
 			dispatch({
@@ -379,6 +379,7 @@ export const customerUpdateProfileById =
 					bmi,
 					pic,
 					regDate,
+					message,
 				},
 				config
 			);
