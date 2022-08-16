@@ -57,13 +57,15 @@ const authAdmin = asyncHandler(async (req, res) => {
 	const admin = await Admin.findOne({ nic });
 
 	if (!admin) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 
 	const isMatch = await bcrypt.compare(password, admin.password);
 
 	if (!isMatch) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	} else {
 		res.status(201).json({
 			_id: admin._id,
@@ -86,7 +88,8 @@ const getAdminProfile = asyncHandler(async (req, res) => {
 	if (admin) {
 		res.status(201).json(admin);
 	} else {
-		res.status(404).json({ message: "Admin not found !" });
+		res.status(400);
+		throw new Error("Admin Not Found !");
 	}
 });
 

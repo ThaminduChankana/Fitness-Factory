@@ -64,13 +64,15 @@ const authTrainer = asyncHandler(async (req, res) => {
 	const trainer = await Trainer.findOne({ nic });
 
 	if (!trainer) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 
 	const isMatch = await bcrypt.compare(password, trainer.password);
 
 	if (!isMatch) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	} else {
 		res.status(201).json({
 			_id: trainer._id,
@@ -101,7 +103,8 @@ const getTrainerProfile = asyncHandler(async (req, res) => {
 	if (trainer) {
 		res.json(trainer);
 	} else {
-		res.status(404).json({ message: "Trainer not found !" });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 });
 
@@ -110,7 +113,8 @@ const getTrainerProfileById = asyncHandler(async (req, res) => {
 	if (trainer) {
 		res.json(trainer);
 	} else {
-		res.status(404).json({ message: "Trainer not found !" });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 });
 
