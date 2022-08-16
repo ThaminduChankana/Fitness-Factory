@@ -18,7 +18,7 @@ const TrainerEditScreen = () => {
 	const [confirmpassword, setConfirmPassword] = useState("");
 	const [qualifications, setQualifications] = useState("");
 	const [yrsexp, setYrsexp] = useState("");
-	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+	const [pic, setPic] = useState();
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 	const [regDate, setRegDate] = useState("");
@@ -113,7 +113,7 @@ const TrainerEditScreen = () => {
 
 	return (
 		<div className="registerBg">
-			<MainScreen title="REGISTER - TRAINER">
+			<MainScreen title="EDIT - TRAINER">
 				<Button
 					style={{
 						float: "left",
@@ -227,7 +227,6 @@ const TrainerEditScreen = () => {
 											value={password}
 											placeholder="Password"
 											onChange={(e) => setPassword(e.target.value)}
-											required
 										/>
 									</Form.Group>
 									<Form.Group controlId="confirmPassword">

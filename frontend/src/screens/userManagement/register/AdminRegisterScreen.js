@@ -39,12 +39,12 @@ const AdminRegisterScreen = () => {
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
-		setTelephone("0777777777");
+		setName("Michael Scott");
+		setDob("1970-06-12");
+		setNic("197085256335");
+		setTelephone("0715689562");
 		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
+		setEmail("michaelscott@gmail.com");
 	};
 
 	const resetHandler = async (e) => {

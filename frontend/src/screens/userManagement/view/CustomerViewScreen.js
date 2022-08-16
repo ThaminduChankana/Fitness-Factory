@@ -41,6 +41,7 @@ const CustomerViewScreen = () => {
 
 	const dispatch = useDispatch();
 
+	console.log(customerInfo);
 	const logoutHandler = () => {
 		dispatch(customerLogout());
 		//history.push("/");
@@ -107,20 +108,17 @@ const CustomerViewScreen = () => {
 											<Form.Label>Date Of Birth</Form.Label>
 											<Form.Control type="date" value={dob} onChange={(e) => setDob(e.target.value)} readOnly />
 										</Form.Group>
-										<div className="form-group">
-											<label className="customerViewGender">Gender</label>
-											<select
-												className="form-control"
-												id="customerGender"
+
+										<Form.Group controlId="customerViewFormBasicGender">
+											<Form.Label>Gender</Form.Label>
+											<Form.Control
+												type="text"
 												value={gender}
+												placeholder="Enter NIC"
 												onChange={(e) => setGender(e.target.value)}
 												readOnly
-											>
-												<option>Select Gender</option>
-												<option value={gender.Male}>Male</option>
-												<option value={gender.Female}>Female</option>
-											</select>
-										</div>
+											/>
+										</Form.Group>
 										<Form.Group controlId="customerViewFormBasicNic">
 											<Form.Label>NIC Number</Form.Label>
 											<Form.Control
