@@ -50,7 +50,7 @@ const registerCustomer = asyncHandler(async (req, res) => {
 			weight: customer.weight,
 			bmi: customer.bmi,
 			pic: customer.pic,
-			regdate: customer.regDate,
+			regDate: customer.regDate,
 			token: generateToken(customer._id),
 		});
 	} else {
@@ -65,13 +65,15 @@ const authCustomer = asyncHandler(async (req, res) => {
 	const customer = await Customer.findOne({ nic });
 
 	if (!customer) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 
 	const isMatch = await bcrypt.compare(password, customer.password);
 
 	if (!isMatch) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	} else {
 		res.status(201).json({
 			_id: customer._id,
@@ -86,7 +88,7 @@ const authCustomer = asyncHandler(async (req, res) => {
 			weight: customer.weight,
 			bmi: customer.bmi,
 			pic: customer.pic,
-			regdate: customer.regDate,
+			regDate: customer.regDate,
 			token: generateToken(customer._id),
 		});
 	}
@@ -103,7 +105,8 @@ const getCustomerProfile = asyncHandler(async (req, res) => {
 	if (customer) {
 		res.json(customer);
 	} else {
-		res.status(404).json({ message: "Customer not found !" });
+		res.status(400);
+		throw new Error("Customer not found !");
 	}
 });
 
@@ -113,7 +116,8 @@ const getCustomerProfileById = asyncHandler(async (req, res) => {
 	if (customer) {
 		res.json(customer);
 	} else {
-		res.status(404).json({ message: "Customer not found !" });
+		res.status(400);
+		throw new Error("Customer not found !");
 	}
 });
 
@@ -152,7 +156,7 @@ const updateCustomerProfile = asyncHandler(async (req, res) => {
 			weight: updatedCustomer.weight,
 			bmi: updatedCustomer.bmi,
 			pic: updatedCustomer.pic,
-			regdate: updatedCustomer.regDate,
+			regDate: updatedCustomer.regDate,
 			token: generateToken(updatedCustomer._id),
 		});
 	} else {
@@ -196,7 +200,7 @@ const updateCustomerProfileById = asyncHandler(async (req, res) => {
 			weight: updatedCustomer.weight,
 			bmi: updatedCustomer.bmi,
 			pic: updatedCustomer.pic,
-			regdate: updatedCustomer.regDate,
+			regDate: updatedCustomer.regDate,
 			token: generateToken(updatedCustomer._id),
 		});
 	} else {
