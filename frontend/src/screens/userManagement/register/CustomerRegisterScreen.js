@@ -20,7 +20,7 @@ const CustomerRegisterScreen = () => {
 	const [height, setHeight] = useState("");
 	const [weight, setWeight] = useState("");
 	const [bmi, setBmi] = useState("");
-	const [message, setMessage] = useState(null);
+	const [message, setMessage] = useState("");
 	const [picMessage, setPicMessage] = useState(null);
 	const [regDate, setRegDate] = useState("");
 
@@ -51,17 +51,17 @@ const CustomerRegisterScreen = () => {
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
-		setGender("Male");
-		setTelephone("0777777777");
-		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
-		setHeight(180);
-		setWeight(75);
-		setBmi(23.1);
-		setRegDate("2022-05-19");
+		setName("Jan Levinson");
+		setDob("1985-12-06");
+		setNic("198545656585");
+		setGender("Female");
+		setTelephone("0776688556");
+		setAddress("Gampaha");
+		setEmail("janlevinson@gmail.com");
+		setHeight(175);
+		setWeight(65);
+		setBmi();
+		setRegDate("2022-08-19");
 	};
 
 	const resetHandler = async (e) => {

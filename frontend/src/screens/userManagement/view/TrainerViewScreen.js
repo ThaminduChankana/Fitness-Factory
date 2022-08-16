@@ -112,20 +112,16 @@ const TrainerViewScreen = () => {
 												readOnly
 											/>
 										</Form.Group>
-										<div className="form-group">
-											<label className="trainerGender">Gender</label>
-											<select
-												className="form-control"
-												id="trainerGender"
+										<Form.Group controlId="trainerViewFormBasicGender">
+											<Form.Label>Gender</Form.Label>
+											<Form.Control
+												type="text"
 												value={gender}
+												placeholder="Enter NIC"
 												onChange={(e) => setGender(e.target.value)}
 												readOnly
-											>
-												<option>Select Gender</option>
-												<option value={gender.Male}>Male</option>
-												<option value={gender.Female}>Female</option>
-											</select>
-										</div>
+											/>
+										</Form.Group>
 										<Form.Group controlId="trainerViewFormBasicTelephone">
 											<Form.Label>Telephone</Form.Label>
 											<Form.Control

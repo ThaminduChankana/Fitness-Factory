@@ -14,7 +14,7 @@ const CustomerEditScreen = () => {
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
 	const [email, setEmail] = useState("");
-	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+	const [pic, setPic] = useState();
 	const [password, setPassword] = useState("");
 	const [confirmpassword, setConfirmPassword] = useState("");
 	const [height, setHeight] = useState("");
@@ -235,7 +235,6 @@ const CustomerEditScreen = () => {
 											value={password}
 											placeholder="Password"
 											onChange={(e) => setPassword(e.target.value)}
-											required
 										/>
 									</Form.Group>
 									<Form.Group controlId="confirmPassword">
@@ -303,10 +302,6 @@ const CustomerEditScreen = () => {
 												</Button>
 											</Col>
 										</Row>
-									</Form.Group>
-									<Form.Group controlId="customerRegDate">
-										<Form.Label>Registration Date</Form.Label>
-										<Form.Control type="date" value={regDate} onChange={(e) => setRegDate(e.target.value)} required />
 									</Form.Group>
 									<Button
 										variant="primary"
