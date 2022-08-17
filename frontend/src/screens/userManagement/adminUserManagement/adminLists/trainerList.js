@@ -7,6 +7,7 @@ import { trainerDeleteProfile, trainersList } from "../../../../actions/trainerA
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "./../../../../components/ErrorMessage";
 import swal from "sweetalert";
+import Search from "../../../../components/Search";
 
 const TrainerListForAdminScreen = () => {
 	const dispatch = useDispatch();
@@ -63,28 +64,46 @@ const TrainerListForAdminScreen = () => {
 	if (adminInfo) {
 		return (
 			<div className="trainerList">
+				<br></br>
 				<MainScreen title={`Welcome Back ${adminInfo && adminInfo.name}..`}>
-					<h1
-						style={{
-							display: "flex",
-							marginLeft: "10px",
-							width: "500px",
-						}}
-					>
-						Trainers List
-					</h1>
+					<Row>
+						<Col>
+							<h1
+								style={{
+									display: "flex",
+									marginLeft: "10px",
+									width: "500px",
+									color: "azure",
+									fontStyle: "italic",
+								}}
+							>
+								Trainers List
+							</h1>
+						</Col>
+						<Col>
+							<Search />
+						</Col>
+					</Row>
 					<br></br>
 					<div>
 						<Col>
 							<Link to="/admin">
-								<Button style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
+								<Button
+									variant="success"
+									style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+									size="lg"
+								>
 									Back to Dashboard
 								</Button>
 							</Link>
 						</Col>
 						<Col>
 							<Link to="/trainer-register">
-								<Button style={{ marginRight: 10, marginBottom: 6, float: "right", fontSize: 15 }} size="lg">
+								<Button
+									variant="success"
+									style={{ marginRight: 10, marginBottom: 6, float: "right", fontSize: 15 }}
+									size="lg"
+								>
 									+ Create New Trainer Account
 								</Button>
 							</Link>
@@ -99,7 +118,7 @@ const TrainerListForAdminScreen = () => {
 
 					<br></br>
 					{trainers &&
-						trainers.map((trainerList) => (
+						trainers.reverse().map((trainerList) => (
 							<div key={trainerList._id}>
 								<Accordion>
 									<Card
@@ -121,7 +140,7 @@ const TrainerListForAdminScreen = () => {
 												marginTop: 10,
 												marginBottom: 10,
 												borderColor: "black",
-												background: "rgba(255, 255, 255)",
+												background: "#76BA99",
 											}}
 										>
 											<span
@@ -135,12 +154,12 @@ const TrainerListForAdminScreen = () => {
 												}}
 											>
 												<Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
-													<label className="nic" style={{ paddingInline: 20, marginTop: 10 }}>
+													<label className="nic" style={{ paddingInline: 20, marginTop: 10, fontSize: 18 }}>
 														Trainer NIC : &emsp;
 														{trainerList.nic}&emsp;
 													</label>{" "}
 													<br></br>
-													<label className="name" style={{ paddingInline: 20 }}>
+													<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
 														Trainer Name : &emsp;
 														{trainerList.name}
 													</label>
