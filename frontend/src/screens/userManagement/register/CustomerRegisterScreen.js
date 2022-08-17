@@ -125,7 +125,7 @@ const CustomerRegisterScreen = () => {
 						Back to customers List
 					</Button>
 					<br></br>
-
+					<br></br>
 					<br></br>
 					<Card
 						className="profileCont"
@@ -287,7 +287,7 @@ const CustomerRegisterScreen = () => {
 														onClick={calculateBmi}
 														style={{
 															fontSize: 12,
-															marginTop: 30,
+															marginTop: 32,
 														}}
 													>
 														Calculate

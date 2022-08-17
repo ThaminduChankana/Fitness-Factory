@@ -26,6 +26,7 @@ import CustomerDashboardPage from "./screens/static/dashboards/CustomerDashboard
 import TrainerDashboardPage from "./screens/static/dashboards/TrainerDashboard";
 import AccessDenied from "./components/AccessDenied";
 import Inquiries from "./screens/static/inquiries/Inquiries";
+import CustomerPrint from "./screens/reports/CustomerReports/CustomerPrint";
 
 const App = () => {
 	return (
@@ -55,6 +56,7 @@ const App = () => {
 				<Route path="/access-denied" component={AccessDenied} exact />
 				<Route path="/bmi-calculator" component={CalculateBMIScreen} exact />
 				<Route path="/contactus" component={Inquiries} exact />
+				<Route path="/admin-customer-report" component={CustomerPrint} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>

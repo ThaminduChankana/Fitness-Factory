@@ -17,9 +17,17 @@ const CustomerDashboardPage = ({ history }) => {
 		return (
 			<div className="customerBackground">
 				<MainScreen title={`Welcome Back ${customerInfo && customerInfo.name} ...`}>
-					<Button variant="danger" onClick={logoutHandler} className="logoutBtn" style={{ float: "right" }}>
+				<Button
+						variant="danger"
+						onClick={logoutHandler}
+						className="logoutBtn"
+						style={{ float: "right", marginTop: 3, fontSize:15 }}
+					>
 						Logout
 					</Button>
+
+					<br></br>
+					<br></br>
 					<br></br>
 					<div className="loginContainer">
 						<Card

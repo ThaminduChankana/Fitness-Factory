@@ -74,6 +74,7 @@ const TrainerViewScreen = () => {
 					</Button>
 					<br></br>
 					<br></br>
+					<br></br>
 					<Card
 						className="profileCont"
 						style={{

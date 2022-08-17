@@ -127,7 +127,7 @@ const TrainerRegisterScreen = () => {
 						Back to Trainers List
 					</Button>
 					<br></br>
-
+					<br></br>
 					<br></br>
 					<Card
 						className="profileCont"
