@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { customerLogout } from "../../../actions/customerActions";
 import MainScreen from "../../../components/MainScreen";
+import "./ViewScreen.css";
 
 const CustomerViewScreen = () => {
 	const [name, setName] = useState("");
@@ -50,15 +51,17 @@ const CustomerViewScreen = () => {
 	if (customerInfo) {
 		return (
 			<div className="profileViewBg">
+				<br></br>
 				<MainScreen title="VIEW PROFILE - CUSTOMER">
 					<Button
+						variant="success"
 						style={{
 							float: "left",
 							marginTop: 5,
 							fontSize: 15,
 							marginLeft: 10,
 						}}
-						href="/admin"
+						href="/customer"
 					>
 						{" "}
 						Back to Dashboard
@@ -225,6 +228,7 @@ const CustomerViewScreen = () => {
 					</Card>
 					<br></br>
 				</MainScreen>
+				<br></br>
 			</div>
 		);
 	} else {
