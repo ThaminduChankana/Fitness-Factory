@@ -57,16 +57,16 @@ const TrainerRegisterScreen = () => {
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
+		setName("Jim Halpert");
+		setDob("1990-11-14");
+		setNic("199056854132");
 		setGender("Male");
-		setTelephone("0777777777");
-		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
+		setTelephone("0778569545");
+		setAddress("Negombo");
+		setEmail("jimhalpert@gmail.com");
 		setQualifications("International physical trainer certificate");
-		setYrsexp("1 year as a gym instructor");
-		setRegDate("2022-05-19");
+		setYrsexp("3 years as a gym instructor");
+		setRegDate("2022-03-15");
 	};
 
 	const resetHandler = async (e) => {
