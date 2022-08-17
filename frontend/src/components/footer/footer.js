@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import logo1 from "../../images/logo1.png";
+import logo1 from "./logo1.png";
 import { Row } from "react-bootstrap";
 
 function Footer() {
@@ -24,20 +24,20 @@ function Footer() {
 									<br></br>
 									<a href="/">FITNESS BLOG</a>
 									<br></br>
-									<a href="/">BMI CALCULATOR</a>
+									<a href="/bmi-calculator">BMI CALCULATOR</a>
 								</li>
 							</div>
 							{/* Column3 */}
 							<div className="col" style={{ marginTop: "10%" }}>
 								<h4>POPULAR LINKS</h4>
 								<li className="list-unstyled">
-									<a href="/common-view-feedback">CONTACT US</a>
+									<a href="/contactus">CONTACT US</a>
 									<br></br>
-									<a href="/common-view-question">JOIN US</a>
+									<a href="/">JOIN US</a>
 									<br></br>
-									<a href="/TermsAndCondtions">TERMS & CONDITIONS</a>
+									<a href="/">TERMS & CONDITIONS</a>
 									<br></br>
-									<a href="/services">SERVICES</a>
+									<a href="/">SERVICES</a>
 								</li>
 							</div>
 							{/* Column4 */}
