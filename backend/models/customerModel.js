@@ -57,9 +57,8 @@ const customerSchema = mongoose.Schema({
 		default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg", //default image which apply in the user
 	},
 	regDate: {
-		type: Date,
+		type: String,
 		required: true,
-		default: Date.now,
 	},
 });
 
