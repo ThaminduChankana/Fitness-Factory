@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { customersListForTrainer } from "../../../actions/customerActions";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
+import "./trainerCustomerList.css";
+import Search from "../../../components/Search";
 
 const CustomerListForTrainerScreen = () => {
 	const dispatch = useDispatch();
@@ -26,23 +28,37 @@ const CustomerListForTrainerScreen = () => {
 	}, [dispatch, history, trainerInfo]);
 	if (trainerInfo) {
 		return (
-			<div className="trainerPatientList">
+			<div className="trainerCustomerList">
+				<br></br>
 				<MainScreen title={`Welcome Back ${trainerInfo && trainerInfo.name}..`}>
-					<h1
-						style={{
-							display: "flex",
-							marginLeft: "10px",
-							width: "500px",
-						}}
-					>
-						Customer List
-					</h1>
+					<Row>
+						<Col>
+							<h1
+								style={{
+									display: "flex",
+									marginLeft: "10px",
+									width: "500px",
+									color: "azure",
+									fontStyle: "italic",
+								}}
+							>
+								Customers List
+							</h1>
+						</Col>
+						<Col>
+							<Search />
+						</Col>
+					</Row>
 					<br></br>
 
 					<div>
 						<Col>
 							<Link to="/trainer">
-								<Button style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
+								<Button
+									variant="success"
+									style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+									size="lg"
+								>
 									Back to Dashboard
 								</Button>
 							</Link>
@@ -55,7 +71,7 @@ const CustomerListForTrainerScreen = () => {
 					{loading && <Loading />}
 					<br></br>
 					{customers &&
-						customers.map((customerList) => (
+						customers.reverse().map((customerList) => (
 							<div key={customerList._id} className="listContainer">
 								<Accordion>
 									<Card
@@ -77,7 +93,7 @@ const CustomerListForTrainerScreen = () => {
 												marginTop: 10,
 												marginBottom: 10,
 												borderColor: "black",
-												background: "rgba(255, 255, 255)",
+												background: "#76BA99",
 											}}
 										>
 											<span
@@ -91,12 +107,12 @@ const CustomerListForTrainerScreen = () => {
 												}}
 											>
 												<Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
-													<label className="nic" style={{ paddingInline: 20 }}>
+													<label className="nic" style={{ paddingInline: 20, marginTop: 10, fontSize: 18 }}>
 														Patient NIC : &emsp;
 														{customerList.nic}{" "}
 													</label>{" "}
 													<br></br>
-													<label className="name" style={{ paddingInline: 20 }}>
+													<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
 														Patient Name : &emsp;
 														{customerList.name}
 													</label>
