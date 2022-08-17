@@ -108,12 +108,12 @@ const CustomerListForTrainerScreen = () => {
 											>
 												<Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
 													<label className="nic" style={{ paddingInline: 20, marginTop: 10, fontSize: 18 }}>
-														Patient NIC : &emsp;
+														Customer NIC : &emsp;
 														{customerList.nic}{" "}
 													</label>{" "}
 													<br></br>
 													<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
-														Patient Name : &emsp;
+														Customer Name : &emsp;
 														{customerList.name}
 													</label>
 												</Accordion.Toggle>

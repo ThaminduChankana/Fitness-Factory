@@ -66,6 +66,7 @@ const AdminViewScreen = () => {
 					</Button>
 					<br></br>
 					<br></br>
+					<br></br>
 					<Card
 						className="profileCont"
 						style={{

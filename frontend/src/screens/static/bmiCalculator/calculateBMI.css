@@ -1,7 +1,7 @@
 .frame {
 	height: 575px;
 	width: 430px;
-	background: linear-gradient(rgba(255, 255, 255, 0.904), rgba(92, 93, 100, 0.95)),
+	background: linear-gradient(rgba(0, 0, 0, 0.904), rgba(92, 93, 100, 0.95)),
 		url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/clouds-cloudy-forest-mountain.jpg) no-repeat center
 			center;
 	background-size: cover;
@@ -12,16 +12,6 @@
 	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 	transition: all 0.5s ease;
-}
-
-label {
-	font-weight: 400;
-	text-transform: uppercase;
-	font-size: 15px;
-	padding-left: 15px;
-	padding-bottom: 10px;
-	color: rgb(0, 0, 0);
-	display: block;
 }
 
 .form-styling {

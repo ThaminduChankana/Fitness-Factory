@@ -16,9 +16,17 @@ const TrainerDashboardPage = ({ history }) => {
 		return (
 			<div className="trainerBackground">
 				<MainScreen title={`Welcome Back ${trainerInfo && trainerInfo.name} ...`}>
-					<Button variant="danger" onClick={logoutHandler} className="logoutBtn" style={{ float: "right" }}>
+					<Button
+						variant="danger"
+						onClick={logoutHandler}
+						className="logoutBtn"
+						style={{ float: "right", marginTop: 3, fontSize: 15 }}
+					>
 						Logout
 					</Button>
+
+					<br></br>
+					<br></br>
 					<br></br>
 					<div className="loginContainer">
 						<Card
