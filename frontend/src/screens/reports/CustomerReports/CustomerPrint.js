@@ -23,7 +23,7 @@ const CustomerPrint = () => {
 					<div style={{ minHeight: 700 }}>
 						<br></br>
 						<Button
-						variant="success"
+							variant="success"
 							style={{
 								float: "left",
 								marginTop: 5,

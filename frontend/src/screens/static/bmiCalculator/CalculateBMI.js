@@ -42,10 +42,13 @@ export default function CalculateBMIScreen() {
 					<Card style={{ padding: 50, border: "none", background: "#1058ff00" }}>
 						<div className="frame">
 							<form className="form-login">
-								<h1 className="text-center mb-4 text-xl" style={{color:"white"}}> BMI Calculator</h1>
-                <br></br>
+								<h1 className="text-center mb-4 text-xl" style={{ color: "white" }}>
+									{" "}
+									BMI Calculator
+								</h1>
+								<br></br>
 								<Form.Group controlId="customerFormBasicHeight">
-									<Form.Label style={{color:"white"}}>Height (cm)</Form.Label>
+									<Form.Label style={{ color: "white" }}>Height (cm)</Form.Label>
 									<Form.Control
 										type="text"
 										value={height}
@@ -54,9 +57,9 @@ export default function CalculateBMIScreen() {
 										required
 									/>
 								</Form.Group>
-                <br></br>
+								<br></br>
 								<Form.Group controlId="customerFormBasicWeight">
-									<Form.Label style={{color:"white"}}>Weight (kg)</Form.Label>
+									<Form.Label style={{ color: "white" }}>Weight (kg)</Form.Label>
 									<Form.Control
 										type="text"
 										value={weight}
@@ -66,7 +69,7 @@ export default function CalculateBMIScreen() {
 									/>
 								</Form.Group>
 								<div>
-                  <br></br>
+									<br></br>
 									<button
 										className="btn-animate"
 										style={{ display: "flex", justifyContent: "center" }}

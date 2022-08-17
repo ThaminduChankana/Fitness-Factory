@@ -102,7 +102,7 @@ const AdminRegisterScreen = () => {
 						Back to Dashboard
 					</Button>
 					<br></br>
-					<br></br>				
+					<br></br>
 					<br></br>
 					<Card
 						className="profileCont"

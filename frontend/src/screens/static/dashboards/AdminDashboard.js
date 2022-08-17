@@ -23,7 +23,7 @@ const AdminDashboardPage = ({ history }) => {
 						variant="danger"
 						onClick={logoutHandler}
 						className="logoutBtn"
-						style={{ float: "right", marginTop: 3, fontSize:15 }}
+						style={{ float: "right", marginTop: 3, fontSize: 15 }}
 					>
 						Logout
 					</Button>
