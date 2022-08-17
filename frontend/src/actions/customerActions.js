@@ -118,11 +118,11 @@ export const customerRegister =
 				timer: 2000,
 				button: false,
 			});
-			// setTimeout(function () {
-			// 	window.location.href = "/admin-customers";
-			// }, 2000);
+			setTimeout(function () {
+				window.location.href = "/admin-customers";
+			}, 2000);
 
-			// localStorage.setItem("customerInfo", JSON.stringify(data));
+			localStorage.setItem("customerInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: CUSTOMER_REGISTER_FAIL,
