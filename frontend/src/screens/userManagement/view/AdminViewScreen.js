@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import MainScreen from "../../../components/MainScreen";
 import { adminLogout } from "../../../actions/adminActions";
+import "./ViewScreen.css";
 
 const AdminViewScreen = () => {
 	const [name, setName] = useState("");
@@ -36,8 +37,10 @@ const AdminViewScreen = () => {
 	if (adminInfo) {
 		return (
 			<div className="profileViewBg">
+				<br></br>
 				<MainScreen title="VIEW PROFILE - ADMIN">
 					<Button
+						variant="success"
 						style={{
 							float: "left",
 							marginTop: 5,
@@ -162,6 +165,7 @@ const AdminViewScreen = () => {
 					</Card>
 					<br></br>
 				</MainScreen>
+				<br></br>
 			</div>
 		);
 	} else {

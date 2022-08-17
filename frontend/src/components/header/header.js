@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import image1 from "./logo4.png";
-import { Button, Form, ButtonGroup } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -35,7 +35,7 @@ function Header({ setSearch }) {
 							REVIEWS
 						</Button>
 
-						<Button variant="" style={{ color: "#29C379", fontSize: "20px", marginLeft: "35px" }} href="/">
+						<Button variant="" style={{ color: "#29C379", fontSize: "20px", marginLeft: "35px" }} href="/contactus">
 							CONTACT US
 						</Button>
 					</ButtonGroup>

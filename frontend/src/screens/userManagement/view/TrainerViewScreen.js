@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import MainScreen from "../../../components/MainScreen";
 import { trainerLogout } from "../../../actions/trainerActions";
+import "./ViewScreen.css";
 
 const TrainerViewScreen = () => {
 	const [name, setName] = useState("");
@@ -44,15 +45,17 @@ const TrainerViewScreen = () => {
 	if (trainerInfo) {
 		return (
 			<div className="profileViewBg">
+				<br></br>
 				<MainScreen title="VIEW PROFILE - TRAINER">
 					<Button
+						variant="success"
 						style={{
 							float: "left",
 							marginTop: 5,
 							fontSize: 15,
 							marginLeft: 10,
 						}}
-						href="/admin"
+						href="/trainer"
 					>
 						{" "}
 						Back to Dashboard
@@ -216,6 +219,7 @@ const TrainerViewScreen = () => {
 					</Card>
 					<br></br>
 				</MainScreen>
+				<br></br>
 			</div>
 		);
 	} else {

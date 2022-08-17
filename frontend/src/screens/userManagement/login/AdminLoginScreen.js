@@ -5,6 +5,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { adminLogin } from "../../../actions/adminActions";
+import "./LoginScreen.css";
 
 const AdminLoginScreen = () => {
 	const [nic, setNic] = useState("");
@@ -22,6 +23,7 @@ const AdminLoginScreen = () => {
 
 	return (
 		<div className="adminLoginBg">
+			<br></br>
 			<MainScreen title="LOGIN - ADMIN">
 				<br></br>
 				<br></br>

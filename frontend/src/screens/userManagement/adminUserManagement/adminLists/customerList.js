@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Accordion, Button, Card, Row, Col, ButtonGroup } from "react-bootstrap";
 import MainScreen from "../../../../components/MainScreen";
 import { useHistory } from "react-router-dom";
@@ -7,9 +7,13 @@ import { customerDeleteProfile, customersList } from "../../../../actions/custom
 import Loading from "../../../../components/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import swal from "sweetalert";
+import "./lists.css";
+import Search from "../../../../components/Search";
 
 const CustomerListForAdminScreen = ({ search }) => {
 	const dispatch = useDispatch();
+
+	const [setSearch] = useState("");
 
 	const customerList = useSelector((state) => state.customerList);
 	const { loading, customers, error } = customerList;
@@ -63,23 +67,39 @@ const CustomerListForAdminScreen = ({ search }) => {
 	if (adminInfo) {
 		return (
 			<div className="customerList">
+				<br></br>
 				<MainScreen title={`Welcome Back ${adminInfo && adminInfo.name}..`}>
-					<h1
-						style={{
-							display: "flex",
-							marginLeft: "10px",
-							width: "500px",
-						}}
-					>
-						Customers List
-					</h1>
+					<Row>
+						<Col>
+							<h1
+								style={{
+									display: "flex",
+									marginLeft: "10px",
+									width: "500px",
+									color: "azure",
+									fontStyle: "italic",
+								}}
+							>
+								Customers List
+							</h1>
+						</Col>
+						<Col>
+							<Search setSearch={setSearch} />
+						</Col>
+					</Row>
 					<br></br>
-					<ButtonGroup className="mb-2" size="lg" style={{ width: "100%" }}>
-						<Button href="/admin">Back to Dashboard</Button>
+					<ButtonGroup variant="success" className="mb-2" size="lg" style={{ width: "100%" }}>
+						<Button variant="success" href="/admin">
+							Back to Dashboard
+						</Button>
 
-						<Button href="/customer-register">+ Create New Customer Account</Button>
+						<Button variant="success" href="/customer-register">
+							+ Create New Customer Account
+						</Button>
 
-						<Button href="/admin-customer-report">Customer Registrations Report</Button>
+						<Button variant="success" href="/admin-customer-report">
+							Customer Registrations Report
+						</Button>
 					</ButtonGroup>
 
 					<br></br>
@@ -88,7 +108,7 @@ const CustomerListForAdminScreen = ({ search }) => {
 					{loading && <Loading />}
 					<br></br>
 					{customers &&
-						customers.map((customerList) => (
+						customers.reverse().map((customerList) => (
 							<div key={customerList._id} className="listContainer">
 								<Accordion>
 									<Card
@@ -110,7 +130,7 @@ const CustomerListForAdminScreen = ({ search }) => {
 												marginTop: 10,
 												marginBottom: 10,
 												borderColor: "black",
-												background: "rgba(255, 255, 255)",
+												background: "#76BA99",
 											}}
 										>
 											<span
@@ -124,12 +144,12 @@ const CustomerListForAdminScreen = ({ search }) => {
 												}}
 											>
 												<Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
-													<label className="nic" style={{ paddingInline: 20, marginTop: 10 }}>
+													<label className="nic" style={{ paddingInline: 20, marginTop: 10, fontSize: 18 }}>
 														Customer NIC : &emsp;
 														{customerList.nic}{" "}
 													</label>{" "}
 													<br></br>
-													<label className="name" style={{ paddingInline: 20 }}>
+													<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
 														Customer Name : &emsp;
 														{customerList.name}
 													</label>

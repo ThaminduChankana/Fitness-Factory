@@ -60,6 +60,10 @@ const customerSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	year: {
+		default: new Date().getFullYear(),
+		type: String,
+	},
 });
 
 const Customer = mongoose.model("Customer", customerSchema);

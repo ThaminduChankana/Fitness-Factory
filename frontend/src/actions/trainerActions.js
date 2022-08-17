@@ -114,10 +114,10 @@ export const trainerRegister =
 				timer: 2000,
 				button: false,
 			});
-			// setTimeout(function () {
-			// 	window.location.href = "/admin-trainers";
-			// }, 2000);
-			// localStorage.setItem("trainerInfo", JSON.stringify(data));
+			setTimeout(function () {
+				window.location.href = "/admin-trainers";
+			}, 2000);
+			localStorage.setItem("trainerInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: TRAINER_REGISTER_FAIL,

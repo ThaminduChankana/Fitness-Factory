@@ -1,0 +1,60 @@
+.adminBackground {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761818/images/admin_y8pnhk.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.trainerBackground {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761902/images/trainer_mc5alt.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.customerBackground {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761847/images/customer_ztvg9m.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.title {
+	font-size: 95px;
+}
+.subtitle {
+	font-size: 25px;
+	padding-top: 10px;
+}
+.intro-text {
+	width: 100%;
+	text-align: center;
+}
+.main {
+	min-height: 93vh;
+	display: flex;
+	align-items: center;
+	background-size: cover;
+}
+
+.buttonContainer {
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.landingbutton {
+	width: 350px;
+	height: 75px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+@media only screen and (min-width: 1200px) {
+	.buttonContainer {
+		padding: 0 200px;
+	}
+	.title {
+		padding: 0 100px;
+	}
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}

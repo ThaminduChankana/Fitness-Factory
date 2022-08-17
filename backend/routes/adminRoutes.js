@@ -13,6 +13,7 @@ const {
 	deleteCustomerProfileById,
 	getCustomerProfileById,
 	registerCustomer,
+	getCustomerCount,
 } = require("../controllers/customerController");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
@@ -40,5 +41,6 @@ router
 	.delete(protect, deleteCustomerProfileById);
 router.route("/customer/profile/edit/:_id").put(protect, updateCustomerProfileById);
 router.route("/customers").get(protect, getCustomers);
+router.route("/customers/count").get(protect, getCustomerCount);
 
 module.exports = router;
