@@ -22,6 +22,7 @@ const CustomerLoginScreen = () => {
 
 	return (
 		<div className="customerLoginBg">
+			<br></br>
 			<MainScreen title="LOGIN - CUSTOMER">
 				<br></br>
 				<br></br>

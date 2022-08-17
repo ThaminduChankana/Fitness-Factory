@@ -1,0 +1,23 @@
+.loginContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+.adminLoginBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761831/images/admin-login_zlyosf.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.trainerLoginBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761913/images/trainer-login_cmdaii.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.customerLoginBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761854/images/customer-login_nv67f1.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}

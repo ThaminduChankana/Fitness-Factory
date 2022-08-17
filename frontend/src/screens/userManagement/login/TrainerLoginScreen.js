@@ -22,6 +22,7 @@ const TrainerLoginScreen = () => {
 
 	return (
 		<div className="trainerLoginBg">
+			<br></br>
 			<MainScreen title="LOGIN - TRAINER">
 				<br></br>
 				<br></br>
