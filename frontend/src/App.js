@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
 import Header from "./components/header/header";
-
 import AdminRegisterScreen from "./screens/userManagement/register/AdminRegisterScreen";
 import TrainerRegisterScreen from "./screens/userManagement/register/TrainerRegisterScreen";
 import CustomerRegisterScreen from "./screens/userManagement/register/CustomerRegisterScreen";
@@ -21,6 +20,12 @@ import CustomerListForAdminScreen from "./screens/userManagement/adminUserManage
 import TrainerEditByAdminScreen from "./screens/userManagement/adminUserManagement/adminUserEditScreens/TrainerEditByAdminScreen";
 import CustomerEditByAdminScreen from "./screens/userManagement/adminUserManagement/adminUserEditScreens/CustomerEditByAdminScreen";
 import Footer from "./components/footer/footer";
+import AdminDashboardPage from "./screens/static/dashboards/AdminDashboard";
+import CalculateBMIScreen from "./screens/static/bmiCalculator/CalculateBMI";
+import CustomerDashboardPage from "./screens/static/dashboards/CustomerDashboard";
+import TrainerDashboardPage from "./screens/static/dashboards/TrainerDashboard";
+import AccessDenied from "./components/AccessDenied";
+import Inquiries from "./screens/static/inquiries/Inquiries";
 
 const App = () => {
 	return (
@@ -44,6 +49,12 @@ const App = () => {
 				<Route path="/admin-customers" component={CustomerListForAdminScreen} exact />
 				<Route path="/admin-trainer-edit/:id" component={TrainerEditByAdminScreen} exact />
 				<Route path="/admin-customer-edit/:id" component={CustomerEditByAdminScreen} exact />
+				<Route path="/admin" component={AdminDashboardPage} exact />
+				<Route path="/customer" component={CustomerDashboardPage} exact />
+				<Route path="/trainer" component={TrainerDashboardPage} exact />
+				<Route path="/access-denied" component={AccessDenied} exact />
+				<Route path="/bmi-calculator" component={CalculateBMIScreen} exact />
+				<Route path="/contactus" component={Inquiries} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
