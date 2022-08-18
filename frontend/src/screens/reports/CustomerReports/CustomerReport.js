@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { authHeader } from "../../../actions/adminActions";
 import axios from "axios";
-import { Table } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
+import { CustomerRegistrationChart } from "./CustomerRegistrationChart";
 
 export const CustomerReport = React.forwardRef((props, ref) => {
 	const [january, setJanuary] = useState("");
@@ -104,6 +105,22 @@ export const CustomerReport = React.forwardRef((props, ref) => {
 						</tr>
 					</tbody>
 				</Table>
+				<br></br>
+				<div>
+					<Card
+						style={{
+							borderRadius: 20,
+							borderColor: "#808080",
+							borderWidth: 0.5,
+							background: "rgba(255, 255, 255, 0.9)",
+						}}
+					>
+						<br></br>
+						<h3 style={{ marginLeft: "32%" }}>Monthly Customer Registrations</h3>
+						<CustomerRegistrationChart />
+						<br></br>
+					</Card>
+				</div>
 			</div>
 		</div>
 	);
