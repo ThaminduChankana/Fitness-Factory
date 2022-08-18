@@ -1,73 +1,42 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { trainerRegister } from "../../../actions/trainerActions";
+import { adminUpdateProfile } from "../../../actions/adminActions";
 import MainScreen from "../../../components/MainScreen";
+import "./EditScreen.css";
 
-const TrainerRegisterScreen = () => {
+const AdminEditScreen = () => {
 	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
-	const [gender, setGender] = useState("");
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
 	const [email, setEmail] = useState("");
+	const [pic, setPic] = useState();
 	const [password, setPassword] = useState("");
 	const [confirmpassword, setConfirmPassword] = useState("");
-	const [qualifications, setQualifications] = useState("");
-	const [yrsexp, setYrsexp] = useState("");
-	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
-	const [regDate, setRegDate] = useState("");
 
 	const dispatch = useDispatch();
-	const trainerRegistration = useSelector((state) => state.trainerRegistration);
-	const { loading, error } = trainerRegistration;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const submitHandler = async (e) => {
-		e.preventDefault();
+	const adminUpdate = useSelector((state) => state.adminUpdate);
+	const { loading, error } = adminUpdate;
 
-		if (password !== confirmpassword) {
-			setMessage("Passwords do not match");
-		} else {
-			dispatch(
-				trainerRegister(
-					name,
-					dob,
-					nic,
-					gender,
-					telephone,
-					address,
-					email,
-					password,
-					qualifications,
-					yrsexp,
-					pic,
-					regDate
-				)
-			);
-		}
-	};
-	const demoHandler = async (e) => {
-		e.preventDefault();
-
-		setName("Jim Halpert");
-		setDob("1990-11-14");
-		setNic("199056854132");
-		setGender("Male");
-		setTelephone("0778569545");
-		setAddress("Negombo");
-		setEmail("jimhalpert@gmail.com");
-		setQualifications("International physical trainer certificate");
-		setYrsexp("3 years as a gym instructor");
-		setRegDate("2022-03-15");
-	};
+	useEffect(() => {
+		setName(adminInfo.name);
+		setDob(adminInfo.dob);
+		setNic(adminInfo.nic);
+		setTelephone(adminInfo.telephone);
+		setAddress(adminInfo.address);
+		setEmail(adminInfo.email);
+		setPic(adminInfo.pic);
+	}, [adminInfo]);
 
 	const resetHandler = async (e) => {
 		e.preventDefault();
@@ -75,13 +44,9 @@ const TrainerRegisterScreen = () => {
 		setName("");
 		setDob("");
 		setNic("");
-		setGender("");
 		setTelephone("");
 		setAddress("");
 		setEmail("");
-		setQualifications("");
-		setYrsexp("");
-		setRegDate("");
 	};
 
 	const postDetails = (pics) => {
@@ -92,7 +57,7 @@ const TrainerRegisterScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "trainerProfile");
+			data.append("upload_preset", "adminProfile");
 			data.append("cloud_name", "bytesquad202202");
 			fetch("https://api.cloudinary.com/v1_1/bytesquad202202/image/upload", {
 				method: "post",
@@ -109,11 +74,30 @@ const TrainerRegisterScreen = () => {
 			return setPicMessage("Please Select an Image");
 		}
 	};
+
+	const submitHandler = async (e) => {
+		e.preventDefault();
+
+		if (password !== confirmpassword) {
+			setMessage("Passwords do not match");
+		} else {
+			const adminUpdatedInfo = {
+				name,
+				dob,
+				nic,
+				telephone,
+				address,
+				email,
+				pic,
+				password,
+			};
+			dispatch(adminUpdateProfile(adminUpdatedInfo));
+		}
+	};
 	if (adminInfo) {
 		return (
-			<div className="registerBg">
-				<br></br>
-				<MainScreen title="REGISTER - TRAINER">
+			<div className="editBg">
+				<MainScreen title="EDIT - ADMIN">
 					<Button
 						variant="success"
 						style={{
@@ -121,10 +105,10 @@ const TrainerRegisterScreen = () => {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/admin-trainers"
+						href="/admin"
 					>
 						{" "}
-						Back to Trainers List
+						Back to Dashboard
 					</Button>
 					<br></br>
 					<br></br>
@@ -149,10 +133,10 @@ const TrainerRegisterScreen = () => {
 								{loading && <Loading />}
 							</div>
 							<br></br>
-							<Row className="trainerProfileContainer">
+							<Row className="AdminProfileContainer">
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
-										<Form.Group controlId="trainerName">
+										<Form.Group controlId="adminName">
 											<Form.Label>Name</Form.Label>
 											<Form.Control
 												type="name"
@@ -162,11 +146,11 @@ const TrainerRegisterScreen = () => {
 												required
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerDob">
+										<Form.Group controlId="adminDob">
 											<Form.Label>Date Of Birth</Form.Label>
 											<Form.Control type="date" value={dob} onChange={(e) => setDob(e.target.value)} required />
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicNic">
+										<Form.Group controlId="adminFormBasicNic">
 											<Form.Label>NIC Number</Form.Label>
 											<Form.Control
 												type="text"
@@ -176,21 +160,7 @@ const TrainerRegisterScreen = () => {
 												required
 											/>
 										</Form.Group>
-										<div className="form-group">
-											<label className="trainerGender">Gender</label>
-											<select
-												className="form-control"
-												id="trainerGender"
-												value={gender}
-												onChange={(e) => setGender(e.target.value)}
-												required
-											>
-												<option>Select Gender</option>
-												<option value={gender.Male}>Male</option>
-												<option value={gender.Female}>Female</option>
-											</select>
-										</div>
-										<Form.Group controlId="trainerFormBasicTelephone">
+										<Form.Group controlId="adminFormBasicTelephone">
 											<Form.Label>Telephone</Form.Label>
 											<Form.Control
 												type="text"
@@ -201,7 +171,7 @@ const TrainerRegisterScreen = () => {
 												maxLength={10}
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicAddress">
+										<Form.Group controlId="adminFormBasicAddress">
 											<Form.Label>Address</Form.Label>
 											<Form.Control
 												type="textArea"
@@ -211,7 +181,7 @@ const TrainerRegisterScreen = () => {
 												required
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicEmail">
+										<Form.Group controlId="adminFormBasicEmail">
 											<Form.Label>Email</Form.Label>
 											<Form.Control
 												type="email"
@@ -228,7 +198,6 @@ const TrainerRegisterScreen = () => {
 												value={password}
 												placeholder="Password"
 												onChange={(e) => setPassword(e.target.value)}
-												required
 											/>
 										</Form.Group>
 										<Form.Group controlId="confirmPassword">
@@ -238,26 +207,6 @@ const TrainerRegisterScreen = () => {
 												value={confirmpassword}
 												placeholder="Confirm Password"
 												onChange={(e) => setConfirmPassword(e.target.value)}
-											/>
-										</Form.Group>
-										<Form.Group controlId="trainerFormBasicQualifications">
-											<Form.Label>Qualifications</Form.Label>
-											<Form.Control
-												type="text"
-												value={qualifications}
-												placeholder="Enter SLDA Register Number"
-												onChange={(e) => setQualifications(e.target.value)}
-												required
-											/>
-										</Form.Group>
-										<Form.Group controlId="trainerFormBasicYrsexp">
-											<Form.Label>Experience</Form.Label>
-											<Form.Control
-												type="text"
-												value={yrsexp}
-												placeholder="Enter Licence Number"
-												onChange={(e) => setYrsexp(e.target.value)}
-												required
 											/>
 										</Form.Group>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
@@ -271,10 +220,6 @@ const TrainerRegisterScreen = () => {
 												custom
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerRegDate">
-											<Form.Label>Registration Date</Form.Label>
-											<Form.Control type="date" value={regDate} onChange={(e) => setRegDate(e.target.value)} required />
-										</Form.Group>
 										<Button
 											variant="primary"
 											type="submit"
@@ -283,7 +228,7 @@ const TrainerRegisterScreen = () => {
 												marginTop: 10,
 											}}
 										>
-											Register
+											Update
 										</Button>
 										&emsp;
 										<Button
@@ -295,17 +240,6 @@ const TrainerRegisterScreen = () => {
 											}}
 										>
 											Reset
-										</Button>
-										&emsp;
-										<Button
-											variant="info"
-											onClick={demoHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Demo
 										</Button>
 									</Form>
 								</Col>
@@ -336,7 +270,6 @@ const TrainerRegisterScreen = () => {
 					</Card>
 					<br></br>
 				</MainScreen>
-				<br></br>
 			</div>
 		);
 	} else {
@@ -349,4 +282,4 @@ const TrainerRegisterScreen = () => {
 	}
 };
 
-export default TrainerRegisterScreen;
+export default AdminEditScreen;

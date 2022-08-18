@@ -50,7 +50,7 @@ const registerCustomer = asyncHandler(async (req, res) => {
 			weight: customer.weight,
 			bmi: customer.bmi,
 			pic: customer.pic,
-			regdate: customer.regDate,
+			regDate: customer.regDate,
 			token: generateToken(customer._id),
 		});
 	} else {
@@ -65,13 +65,15 @@ const authCustomer = asyncHandler(async (req, res) => {
 	const customer = await Customer.findOne({ nic });
 
 	if (!customer) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	}
 
 	const isMatch = await bcrypt.compare(password, customer.password);
 
 	if (!isMatch) {
-		return res.status(400).json({ errors: [{ msg: "Invalid NIC or Password !" }] });
+		res.status(400);
+		throw new Error("Invalid NIC or Password");
 	} else {
 		res.status(201).json({
 			_id: customer._id,
@@ -86,7 +88,7 @@ const authCustomer = asyncHandler(async (req, res) => {
 			weight: customer.weight,
 			bmi: customer.bmi,
 			pic: customer.pic,
-			regdate: customer.regDate,
+			regDate: customer.regDate,
 			token: generateToken(customer._id),
 		});
 	}
@@ -103,7 +105,8 @@ const getCustomerProfile = asyncHandler(async (req, res) => {
 	if (customer) {
 		res.json(customer);
 	} else {
-		res.status(404).json({ message: "Customer not found !" });
+		res.status(400);
+		throw new Error("Customer not found !");
 	}
 });
 
@@ -113,7 +116,8 @@ const getCustomerProfileById = asyncHandler(async (req, res) => {
 	if (customer) {
 		res.json(customer);
 	} else {
-		res.status(404).json({ message: "Customer not found !" });
+		res.status(400);
+		throw new Error("Customer not found !");
 	}
 });
 
@@ -152,7 +156,7 @@ const updateCustomerProfile = asyncHandler(async (req, res) => {
 			weight: updatedCustomer.weight,
 			bmi: updatedCustomer.bmi,
 			pic: updatedCustomer.pic,
-			regdate: updatedCustomer.regDate,
+			regDate: updatedCustomer.regDate,
 			token: generateToken(updatedCustomer._id),
 		});
 	} else {
@@ -196,7 +200,7 @@ const updateCustomerProfileById = asyncHandler(async (req, res) => {
 			weight: updatedCustomer.weight,
 			bmi: updatedCustomer.bmi,
 			pic: updatedCustomer.pic,
-			regdate: updatedCustomer.regDate,
+			regDate: updatedCustomer.regDate,
 			token: generateToken(updatedCustomer._id),
 		});
 	} else {
@@ -229,6 +233,62 @@ const deleteCustomerProfileById = asyncHandler(async (req, res) => {
 	}
 });
 
+const getCustomerCount = asyncHandler(async (req, res) => {
+	const customers = await Customer.find({ year: new Date().getFullYear() });
+	var z = 0;
+	var a = 0,
+		b = 0,
+		c = 0,
+		d = 0,
+		e = 0;
+	(f = 0), (g = 0), (h = 0), (i = 0), (j = 0), (k = 0), (l = 0);
+	var loopData = {};
+	var loopData = new Object();
+	while (z < customers.length) {
+		if (customers[z].createdAt.getMonth() + 1 === 01) {
+			a = a + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 02) {
+			b = b + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 03) {
+			c = c + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 04) {
+			d = d + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 05) {
+			e = e + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 06) {
+			f = f + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 07) {
+			g = g + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 08) {
+			h = h + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 09) {
+			i = i + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 10) {
+			j = j + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 11) {
+			k = k + 1;
+		} else if (customers[z].createdAt.getMonth() + 1 === 12) {
+			l = l + 1;
+		}
+		z++;
+	}
+	var loopData = {
+		january: a,
+		february: b,
+		march: c,
+		april: d,
+		may: e,
+		june: f,
+		july: g,
+		august: h,
+		september: i,
+		october: j,
+		november: k,
+		december: l,
+	};
+	res.json(loopData);
+});
+
 module.exports = {
 	registerCustomer,
 	authCustomer,
@@ -239,4 +299,5 @@ module.exports = {
 	updateCustomerProfileById,
 	deleteCustomerProfile,
 	deleteCustomerProfileById,
+	getCustomerCount,
 };

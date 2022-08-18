@@ -121,6 +121,8 @@ export const customerRegister =
 			setTimeout(function () {
 				window.location.href = "/admin-customers";
 			}, 2000);
+
+			localStorage.setItem("customerInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: CUSTOMER_REGISTER_FAIL,
@@ -344,7 +346,7 @@ export const customerViewProfileById =
 	};
 
 export const customerUpdateProfileById =
-	(id, name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, message, pic, regDate) =>
+	(id, name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate, message) =>
 	async (dispatch, getState) => {
 		try {
 			dispatch({
@@ -377,6 +379,7 @@ export const customerUpdateProfileById =
 					bmi,
 					pic,
 					regDate,
+					message,
 				},
 				config
 			);

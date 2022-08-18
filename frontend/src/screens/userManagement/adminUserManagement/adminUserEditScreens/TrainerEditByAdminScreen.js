@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../../components/Loading";
-import ErrorMessage from "../../../components/ErrorMessage";
-import { trainerRegister } from "../../../actions/trainerActions";
-import MainScreen from "../../../components/MainScreen";
+import axios from "axios";
+import Loading from "../../../../components/Loading";
+import ErrorMessage from "../../../../components/ErrorMessage";
+import { trainerUpdateProfileById } from "../../../../actions/trainerActions";
+import MainScreen from "../../../../components/MainScreen";
+import { authHeader } from "../../../../actions/adminActions";
+import "./adminUserEdit.css";
 
-const TrainerRegisterScreen = () => {
+const TrainerEditByAdminScreen = ({ match }) => {
 	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
@@ -18,56 +21,18 @@ const TrainerRegisterScreen = () => {
 	const [confirmpassword, setConfirmPassword] = useState("");
 	const [qualifications, setQualifications] = useState("");
 	const [yrsexp, setYrsexp] = useState("");
-	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+	const [pic, setPic] = useState("");
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 	const [regDate, setRegDate] = useState("");
 
 	const dispatch = useDispatch();
-	const trainerRegistration = useSelector((state) => state.trainerRegistration);
-	const { loading, error } = trainerRegistration;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const submitHandler = async (e) => {
-		e.preventDefault();
-
-		if (password !== confirmpassword) {
-			setMessage("Passwords do not match");
-		} else {
-			dispatch(
-				trainerRegister(
-					name,
-					dob,
-					nic,
-					gender,
-					telephone,
-					address,
-					email,
-					password,
-					qualifications,
-					yrsexp,
-					pic,
-					regDate
-				)
-			);
-		}
-	};
-	const demoHandler = async (e) => {
-		e.preventDefault();
-
-		setName("Jim Halpert");
-		setDob("1990-11-14");
-		setNic("199056854132");
-		setGender("Male");
-		setTelephone("0778569545");
-		setAddress("Negombo");
-		setEmail("jimhalpert@gmail.com");
-		setQualifications("International physical trainer certificate");
-		setYrsexp("3 years as a gym instructor");
-		setRegDate("2022-03-15");
-	};
+	const trainerUpdateById = useSelector((state) => state.trainerUpdateById);
+	const { loading, error } = trainerUpdateById;
 
 	const resetHandler = async (e) => {
 		e.preventDefault();
@@ -109,11 +74,61 @@ const TrainerRegisterScreen = () => {
 			return setPicMessage("Please Select an Image");
 		}
 	};
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+		if (password !== confirmpassword) {
+			setMessage("Passwords do not match");
+		} else {
+			dispatch(
+				trainerUpdateProfileById(
+					match.params.id,
+					name,
+					dob,
+					nic,
+					gender,
+					telephone,
+					address,
+					email,
+					password,
+					qualifications,
+					yrsexp,
+					pic,
+					regDate
+				)
+			);
+		}
+	};
+
+	useEffect(() => {
+		if (adminInfo != null) {
+			const fetching = async () => {
+				const { data } = await axios.get(`/user/admin/trainer/profile/view/${match.params.id}`, {
+					headers: authHeader(),
+				});
+				setName(data.name);
+				setDob(data.dob);
+				setGender(data.gender);
+				setNic(data.nic);
+				setTelephone(data.telephone);
+				setAddress(data.address);
+				setEmail(data.email);
+				setQualifications(data.qualifications);
+				setYrsexp(data.yrsexp);
+				setPic(data.pic);
+				setRegDate(data.regDate);
+			};
+
+			fetching();
+		}
+	}, [match.params.id, adminInfo]);
+
 	if (adminInfo) {
 		return (
-			<div className="registerBg">
+			<div className="adminTrainerEditBg">
 				<br></br>
-				<MainScreen title="REGISTER - TRAINER">
+				<MainScreen title="ADMIN EDIT - TRAINER PROFILE">
 					<Button
 						variant="success"
 						style={{
@@ -127,7 +142,7 @@ const TrainerRegisterScreen = () => {
 						Back to Trainers List
 					</Button>
 					<br></br>
-					<br></br>
+
 					<br></br>
 					<Card
 						className="profileCont"
@@ -228,7 +243,6 @@ const TrainerRegisterScreen = () => {
 												value={password}
 												placeholder="Password"
 												onChange={(e) => setPassword(e.target.value)}
-												required
 											/>
 										</Form.Group>
 										<Form.Group controlId="confirmPassword">
@@ -283,7 +297,7 @@ const TrainerRegisterScreen = () => {
 												marginTop: 10,
 											}}
 										>
-											Register
+											Update
 										</Button>
 										&emsp;
 										<Button
@@ -295,17 +309,6 @@ const TrainerRegisterScreen = () => {
 											}}
 										>
 											Reset
-										</Button>
-										&emsp;
-										<Button
-											variant="info"
-											onClick={demoHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Demo
 										</Button>
 									</Form>
 								</Col>
@@ -349,4 +352,4 @@ const TrainerRegisterScreen = () => {
 	}
 };
 
-export default TrainerRegisterScreen;
+export default TrainerEditByAdminScreen;
