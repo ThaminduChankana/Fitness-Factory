@@ -102,7 +102,7 @@ export const CustomerRegistrationChart = React.forwardRef((props, ref) => {
 	return (
 		<div
 			className="customerBar"
-			style={{ marginTop: "2%", marginBottom: "2%", marginLeft: 15, marginRight: 15, backgroundPosition: "center" }}
+			style={{ marginTop: "2%", marginBottom: "2%", marginLeft: 15, marginRight: 15, backgroundPosition: "centre" }}
 		>
 			<Bar data={data} options={options} height={200} />
 		</div>

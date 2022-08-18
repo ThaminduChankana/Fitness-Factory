@@ -3,7 +3,6 @@ import { Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useReactToPrint } from "react-to-print";
 import MainScreen from "../../../components/MainScreen";
-import { CustomerRegistrationChart } from "./CustomerRegistrationChart";
 import { CustomerReport } from "./CustomerReport";
 import "./customerReport.css";
 const CustomerPrint = () => {
@@ -47,26 +46,11 @@ const CustomerPrint = () => {
 								borderRadius: 20,
 								borderColor: "#808080",
 								borderWidth: 0.5,
-								background: "rgba(255, 255, 255, 0.9)",
+								background: "rgba(255, 255, 255, 0.8)",
 							}}
 						>
 							<CustomerReport ref={componentRef} />
 							<br></br>
-							<div>
-								<Card
-									style={{
-										borderRadius: 20,
-										borderColor: "#808080",
-										borderWidth: 0.5,
-										background: "rgba(255, 255, 255, 0.9)",
-									}}
-								>
-									<br></br>
-									<h3 style={{ marginLeft: "32%" }}>Monthly Customer Registrations</h3>
-									<CustomerRegistrationChart />
-									<br></br>
-								</Card>
-							</div>
 
 							<br></br>
 							<Button
