@@ -1,12 +1,13 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { trainerRegister } from "../../../actions/trainerActions";
+import { customerUpdateProfile } from "../../../actions/customerActions";
 import MainScreen from "../../../components/MainScreen";
+import "./EditScreen.css";
 
-const TrainerRegisterScreen = () => {
+const CustomerEditScreen = () => {
 	const [name, setName] = useState("");
 	const [dob, setDob] = useState("");
 	const [nic, setNic] = useState("");
@@ -14,59 +15,42 @@ const TrainerRegisterScreen = () => {
 	const [telephone, setTelephone] = useState("");
 	const [address, setAddress] = useState("");
 	const [email, setEmail] = useState("");
+	const [pic, setPic] = useState();
 	const [password, setPassword] = useState("");
 	const [confirmpassword, setConfirmPassword] = useState("");
-	const [qualifications, setQualifications] = useState("");
-	const [yrsexp, setYrsexp] = useState("");
-	const [pic, setPic] = useState("https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg");
+	const [height, setHeight] = useState("");
+	const [weight, setWeight] = useState("");
+	const [bmi, setBmi] = useState("");
 	const [message, setMessage] = useState(null);
 	const [picMessage, setPicMessage] = useState(null);
 	const [regDate, setRegDate] = useState("");
 
 	const dispatch = useDispatch();
-	const trainerRegistration = useSelector((state) => state.trainerRegistration);
-	const { loading, error } = trainerRegistration;
 
-	const admin_Login = useSelector((state) => state.admin_Login);
-	const { adminInfo } = admin_Login;
+	const customer_Login = useSelector((state) => state.customer_Login);
+	const { customerInfo } = customer_Login;
 
-	const submitHandler = async (e) => {
-		e.preventDefault();
+	const customerUpdate = useSelector((state) => state.customerUpdate);
+	const { loading, error } = customerUpdate;
 
-		if (password !== confirmpassword) {
-			setMessage("Passwords do not match");
-		} else {
-			dispatch(
-				trainerRegister(
-					name,
-					dob,
-					nic,
-					gender,
-					telephone,
-					address,
-					email,
-					password,
-					qualifications,
-					yrsexp,
-					pic,
-					regDate
-				)
-			);
-		}
-	};
-	const demoHandler = async (e) => {
-		e.preventDefault();
+	useEffect(() => {
+		setName(customerInfo.name);
+		setDob(customerInfo.dob);
+		setNic(customerInfo.nic);
+		setGender(customerInfo.gender);
+		setTelephone(customerInfo.telephone);
+		setAddress(customerInfo.address);
+		setEmail(customerInfo.email);
+		setHeight(customerInfo.height);
+		setWeight(customerInfo.weight);
+		setBmi(customerInfo.bmi);
+		setPic(customerInfo.pic);
+		setRegDate(customerInfo.regDate);
+	}, [customerInfo]);
 
-		setName("Jim Halpert");
-		setDob("1990-11-14");
-		setNic("199056854132");
-		setGender("Male");
-		setTelephone("0778569545");
-		setAddress("Negombo");
-		setEmail("jimhalpert@gmail.com");
-		setQualifications("International physical trainer certificate");
-		setYrsexp("3 years as a gym instructor");
-		setRegDate("2022-03-15");
+	const calculateBmi = async (e) => {
+		let bmi = Number(weight / (height / 100) ** 2).toFixed(2);
+		setBmi(bmi);
 	};
 
 	const resetHandler = async (e) => {
@@ -79,8 +63,9 @@ const TrainerRegisterScreen = () => {
 		setTelephone("");
 		setAddress("");
 		setEmail("");
-		setQualifications("");
-		setYrsexp("");
+		setHeight("");
+		setWeight("");
+		setBmi("");
 		setRegDate("");
 	};
 
@@ -92,7 +77,7 @@ const TrainerRegisterScreen = () => {
 		if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/jpg") {
 			const data = new FormData();
 			data.append("file", pics);
-			data.append("upload_preset", "trainerProfile");
+			data.append("upload_preset", "customerProfile");
 			data.append("cloud_name", "bytesquad202202");
 			fetch("https://api.cloudinary.com/v1_1/bytesquad202202/image/upload", {
 				method: "post",
@@ -109,11 +94,36 @@ const TrainerRegisterScreen = () => {
 			return setPicMessage("Please Select an Image");
 		}
 	};
-	if (adminInfo) {
+
+	const submitHandler = async (e) => {
+		e.preventDefault();
+
+		if (password !== confirmpassword) {
+			setMessage("Passwords do not match");
+		} else {
+			const customerUpdatedInfo = {
+				name,
+				dob,
+				nic,
+				gender,
+				telephone,
+				address,
+				email,
+				password,
+				height,
+				weight,
+				bmi,
+				pic,
+				regDate,
+			};
+			dispatch(customerUpdateProfile(customerUpdatedInfo));
+		}
+	};
+	if (customerInfo) {
 		return (
-			<div className="registerBg">
+			<div className="editBg">
 				<br></br>
-				<MainScreen title="REGISTER - TRAINER">
+				<MainScreen title="EDIT - CUSTOMER">
 					<Button
 						variant="success"
 						style={{
@@ -121,10 +131,10 @@ const TrainerRegisterScreen = () => {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/admin-trainers"
+						href="/admin-customers"
 					>
 						{" "}
-						Back to Trainers List
+						Back to Dashboard
 					</Button>
 					<br></br>
 					<br></br>
@@ -149,10 +159,10 @@ const TrainerRegisterScreen = () => {
 								{loading && <Loading />}
 							</div>
 							<br></br>
-							<Row className="trainerProfileContainer">
+							<Row className="customerProfileContainer">
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
-										<Form.Group controlId="trainerName">
+										<Form.Group controlId="customerName">
 											<Form.Label>Name</Form.Label>
 											<Form.Control
 												type="name"
@@ -162,25 +172,15 @@ const TrainerRegisterScreen = () => {
 												required
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerDob">
+										<Form.Group controlId="customerDob">
 											<Form.Label>Date Of Birth</Form.Label>
 											<Form.Control type="date" value={dob} onChange={(e) => setDob(e.target.value)} required />
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicNic">
-											<Form.Label>NIC Number</Form.Label>
-											<Form.Control
-												type="text"
-												value={nic}
-												placeholder="Enter NIC"
-												onChange={(e) => setNic(e.target.value)}
-												required
-											/>
-										</Form.Group>
 										<div className="form-group">
-											<label className="trainerGender">Gender</label>
+											<label className="customerGender">Gender</label>
 											<select
 												className="form-control"
-												id="trainerGender"
+												id="customerGender"
 												value={gender}
 												onChange={(e) => setGender(e.target.value)}
 												required
@@ -190,7 +190,17 @@ const TrainerRegisterScreen = () => {
 												<option value={gender.Female}>Female</option>
 											</select>
 										</div>
-										<Form.Group controlId="trainerFormBasicTelephone">
+										<Form.Group controlId="customerFormBasicNic">
+											<Form.Label>NIC Number</Form.Label>
+											<Form.Control
+												type="text"
+												value={nic}
+												placeholder="Enter NIC"
+												onChange={(e) => setNic(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<Form.Group controlId="customerFormBasicTelephone">
 											<Form.Label>Telephone</Form.Label>
 											<Form.Control
 												type="text"
@@ -201,7 +211,7 @@ const TrainerRegisterScreen = () => {
 												maxLength={10}
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicAddress">
+										<Form.Group controlId="customerFormBasicAddress">
 											<Form.Label>Address</Form.Label>
 											<Form.Control
 												type="textArea"
@@ -211,7 +221,7 @@ const TrainerRegisterScreen = () => {
 												required
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicEmail">
+										<Form.Group controlId="doctorFormBasicEmail">
 											<Form.Label>Email</Form.Label>
 											<Form.Control
 												type="email"
@@ -228,7 +238,6 @@ const TrainerRegisterScreen = () => {
 												value={password}
 												placeholder="Password"
 												onChange={(e) => setPassword(e.target.value)}
-												required
 											/>
 										</Form.Group>
 										<Form.Group controlId="confirmPassword">
@@ -238,26 +247,6 @@ const TrainerRegisterScreen = () => {
 												value={confirmpassword}
 												placeholder="Confirm Password"
 												onChange={(e) => setConfirmPassword(e.target.value)}
-											/>
-										</Form.Group>
-										<Form.Group controlId="trainerFormBasicQualifications">
-											<Form.Label>Qualifications</Form.Label>
-											<Form.Control
-												type="text"
-												value={qualifications}
-												placeholder="Enter SLDA Register Number"
-												onChange={(e) => setQualifications(e.target.value)}
-												required
-											/>
-										</Form.Group>
-										<Form.Group controlId="trainerFormBasicYrsexp">
-											<Form.Label>Experience</Form.Label>
-											<Form.Control
-												type="text"
-												value={yrsexp}
-												placeholder="Enter Licence Number"
-												onChange={(e) => setYrsexp(e.target.value)}
-												required
 											/>
 										</Form.Group>
 										{picMessage && <ErrorMessage variant="danger">{picMessage}</ErrorMessage>}
@@ -271,9 +260,51 @@ const TrainerRegisterScreen = () => {
 												custom
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerRegDate">
-											<Form.Label>Registration Date</Form.Label>
-											<Form.Control type="date" value={regDate} onChange={(e) => setRegDate(e.target.value)} required />
+										<Form.Group controlId="customerFormBasicHeight">
+											<Form.Label>Height (cm)</Form.Label>
+											<Form.Control
+												type="text"
+												value={height}
+												placeholder="Enter Height In Centimeters"
+												onChange={(e) => setHeight(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<Form.Group controlId="customerFormBasicWeight">
+											<Form.Label>Weight (kg)</Form.Label>
+											<Form.Control
+												type="text"
+												value={weight}
+												placeholder="Enter Weight In Kilograms"
+												onChange={(e) => setWeight(e.target.value)}
+												required
+											/>
+										</Form.Group>
+										<Form.Group controlId="customerFormBasicWeight">
+											<Row>
+												<Col>
+													<Form.Label>BMI</Form.Label>
+													<Form.Control
+														type="text"
+														value={bmi}
+														placeholder="BMI"
+														onChange={(e) => setBmi(e.target.value)}
+														required
+													/>
+												</Col>
+												<Col>
+													<Button
+														variant="success"
+														onClick={calculateBmi}
+														style={{
+															fontSize: 12,
+															marginTop: 30,
+														}}
+													>
+														Calculate
+													</Button>
+												</Col>
+											</Row>
 										</Form.Group>
 										<Button
 											variant="primary"
@@ -283,7 +314,7 @@ const TrainerRegisterScreen = () => {
 												marginTop: 10,
 											}}
 										>
-											Register
+											Update
 										</Button>
 										&emsp;
 										<Button
@@ -295,17 +326,6 @@ const TrainerRegisterScreen = () => {
 											}}
 										>
 											Reset
-										</Button>
-										&emsp;
-										<Button
-											variant="info"
-											onClick={demoHandler}
-											style={{
-												fontSize: 15,
-												marginTop: 10,
-											}}
-										>
-											Demo
 										</Button>
 									</Form>
 								</Col>
@@ -349,4 +369,4 @@ const TrainerRegisterScreen = () => {
 	}
 };
 
-export default TrainerRegisterScreen;
+export default CustomerEditScreen;

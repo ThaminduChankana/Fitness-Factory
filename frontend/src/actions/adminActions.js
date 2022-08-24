@@ -101,9 +101,7 @@ export const adminRegister = (name, dob, nic, telephone, address, email, passwor
 			window.location.href = "/admin";
 		}, 2000);
 
-		dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
-
-		localStorage.setItem("adminRegInfo", JSON.stringify(data));
+		localStorage.setItem("adminInfo", JSON.stringify(data));
 	} catch (error) {
 		dispatch({
 			type: ADMIN_REGISTER_FAIL,
@@ -159,6 +157,7 @@ export const adminUpdateProfile = (admin) => async (dispatch, getState) => {
 
 		const { data } = await axios.put("/user/admin/edit", admin, config);
 
+		console.log(data);
 		dispatch({ type: ADMIN_UPDATE_SUCCESS, payload: data });
 		swal({
 			title: "Success !!!",

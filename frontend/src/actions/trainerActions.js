@@ -117,6 +117,7 @@ export const trainerRegister =
 			setTimeout(function () {
 				window.location.href = "/admin-trainers";
 			}, 2000);
+			localStorage.setItem("trainerInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: TRAINER_REGISTER_FAIL,
@@ -257,7 +258,7 @@ export const trainerDeleteProfile = (id) => async (dispatch, getState) => {
 };
 
 export const trainerViewProfileById =
-	(id, name, dob, nic, gender, telephone, address, email, password, qualifications, yrsexp, message, pic, regDate) =>
+	(id, name, dob, nic, gender, telephone, address, email, password, qualifications, yrsexp, pic, regDate, message) =>
 	async (dispatch, getState) => {
 		try {
 			dispatch({
@@ -287,9 +288,9 @@ export const trainerViewProfileById =
 					password,
 					qualifications,
 					yrsexp,
-					message,
 					pic,
 					regDate,
+					message,
 				},
 				config
 			);
@@ -308,7 +309,7 @@ export const trainerViewProfileById =
 	};
 
 export const trainerUpdateProfileById =
-	(id, name, dob, nic, gender, telephone, address, email, password, qualifications, yrsexp, message, pic, regDate) =>
+	(id, name, dob, nic, gender, telephone, address, email, password, qualifications, yrsexp, pic, regDate, message) =>
 	async (dispatch, getState) => {
 		try {
 			dispatch({
@@ -338,9 +339,9 @@ export const trainerUpdateProfileById =
 					password,
 					qualifications,
 					yrsexp,
-					message,
 					pic,
 					regDate,
+					message,
 				},
 				config
 			);

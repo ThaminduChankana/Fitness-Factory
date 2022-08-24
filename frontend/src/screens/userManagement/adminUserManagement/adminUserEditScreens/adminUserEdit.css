@@ -1,0 +1,17 @@
+.adminCustomerEditBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761824/images/admin-customer-edit_ngri1w.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.adminTrainerEditBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761842/images/admin-trainer-edit_ewdvoq.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}

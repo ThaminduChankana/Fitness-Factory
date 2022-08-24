@@ -20,7 +20,7 @@ const CustomerRegisterScreen = () => {
 	const [height, setHeight] = useState("");
 	const [weight, setWeight] = useState("");
 	const [bmi, setBmi] = useState("");
-	const [message, setMessage] = useState(null);
+	const [message, setMessage] = useState("");
 	const [picMessage, setPicMessage] = useState(null);
 	const [regDate, setRegDate] = useState("");
 
@@ -36,6 +36,8 @@ const CustomerRegisterScreen = () => {
 
 		if (password !== confirmpassword) {
 			setMessage("Passwords do not match");
+		} else if (bmi.includes("NaN")) {
+			setMessage("Calculate The BMI !");
 		} else {
 			dispatch(
 				customerRegister(name, dob, nic, gender, telephone, address, email, password, height, weight, bmi, pic, regDate)
@@ -43,20 +45,25 @@ const CustomerRegisterScreen = () => {
 		}
 	};
 
+	const calculateBmi = async (e) => {
+		let bmi = Number(weight / (height / 100) ** 2).toFixed(2);
+		setBmi(bmi);
+	};
+
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("John Doe");
-		setDob("1950-06-06");
-		setNic("195045656585");
-		setGender("Male");
-		setTelephone("0777777777");
-		setAddress("Colombo");
-		setEmail("johndoe@gmail.com");
-		setHeight(180);
-		setWeight(75);
-		setBmi(23.1);
-		setRegDate("2022-05-19");
+		setName("Jan Levinson");
+		setDob("1985-12-06");
+		setNic("198545656585");
+		setGender("Female");
+		setTelephone("0776688556");
+		setAddress("Gampaha");
+		setEmail("janlevinson@gmail.com");
+		setHeight(175);
+		setWeight(65);
+		setBmi();
+		setRegDate("2022-08-19");
 	};
 
 	const resetHandler = async (e) => {
@@ -103,8 +110,10 @@ const CustomerRegisterScreen = () => {
 	if (adminInfo) {
 		return (
 			<div className="registerBg">
+				<br></br>
 				<MainScreen title="REGISTER - CUSTOMER">
 					<Button
+						variant="success"
 						style={{
 							float: "left",
 							marginTop: 5,
@@ -116,7 +125,7 @@ const CustomerRegisterScreen = () => {
 						Back to customers List
 					</Button>
 					<br></br>
-
+					<br></br>
 					<br></br>
 					<Card
 						className="profileCont"
@@ -241,17 +250,17 @@ const CustomerRegisterScreen = () => {
 											/>
 										</Form.Group>
 										<Form.Group controlId="customerFormBasicHeight">
-											<Form.Label>Height</Form.Label>
+											<Form.Label>Height (cm)</Form.Label>
 											<Form.Control
 												type="text"
 												value={height}
-												placeholder="Enter Height In Meters"
+												placeholder="Enter Height In Centimeters"
 												onChange={(e) => setHeight(e.target.value)}
 												required
 											/>
 										</Form.Group>
 										<Form.Group controlId="customerFormBasicWeight">
-											<Form.Label>Weight</Form.Label>
+											<Form.Label>Weight (kg)</Form.Label>
 											<Form.Control
 												type="text"
 												value={weight}
@@ -261,14 +270,30 @@ const CustomerRegisterScreen = () => {
 											/>
 										</Form.Group>
 										<Form.Group controlId="customerFormBasicWeight">
-											<Form.Label>BMI</Form.Label>
-											<Form.Control
-												type="text"
-												value={bmi}
-												placeholder="Enter Weight In Kilograms"
-												onChange={(e) => setBmi(e.target.value)}
-												required
-											/>
+											<Row>
+												<Col>
+													<Form.Label>BMI</Form.Label>
+													<Form.Control
+														type="text"
+														value={bmi}
+														placeholder="BMI"
+														onChange={(e) => setBmi(e.target.value)}
+														required
+													/>
+												</Col>
+												<Col>
+													<Button
+														variant="success"
+														onClick={calculateBmi}
+														style={{
+															fontSize: 12,
+															marginTop: 32,
+														}}
+													>
+														Calculate
+													</Button>
+												</Col>
+											</Row>
 										</Form.Group>
 										<Form.Group controlId="customerRegDate">
 											<Form.Label>Registration Date</Form.Label>
@@ -335,6 +360,7 @@ const CustomerRegisterScreen = () => {
 					</Card>
 					<br></br>
 				</MainScreen>
+				<br></br>
 			</div>
 		);
 	} else {

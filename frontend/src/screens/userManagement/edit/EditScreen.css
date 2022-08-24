@@ -1,0 +1,24 @@
+.profilePic {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+}
+.profileContainer {
+	display: flex;
+	margin: 20px;
+}
+@media only screen and (max-width: 768px) {
+	.profileContainer {
+		flex-direction: column-reverse;
+	}
+}
+.editBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761857/images/editView_eputyc.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}
