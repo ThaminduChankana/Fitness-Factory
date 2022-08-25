@@ -43,4 +43,6 @@ router.route("/customer/profile/edit/:_id").put(protect, updateCustomerProfileBy
 router.route("/customers").get(protect, getCustomers);
 router.route("/customers/count").get(protect, getCustomerCount);
 
+
+
 module.exports = router;
