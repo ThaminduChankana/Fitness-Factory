@@ -32,10 +32,10 @@ router.route("/customers").get(protect, getCustomers);
 router.route("/customer/profile/view/:_id").get(protect, getCustomerProfileById);
 
 // Routes for Workout trainer to handle workout
-router.route("workouthandle/get").get(protect, getWorkoutHandling);
-router.route("workouthandle/create").post(protect, createWorkoutHandling);
+router.route("/workout/get").get(protect, getWorkoutHandling);
+router.route("/workout/create").post(protect, createWorkoutHandling);
 router
-	.route("workouthandle/get/:id")
+	.route("/workout/get/:id")
 	.get(protect, getWorkoutHandlingId)
 	.put(protect, updateWorkoutHandling)
 	.delete(protect, deleteWorkoutHandling);

@@ -11,7 +11,7 @@ import {
 	WORKOUT_DELETE_REQUEST,
 	WORKOUT_DELETE_SUCCESS,
 	WORKOUT_DELETE_FAIL,
-} from "../constants/workoutConstants";
+} from "../constants/workoutHandlingConstants";
 import axios from "axios";
 import swal from "sweetalert";
 
@@ -27,7 +27,6 @@ export const listWorkoutHandling = () => async (dispatch, getState) => {
 
 					const config = {
 						headers: {
-							"Content-Type": "application/json",
 							Authorization: `Bearer ${trainerInfo.token}`,
 						},
 					};
@@ -90,7 +89,7 @@ export const createWorkoutHandlingAction =
         }
     };
 export const updateWorkouteHandlingAction =
-	(id,workoutID, name, workoutCategory, instructions, repetitions, tips, image) => async (dispatch, getState) => {
+	(id,workoutID, name, workoutCategory, instructions, repetitions, tips) => async (dispatch, getState) => {
 		try {
 			dispatch({
 				type: WORKOUT_UPDATE_REQUEST,
@@ -113,8 +112,7 @@ export const updateWorkouteHandlingAction =
 					workoutCategory,
 					instructions,
 					repetitions,
-					tips,
-					image,
+					tips,				
 				},
 				config
 			);
@@ -141,34 +139,34 @@ export const updateWorkouteHandlingAction =
 		}
 	};
 
-export const deleteWorkoutAction = (id) => async (dispatch, getState) => {
-try {
-	dispatch({
-		type: WORKOUT_DELETE_REQUEST,
-	});
+export const deleteWorkoutHandlingAction = (id) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: WORKOUT_DELETE_REQUEST,
+		});
 
-	const {
-		trainer_Login: { trainerInfo },
-	} = getState();
+		const {
+			trainer_Login: { trainerInfo },
+		} = getState();
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${trainerInfo.token}`,
-		},
-	};
+		const config = {
+			headers: {
+				Authorization: `Bearer ${trainerInfo.token}`,
+			},
+		};
 
-	const { data } = await axios.delete(`/user/trainer/workout/get/${id}`, config);
+		const { data } = await axios.delete(`/user/trainer/workout/get/${id}`, config);
 
-	dispatch({
-		type: WORKOUT_DELETE_SUCCESS,
-		payload: data,
-	});
-} catch (error) {
-	const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-	dispatch({
-		type: WORKOUT_DELETE_FAIL,
-		payload: message,
-	});
-}
+		dispatch({
+			type: WORKOUT_DELETE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
+		dispatch({
+			type: WORKOUT_DELETE_FAIL,
+			payload: message,
+		});
+	}
 
-}
+};

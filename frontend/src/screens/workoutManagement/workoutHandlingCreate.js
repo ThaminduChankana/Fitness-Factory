@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createWorkoutHandlingAction } from "";
+import { createWorkoutHandlingAction } from "../../actions/workoutActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import MainScreen from "../../components/MainScreen";
@@ -14,7 +14,6 @@ export default function WorkoutHandlingCreate({ history }) {
 	const [instructions, setInstructions] = useState("");
 	const [repetitions, setRepetitions] = useState("");
 	const [tips, setTips] = useState("");
-	const [image, setImage] = useState("");
 
 	const dispatch = useDispatch();
 	const trainer_Login = useSelector((state) => state.trainer_Login);
@@ -31,14 +30,13 @@ export default function WorkoutHandlingCreate({ history }) {
 		setInstructions("");
 		setRepetitions("");
 		setTips("");
-		setImage("");
 	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips || !image) return;
-		dispatch(createWorkoutHandlingAction(workoutID, name, workoutCategory, instructions, repetitions, tips, image));
+		if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips) return;
+		dispatch(createWorkoutHandlingAction(workoutID, name, workoutCategory, instructions, repetitions, tips));
 
 		resetHandler();
 		history.push("/workout-Handling-View");
@@ -51,7 +49,7 @@ export default function WorkoutHandlingCreate({ history }) {
 			setInstructions("do it");
 			setRepetitions("10");
 			setTips("use ur legs");
-			setImage("");
+		
 	};
 	useEffect(() => {}, []);
 	if (trainerInfo) {
@@ -123,16 +121,21 @@ export default function WorkoutHandlingCreate({ history }) {
 										required
 									/>
 								</Form.Group>
-								<Form.Group controlId="WorkoutCategory">
-									<Form.Label>WorkoutCategory</Form.Label>
-									<Form.Control
-										type="WorkoutCategory"
+
+								<div className="form-group">
+									<label className="WorkoutCategory">Workout Category</label>
+									<select
+										className="form-control"
+										id="WorkoutCategory"
 										value={workoutCategory}
-										placeholder="Enter the date"
 										onChange={(e) => setWorkoutCategory(e.target.value)}
 										required
-									/>
-								</Form.Group>
+									>
+										<option>Select Workout Category</option>
+										<option value={workoutCategory.Legs}>Legs</option>
+										<option value={workoutCategory.Chest}>Chest</option>
+									</select>
+								</div>
 
 								<Form.Group controlId="instructions">
 									<Form.Label>Instructions</Form.Label>
@@ -165,15 +168,7 @@ export default function WorkoutHandlingCreate({ history }) {
 										required
 									/>
 								</Form.Group>
-								<Form.Group controlId="image">
-									<Form.Label>Image</Form.Label>
-									<Form.Control
-										type="image"
-										value={image}
-										onChange={(e) => setImage(e.target.value)}
-										required
-									/>
-								</Form.Group>
+
 								<br></br>
 
 								{loading && <Loading size={50} />}

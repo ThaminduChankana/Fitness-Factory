@@ -31,6 +31,12 @@ import {
 	customerUpdateByIdReducer,
 	customerDeleteReducer,
 } from "./reducers/customerReducers";
+import {
+	workoutHandlingListReducer,
+	workoutHandlingCreateReducer,
+	workoutHandlingUpdateReducer,
+	workoutHandlingDeleteReducer,
+} from "./reducers/workoutReducers";
 
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
@@ -54,6 +60,10 @@ const reducer = combineReducers({
 	customerDelete: customerDeleteReducer,
 	customerViewById: customerViewByIdReducer,
 	customerUpdateById: customerUpdateByIdReducer,
+	list_Workout_Handling: workoutHandlingListReducer,
+	WorkoutHandlingCreate: workoutHandlingCreateReducer,
+	workoutHandlingUpdate: workoutHandlingUpdateReducer,
+	WorkoutHandlingDelete: workoutHandlingDeleteReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

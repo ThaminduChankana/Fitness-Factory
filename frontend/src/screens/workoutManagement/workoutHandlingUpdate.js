@@ -2,78 +2,78 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteScheduleHandlingAction, updateScheduleHandlingAction } from "../../actions/scheduleHandlingAction";
+import { deleteWorkoutHandlingAction, updateWorkouteHandlingAction } from "../../actions/workoutActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import { authHeader } from "../../actions/trainerActions";
 import "./workoutHandling.css";
 import MainScreen from "../../components/MainScreen";
 
-export default function SingleSchedule({ match, history }) {
-	const [nic, setNic] = useState("");
+
+export default function WorkoutHandlingUpdate({match, history}) {
+	const [workoutID, setWorkoutID] = useState("");
 	const [name, setName] = useState("");
-	const [time, setTime] = useState("");
-	const [date, setDate] = useState("");
-	const [description, setDescription] = useState("");
-	const [addedBy, setAddedBy] = useState("");
+	const [workoutCategory, setWorkoutCategory] = useState("");
+	const [instructions, setInstructions] = useState("");
+	const [repetitions, setRepetitions] = useState("");
+	const [tips, setTips] = useState("");
 
 	const dispatch = useDispatch();
-	const admin_Login = useSelector((state) => state.admin_Login);
-	const { adminInfo } = admin_Login;
-	const ScheduleHandlingUpdate = useSelector((state) => state.ScheduleHandlingUpdate);
-	const { loading, error } = ScheduleHandlingUpdate;
-
-	
+	const trainer_Login = useSelector((state) => state.trainer_Login);
+	const { trainerInfo } = trainer_Login;
+	const workoutHandlingUpdate = useSelector((state) => state.workoutHandlingUpdate);
+	const { loading, error } = workoutHandlingUpdate;
 
 	const deleteHandler = (id) => {
 		if (window.confirm("Are you sure?")) {
-			dispatch(deleteScheduleHandlingAction(id));
+			dispatch(deleteWorkoutHandlingAction(id));
 		}
-		history.push("/schedule-Handling-View");
+		history.push("/workout-Handling-View");
 	};
 
 	useEffect(() => {
 		const fetching = async () => {
-			const { data } = await axios.get(`http://localhost:5000/user/admin/schedule/get/${match.params.id}`, {
+			const { data } = await axios.get(`http://localhost:5000/user/trainer/workout/get/${match.params.id}`, {
 				headers: authHeader(),
 			});
 
-			setNic(data.nic);
+			setWorkoutID(data.workoutID);
 			setName(data.name);
-			setTime(data.time);
-			setDate(data.date);
-			setDescription(data.description);
-			setAddedBy(data.addedBy);
+			setWorkoutCategory(data.workoutCategory);
+			setInstructions(data.instructions);
+			setRepetitions(data.repetitions);
+			setTips(data.tips);
 			console.log(data);
 		};
 
 		fetching();
 	}, [match.params.id]);
 
-
-
 	const updateHandler = (e) => {
 		e.preventDefault();
-		dispatch(updateScheduleHandlingAction(match.params.id, nic, name, date, time, description, addedBy));
-		if (!nic || !name || !date || !time || !description || !addedBy) return;
 
-		history.push("/schedule-Handling-View");
+		dispatch(
+			updateWorkouteHandlingAction(match.params.id,workoutID, name, workoutCategory, instructions, repetitions, tips)
+		);
+		if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips) return;
+
+		history.push("/workout-Handling-View");
 	};
-	if (adminInfo) {
+	if (trainerInfo) {
 		return (
-			<div className="ScheduleBackgroundUpdate">
+			<div className="WorkoutBackgroundUpdate">
 				{" "}
-				<MainScreen title={"UPDATE DOCTOR'S SCHEDULE"}>
+				<MainScreen title={"UPDATE A WORKOUT"}>
 					<Button
 						style={{
 							float: "left",
 							fontSize: 15,
 							marginLeft: 10,
 						}}
-						href="/schedule-Handling-View"
+						href="/workout-Handling-View"
 					>
 						{" "}
-						Back to Schedule List
+						Back to Workout List
 					</Button>
 					<br></br>
 					<br></br>
@@ -102,68 +102,73 @@ export default function SingleSchedule({ match, history }) {
 						>
 							<div className="Sheader">
 								{" "}
-								<h3>Update Doctor's Schedule</h3>
+								<h3>Update Workout</h3>
 							</div>
 						</Card.Header>
 						<Card.Body>
 							<Form onSubmit={updateHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 
-								<Form.Group controlId="nic">
-									<Form.Label>NIC</Form.Label>
+								<Form.Group controlId="workoutID">
+									<Form.Label>workoutID</Form.Label>
 									<Form.Control
-										type="nic"
-										value={nic}
-										placeholder="Enter the NIC"
-										onChange={(e) => setNic(e.target.value)}
+										type="workoutID"
+										value={workoutID}
+										placeholder="Enter the Workout ID"
+										onChange={(e) => setWorkoutID(e.target.value)}
 									/>
 								</Form.Group>
 
 								<Form.Group controlId="name">
-									<Form.Label>Name</Form.Label>
+									<Form.Label>Workout Name</Form.Label>
 									<Form.Control
 										value={name}
-										placeholder="Enter the name"
+										placeholder="Enter the  Workout Name"
 										rows={4}
 										onChange={(e) => setName(e.target.value)}
 									/>
 								</Form.Group>
 
-								<Form.Group controlId="date">
-									<Form.Label>Date</Form.Label>
-									<Form.Control
-										type="date"
-										value={date}
-										placeholder="Enter the date"
-										onChange={(e) => setDate(e.target.value)}
-									/>
-								</Form.Group>
-								<Form.Group controlId="time">
-									<Form.Label>Time</Form.Label>
+								<div className="form-group">
+									<label className="WorkoutCategory">Workout Category</label>
+									<select
+										className="form-control"
+										id="WorkoutCategory"
+										value={workoutCategory}
+										onChange={(e) => setWorkoutCategory(e.target.value)}
+										required
+									>
+										<option>Select Workout Category</option>
+										<option value={workoutCategory.Legs}>Legs</option>
+										<option value={workoutCategory.Chest}>Chest</option>
+									</select>
+								</div>
+
+								<Form.Group controlId="instructionsme">
+									<Form.Label>Instructions</Form.Label>
 									<Form.Control
 										type=" "
-										placeholder="Enter the date"
-										value={time}
-										onChange={(e) => setTime(e.target.value)}
+										placeholder="Enter the instructions"
+										value={instructions}
+										onChange={(e) => setInstructions(e.target.value)}
 									/>
 								</Form.Group>
 								<Form.Group controlId="Description">
 									<Form.Label>Description</Form.Label>
 									<Form.Control
-										as="textarea"
-										type="Description"
-										value={description}
-										placeholder="Enter the Description"
-										onChange={(e) => setDescription(e.target.value)}
+										type=""
+										value={repetitions}
+										placeholder="Enter the repetitions"
+										onChange={(e) => setRepetitions(e.target.value)}
 									/>
 								</Form.Group>
-								<Form.Group controlId="addedBy">
-									<Form.Label>AddedBy</Form.Label>
+								<Form.Group controlId="tips">
+									<Form.Label>Tips</Form.Label>
 									<Form.Control
-										type="addedBy"
-										value={addedBy}
-										placeholder="Enter the added By"
-										onChange={(e) => setAddedBy(e.target.value)}
+										type="tips"
+										value={tips}
+										placeholder="Enter the tips"
+										onChange={(e) => setTips(e.target.value)}
 									/>
 								</Form.Group>
 								<br></br>
@@ -191,3 +196,13 @@ export default function SingleSchedule({ match, history }) {
 		);
 	}
 }
+
+
+
+
+
+
+
+
+
+

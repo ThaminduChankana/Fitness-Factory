@@ -3,10 +3,10 @@ import { Accordion, Card, Button, Row, Col, ButtonGroup } from "react-bootstrap"
 import MainScreen from "../../components/MainScreen";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteWorkoutAction, listWorkoutHandling } from "../../actions/workoutActions";
+import { deleteWorkoutHandlingAction, listWorkoutHandling } from "../../actions/workoutActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-import "./scheduleHandling.css";
+import "./workoutHandling.css";
 import swal from "sweetalert";
 
 export default function WorkoutHandlingView({ search }) {
@@ -14,11 +14,11 @@ export default function WorkoutHandlingView({ search }) {
 	const trainer_Login = useSelector((state) => state.trainer_Login);
 
 	const { trainerInfo } = trainer_Login;
-	const WorkoutHandlingList = useSelector((state) => state.WorkoutHandlingList);
-	const { loading, workouts, error } = WorkoutHandlingList;
+	const list_Workout_Handling = useSelector((state) => state.list_Workout_Handling);
+	const { loading, workouts, error } = list_Workout_Handling;
 
-	const WorkoutHandlingUpdate = useSelector((state) => state.WorkoutHandlingUpdate);
-	const { success: successUpdate } = WorkoutHandlingUpdate;
+	const workoutHandlingUpdate = useSelector((state) => state.workoutHandlingUpdate);
+	const { success: successUpdate } = workoutHandlingUpdate;
 
 	const WorkoutHandlingDelete = useSelector((state) => state.WorkoutHandlingDelete);
 	const { loading: loadingDelete, error: errorDelete, success: successDelete } = WorkoutHandlingDelete;
@@ -34,7 +34,7 @@ export default function WorkoutHandlingView({ search }) {
 		})
 			.then((willDelete) => {
 				if (willDelete) {
-					dispatch(deleteWorkoutAction(id));
+					dispatch(deleteWorkoutHandlingAction(id));
 					swal({
 						title: "Success!",
 						text: "Deleted Workout Successfully",
@@ -56,7 +56,7 @@ export default function WorkoutHandlingView({ search }) {
 	const history = useHistory();
 	useEffect(() => {
 		dispatch(listWorkoutHandling());
-	}, [dispatch, history.push, trainerInfo, successUpdate, successDelete, history]);
+	}, [dispatch,  trainerInfo, successUpdate, successDelete, history]);
 	if (trainerInfo) {
 		return (
 			<div className="WorkoutBackgroundView">
@@ -67,9 +67,9 @@ export default function WorkoutHandlingView({ search }) {
 					<ButtonGroup className="mb-2" size="lg" style={{ width: "100%" }}>
 						<Button href="/admin">Back to operations page</Button>
 
-						<Button href="/workout-Handling-Create">+ Doctor's Schedule Create</Button>
+						<Button href="/workout-Handling-Create">+ Workout Create</Button>
 
-						<Button href="/workout-Report">Doctor's Schedule Report Generate</Button>
+						<Button href="/workout-Report"> Workout Report Generate</Button>
 					</ButtonGroup>
 					<br></br>
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
@@ -78,14 +78,9 @@ export default function WorkoutHandlingView({ search }) {
 					{loading && <Loading />}
 					<br></br>
 
-					{schedules
-						?.reverse()
-						.filter(
-							(filteredB) =>
-								filteredB.nic.includes(search) || filteredB.name.toLowerCase().includes(search.toLowerCase())
-						)
-						.map((schedule) => (
-							<Accordion key={schedule._id}>
+					{workouts &&
+						workouts.map((workout) => (
+							<Accordion key={workout._id}>
 								<Card
 									style={{
 										margin: 10,
@@ -96,7 +91,7 @@ export default function WorkoutHandlingView({ search }) {
 										paddingInline: 10,
 										background: "rgb(235, 235, 235)",
 									}}
-									key={schedule._id}
+									key={workout._id}
 								>
 									<Card.Header
 										style={{
@@ -126,13 +121,13 @@ export default function WorkoutHandlingView({ search }) {
 												eventKey="0"
 												style={{ paddingInline: 20, marginTop: 10, marginBottom: 10 }}
 											>
-												Name : {schedule.name}
+												Workout ID : {workout.workoutID}
 												<br></br>
-												Date :{schedule.date}
+												Name : {workout.name}
 											</Accordion.Toggle>
 										</span>
 										<div>
-											<Button style={{ marginTop: 20, fontSize: 15 }} href={`/scheduleHandling/${schedule._id}`}>
+											<Button style={{ marginTop: 20, fontSize: 15 }} href={`/workoutHandling/${workout._id}`}>
 												Edit
 											</Button>
 										</div>
@@ -142,7 +137,7 @@ export default function WorkoutHandlingView({ search }) {
 												style={{ marginTop: 20, fontSize: 15 }}
 												variant="danger"
 												className="mx-2"
-												onClick={() => deleteHandler(schedule._id)}
+												onClick={() => deleteHandler(workout._id)}
 											>
 												Delete
 											</Button>
@@ -154,20 +149,14 @@ export default function WorkoutHandlingView({ search }) {
 										<Card.Body>
 											<Row>
 												<Col md={6}>
-													<h2> NIC : {schedule.nic}</h2>
-													<h5>Name : {schedule.name}</h5>
-													<h5>Date : {schedule.date}</h5>
-													<h5>Time : {schedule.time}</h5>
-													<h5>Description : {schedule.description}</h5>
-													<h5>Added By : {schedule.addedBy}</h5>
-													<br></br>
+													<h5> Workout ID : {workout.workoutID}</h5>
+													<h5> Workout name :{workout.name}</h5>
+													<h5> workoutCategory: {workout.workoutCategory}</h5>
+													<h5> instructions: {workout.instructions}</h5>
+													<h5> repetitions: {workout.repetitions}</h5>
+													<h5>tips : {workout.tips}</h5>
 												</Col>
 											</Row>
-											{/* <blockquote className="blockquote mb-0">
-										<Card.Footer className="text-muted">
-											Created on -<cite title="Source Title"> {schedule.createdAt.substring(0, 10)}</cite>
-										</Card.Footer>
-									</blockquote> */}
 										</Card.Body>
 									</Accordion.Collapse>
 								</Card>

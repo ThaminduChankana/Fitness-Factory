@@ -28,6 +28,10 @@ import AccessDenied from "./components/AccessDenied";
 import Inquiries from "./screens/static/inquiries/Inquiries";
 import CustomerPrint from "./screens/reports/CustomerReports/CustomerPrint";
 
+import WorkoutHandlingCreate from "./screens/workoutManagement/workoutHandlingCreate";
+import WorkoutHandlingView from "./screens/workoutManagement/WorkoutHandlingView"
+import WorkoutHandlingUpdate from "./screens/workoutManagement/workoutHandlingUpdate";
+
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -57,6 +61,10 @@ const App = () => {
 				<Route path="/bmi-calculator" component={CalculateBMIScreen} exact />
 				<Route path="/contactus" component={Inquiries} exact />
 				<Route path="/admin-customer-report" component={CustomerPrint} exact />
+
+				<Route path="/workout-Handling-Create" component={WorkoutHandlingCreate} exact />
+				<Route path="/workout-Handling-View" component={WorkoutHandlingView} exact />
+				<Route path="/workoutHandling/:id" component={WorkoutHandlingUpdate} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>

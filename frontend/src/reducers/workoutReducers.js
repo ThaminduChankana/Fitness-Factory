@@ -11,7 +11,7 @@ import {
 	WORKOUT_DELETE_REQUEST,
 	WORKOUT_DELETE_SUCCESS,
 	WORKOUT_DELETE_FAIL,
-} from "../constants/workoutConstants";
+} from "../constants/workoutHandlingConstants";
 
 export const workoutHandlingListReducer = (state = { workouts: [] }, action) => {
 	switch (action.type) {
