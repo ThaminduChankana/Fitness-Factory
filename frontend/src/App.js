@@ -39,6 +39,7 @@ import FaqTrainerView from "./screens/FaqManagement/trainer/FaqTrainerView";
 import FaqTrainerUpdate from "./screens/FaqManagement/trainer/FaqTrainerUpdate";
 import AddProgress from "./screens/customerProgressManagement/AddProgress";
 import ProgressPrint from "./screens/reports/ProgressReports/ProgressPrint";
+import { AboutUs } from "./screens/static/aboutUs/AboutUs";
 
 const App = () => {
 	return (
@@ -81,6 +82,7 @@ const App = () => {
 				<Route path="/faq-trainer/:id" component={FaqTrainerUpdate} exact />
 				<Route path="/progress-create-customer" component={AddProgress} exact />
 				<Route path="/progress-customer-report" component={ProgressPrint} exact />
+				<Route path="/aboutUs" component={AboutUs} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
