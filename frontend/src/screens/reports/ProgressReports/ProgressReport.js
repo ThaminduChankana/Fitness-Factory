@@ -3,7 +3,6 @@ import { listProgress } from "../../../actions/progressAction";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import MainScreen from "../../../components/MainScreen";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 
