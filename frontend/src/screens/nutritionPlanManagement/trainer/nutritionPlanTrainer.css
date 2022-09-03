@@ -1,0 +1,20 @@
+.trainerNutritionPlanCreate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809474/images/nutrition-plan-create_yrfjek.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.nutritonPlanUpdate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809490/images/nutrition-plan-update_hpuiu4.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.progressPrint {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660814753/images/progress-report_zc3v7d.jpg");
+	background-position: center;
+	background-size: cover;
+}
