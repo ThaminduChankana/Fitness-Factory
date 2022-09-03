@@ -40,6 +40,15 @@ import {
 	nutritionPlanListAdminReducer,
 } from "./reducers/nutritionPlanReducer";
 
+import {
+	faqCreateReducer,
+	faqListReducer,
+	faqUpdateReducer,
+	faqListTrainerReducer,
+	faqUpdateReducerForTrainer,
+	faqDeleteReducer,
+} from "./reducers/faqReducer";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -67,6 +76,12 @@ const reducer = combineReducers({
 	nutritionPlanUpdate: nutritionPlanUpdateReducer,
 	nutritionPlanDelete: nutritionPlanDeleteReducer,
 	nutritionPlanAdminList: nutritionPlanListAdminReducer,
+	faqList: faqListReducer,
+	faqCreate: faqCreateReducer,
+	faqUpdate: faqUpdateReducer,
+	faqDelete: faqDeleteReducer,
+	faqTrainerList: faqListTrainerReducer,
+	faqTrainerUpdate: faqUpdateReducerForTrainer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
