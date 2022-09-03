@@ -27,6 +27,11 @@ import TrainerDashboardPage from "./screens/static/dashboards/TrainerDashboard";
 import AccessDenied from "./components/AccessDenied";
 import Inquiries from "./screens/static/inquiries/Inquiries";
 import CustomerPrint from "./screens/reports/CustomerReports/CustomerPrint";
+import NutritionPlanCreate from "./screens/nutritionPlanManagement/trainer/NutritionPlanCreate";
+import NutritionPlanView from "./screens/nutritionPlanManagement/trainer/NutritionPlanView";
+import NutritionPlanUpdate from "./screens/nutritionPlanManagement/trainer/NutritionPlanUpdate";
+import NutritionPlanAdminView from "./screens/nutritionPlanManagement/admin/NutritionPlanAdminView";
+import NutritionPlanCustomerView from "./screens/nutritionPlanManagement/customer/NutritionPlanCustomerView";
 
 const App = () => {
 	return (
@@ -57,6 +62,11 @@ const App = () => {
 				<Route path="/bmi-calculator" component={CalculateBMIScreen} exact />
 				<Route path="/contactus" component={Inquiries} exact />
 				<Route path="/admin-customer-report" component={CustomerPrint} exact />
+				<Route path="/nutrition-plan-create-trainer" component={NutritionPlanCreate} exact />
+				<Route path="/nutritionPlan-trainer-view" component={NutritionPlanView} exact />
+				<Route path="/nutritionPlan/:id" component={NutritionPlanUpdate} exact />
+				<Route path="/nutritionPlan-admin-view" component={NutritionPlanAdminView} exact />
+				<Route path="/nutritionPlan-customer-view" component={NutritionPlanCustomerView} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
