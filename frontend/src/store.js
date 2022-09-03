@@ -49,6 +49,8 @@ import {
 	faqDeleteReducer,
 } from "./reducers/faqReducer";
 
+import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -82,6 +84,8 @@ const reducer = combineReducers({
 	faqDelete: faqDeleteReducer,
 	faqTrainerList: faqListTrainerReducer,
 	faqTrainerUpdate: faqUpdateReducerForTrainer,
+	progressList: progressListReducer,
+	progressCreate: progressCreateReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
