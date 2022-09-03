@@ -66,7 +66,7 @@ const TrainerDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<a href="/trainer-articles">
+									<a href="/nutritionPlan-trainer-view">
 										<Button variant="success" size="lg" style={{ width: 350, height: 75 }}>
 											Customer Meal Plan Management
 										</Button>

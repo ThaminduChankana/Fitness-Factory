@@ -73,7 +73,7 @@ const AdminDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/">
+									<Link to="/nutritionPlan-admin-view">
 										<Button variant="success" size="lg" className="landingbutton">
 											Meal Plan Management
 										</Button>
