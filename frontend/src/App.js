@@ -32,6 +32,11 @@ import NutritionPlanView from "./screens/nutritionPlanManagement/trainer/Nutriti
 import NutritionPlanUpdate from "./screens/nutritionPlanManagement/trainer/NutritionPlanUpdate";
 import NutritionPlanAdminView from "./screens/nutritionPlanManagement/admin/NutritionPlanAdminView";
 import NutritionPlanCustomerView from "./screens/nutritionPlanManagement/customer/NutritionPlanCustomerView";
+import FaqCreate from "./screens/FaqManagement/customer/FaqCreate";
+import FaqView from "./screens/FaqManagement/customer/FaqView";
+import FaqUpdate from "./screens/FaqManagement/customer/FaqUpdate";
+import FaqTrainerView from "./screens/FaqManagement/trainer/FaqTrainerView";
+import FaqTrainerUpdate from "./screens/FaqManagement/trainer/FaqTrainerUpdate";
 
 const App = () => {
 	return (
@@ -67,6 +72,11 @@ const App = () => {
 				<Route path="/nutritionPlan/:id" component={NutritionPlanUpdate} exact />
 				<Route path="/nutritionPlan-admin-view" component={NutritionPlanAdminView} exact />
 				<Route path="/nutritionPlan-customer-view" component={NutritionPlanCustomerView} exact />
+				<Route path="/faq-create-customer" component={FaqCreate} exact />
+				<Route path="/faq-customer-view" component={FaqView} exact />
+				<Route path="/faq/:id" component={FaqUpdate} exact />
+				<Route path="/faq-trainer-view" component={FaqTrainerView} exact />
+				<Route path="/faq-trainer/:id" component={FaqTrainerUpdate} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
