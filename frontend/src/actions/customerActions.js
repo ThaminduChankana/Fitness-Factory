@@ -122,7 +122,6 @@ export const customerRegister =
 				window.location.href = "/admin-customers";
 			}, 2000);
 
-			localStorage.setItem("customerInfo", JSON.stringify(data));
 		} catch (error) {
 			dispatch({
 				type: CUSTOMER_REGISTER_FAIL,
