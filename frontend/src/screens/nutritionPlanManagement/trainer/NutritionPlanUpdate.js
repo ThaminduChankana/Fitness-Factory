@@ -99,7 +99,7 @@ export default function NutritionPlanUpdate({ match, history }) {
 						}}
 						variant="primary"
 						className="logoutBtn"
-						href="/nutritionPlan-trainer-view"
+						href="/nutrition-plan-trainer-view"
 					>
 						Back To List
 					</Button>

@@ -71,10 +71,10 @@ const App = () => {
 				<Route path="/contactus" component={Inquiries} exact />
 				<Route path="/admin-customer-report" component={CustomerPrint} exact />
 				<Route path="/nutrition-plan-create-trainer" component={NutritionPlanCreate} exact />
-				<Route path="/nutritionPlan-trainer-view" component={NutritionPlanView} exact />
-				<Route path="/nutritionPlan/:id" component={NutritionPlanUpdate} exact />
-				<Route path="/nutritionPlan-admin-view" component={NutritionPlanAdminView} exact />
-				<Route path="/nutritionPlan-customer-view" component={NutritionPlanCustomerView} exact />
+				<Route path="/nutrition-plan-trainer-view" component={NutritionPlanView} exact />
+				<Route path="/nutrition-plan/:id" component={NutritionPlanUpdate} exact />
+				<Route path="/nutrition-plan-admin-view" component={NutritionPlanAdminView} exact />
+				<Route path="/nutrition-plan-customer-view" component={NutritionPlanCustomerView} exact />
 				<Route path="/faq-create-customer" component={FaqCreate} exact />
 				<Route path="/faq-customer-view" component={FaqView} exact />
 				<Route path="/faq/:id" component={FaqUpdate} exact />

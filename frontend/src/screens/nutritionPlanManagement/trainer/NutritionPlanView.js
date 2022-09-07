@@ -47,7 +47,7 @@ export default function NutritionPlanView() {
 						timer: 2000,
 						button: false,
 					});
-					history.push("/nutritionPlan-trainer-view");
+					history.push("/nutrition-plan-trainer-view");
 				}
 			})
 			.catch((err) => {
@@ -187,7 +187,7 @@ export default function NutritionPlanView() {
 													fontSize: 15,
 												}}
 												variant="dark"
-												href={`/nutritionPlan/${nutritionPlan._id}`}
+												href={`/nutrition-plan/${nutritionPlan._id}`}
 											>
 												Edit
 											</Button>

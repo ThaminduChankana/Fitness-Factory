@@ -21,7 +21,7 @@ const ProgressPrint = () => {
 					<br></br>
 					<br />
 					<ButtonGroup variant="success" className="mb-2" size="lg" style={{ width: "90%", marginLeft: 50 }}>
-						<Button variant="success" href="/nutritionPlan-customer-view">
+						<Button variant="success" href="/nutrition-plan-customer-view">
 							My Nutrition Plan
 						</Button>
 

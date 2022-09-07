@@ -118,7 +118,7 @@ export const createNutritionPlanAction =
 			});
 
 			setTimeout(function () {
-				window.location.href = "/nutritionPlan-trainer-view";
+				window.location.href = "/nutrition-plan-trainer-view";
 			}, 2000);
 			dispatch({
 				type: NUTRITION_PLAN_CREATE_TRAINER_SUCCESS,
@@ -175,7 +175,7 @@ export const updateNutritionPlanAction =
 			});
 
 			setTimeout(function () {
-				window.location.href = "/nutritionPlan-trainer-view";
+				window.location.href = "/nutrition-plan-trainer-view";
 			}, 2000);
 
 			dispatch({

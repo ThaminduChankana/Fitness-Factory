@@ -51,7 +51,7 @@ const CustomerDashboardPage = ({ history }) => {
 								</a>
 								<br></br>
 								<br></br>
-								<a href="/nutritionPlan-customer-view">
+								<a href="/nutrition-plan-customer-view">
 									<Button variant="success" size="lg" style={{ width: 350, height: 75 }}>
 										View Meal Plan
 									</Button>

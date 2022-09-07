@@ -73,14 +73,9 @@ const AdminDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/nutritionPlan-admin-view">
+									<Link to="/nutrition-plan-admin-view">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Meal Plan Management
-										</Button>
-									</Link>
-									<Link to="/">
-										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
-											Q & A Management
 										</Button>
 									</Link>
 								</div>
