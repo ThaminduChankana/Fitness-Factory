@@ -126,11 +126,11 @@ export default function FaqCreate({ history }) {
 
 								{loading && <Loading size={50} />}
 								<br></br>
-								<Button style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }} type="submit" variant="primary">
+								<Button style={{ fontSize: 20, marginTop: 10 }} type="submit" variant="primary">
 									Submit
 								</Button>
 								<Button
-									style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }}
+									style={{ fontSize: 20, marginTop: 10 }}
 									className="mx-2"
 									onClick={resetHandler}
 									variant="danger"
@@ -143,7 +143,6 @@ export default function FaqCreate({ history }) {
 									style={{
 										fontSize: 20,
 										marginTop: 10,
-										borderRadius: 0,
 									}}
 								>
 									Demo

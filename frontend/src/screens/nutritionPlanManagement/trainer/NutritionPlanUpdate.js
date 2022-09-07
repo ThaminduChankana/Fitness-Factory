@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteNutritionPlanAction, updateNutritionPlanAction } from "../../../actions/nutritionPlanAction";
+import { updateNutritionPlanAction } from "../../../actions/nutritionPlanAction";
 import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
 import { authHeader } from "../../../actions/trainerActions";
-import swal from "sweetalert";
 import MainScreen from "../../../components/MainScreen";
 import "./nutritionPlanTrainer.css";
 
@@ -31,34 +30,15 @@ export default function NutritionPlanUpdate({ match, history }) {
 	const nutritionPlanDelete = useSelector((state) => state.nutritionPlanDelete);
 	const { loading: loadingDelete, error: errorDelete } = nutritionPlanDelete;
 
-	const deleteHandler = (id) => {
-		swal({
-			title: "Are you sure?",
-			text: "Once deleted, you will not be able to recover these details!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(deleteNutritionPlanAction(id));
-					swal({
-						title: "Success!",
-						text: "Deleted Nutrition Plan Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-					history.push("/nutritionPlan-trainer-view");
-				}
-			})
-			.catch((err) => {
-				swal({
-					title: "Error!",
-					text: "Couldn't Delete Nutrition Plan",
-					type: "error",
-				});
-			});
+	const resetHandler = () => {
+		setStartDate("");
+		setEndDate("");
+		setBreakfast("");
+		setLunch("");
+		setDinner("");
+		setPreWorkoutSnack("");
+		setDos("");
+		setDonts("");
 	};
 
 	useEffect(() => {
@@ -123,27 +103,30 @@ export default function NutritionPlanUpdate({ match, history }) {
 					>
 						Back To List
 					</Button>
+					<br></br>
+					<br></br>
+					<br></br>
 					<Card
 						style={{
 							marginLeft: 60,
 							width: "80%",
 							borderWidth: 0,
 							padding: 25,
-							background: "none",
-							borderRadius: 10,
 							outline: "none",
+							background: "rgba(231, 238, 238, 0.8)",
+							borderRadius: 45,
 						}}
 					>
 						<Card.Body>
-							<br></br>
 							<Form onSubmit={updateHandler}>
 								{loadingDelete && <Loading />}
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Plan Detail
@@ -158,7 +141,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										NIC
@@ -178,7 +160,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Start Date
@@ -199,7 +180,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										End Date
@@ -218,8 +198,9 @@ export default function NutritionPlanUpdate({ match, history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Meal Detail
@@ -235,7 +216,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Breakfast
@@ -257,7 +237,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Lunch
@@ -278,7 +257,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dinner
@@ -299,7 +277,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Pre Workout Snack
@@ -318,8 +295,9 @@ export default function NutritionPlanUpdate({ match, history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Additional Detail
@@ -334,7 +312,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dos
@@ -355,7 +332,6 @@ export default function NutritionPlanUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Donts
@@ -372,21 +348,23 @@ export default function NutritionPlanUpdate({ match, history }) {
 									/>
 								</Form.Group>
 								{loading && <Loading size={50} />}
-								<Button style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }} type="submit" variant="primary">
+								<Button style={{ fontSize: 20, marginTop: 10 }} type="submit" variant="primary">
 									Submit
 								</Button>
 								<Button
-									style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }}
+									style={{ fontSize: 20, marginTop: 10 }}
 									className="mx-2"
 									variant="danger"
-									onClick={() => deleteHandler(match.params.id)}
+									onClick={resetHandler}
 								>
-									Delete
+									Reset
 								</Button>
 							</Form>
 						</Card.Body>
-						<br></br>
 					</Card>
+					<br></br>
+					<br></br>
+					<br></br>
 				</MainScreen>
 			</div>
 		);

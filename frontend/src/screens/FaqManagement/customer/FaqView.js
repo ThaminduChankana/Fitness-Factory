@@ -197,16 +197,12 @@ export default function FaqView() {
 												{faq.reply}
 											</td>
 											<td>
-												<Button
-													style={{ width: "70px", borderRadius: 0, fontSize: 18 }}
-													href={`/faq/${faq._id}`}
-													variant="dark"
-												>
+												<Button style={{ width: "70px", fontSize: 18 }} href={`/faq/${faq._id}`} variant="dark">
 													Edit
 												</Button>
 
 												<Button
-													style={{ width: "90px", borderRadius: 0, fontSize: 18 }}
+													style={{ width: "90px", fontSize: 18 }}
 													variant="danger"
 													className="mx-2"
 													onClick={() => deleteHandler(faq._id)}

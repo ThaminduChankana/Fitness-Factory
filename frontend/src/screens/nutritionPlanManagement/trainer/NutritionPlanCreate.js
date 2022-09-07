@@ -40,11 +40,15 @@ export default function NutritionPlanCreate({ history }) {
 		e.preventDefault();
 		setNic("997193244V");
 		setBreakfast("Oats Banana Pancakes with Protein Shake");
-		setLunch("Multigrain roti along with palak chicken and Avocado bell pepper salad");
+		setLunch(
+			"Multigrain roti along with palak chicken and Avocado bell pepper salad, Quinoa upma, chicken and broccoli salad"
+		);
 		setDinner("Brown rice, peas paneer curry, sprouts vegetable salad");
 		setPreWorkoutSnack("Bananas");
 		setDos("Consume all 3 macronutrients");
 		setDonts("Skip meals, especially in the lead up to or after a workout");
+		setStartDate("2022-09-05");
+		setEndDate("2022-09-30");
 	};
 
 	const submitHandler = (e) => {
@@ -60,7 +64,7 @@ export default function NutritionPlanCreate({ history }) {
 		return (
 			<div className="trainerNutritionPlanCreate">
 				<br></br>
-				<MainScreen title="Nutrition Plan">
+				<MainScreen title="Create Nutrition Plan">
 					<br></br>
 					<br></br>
 					<Button
@@ -81,25 +85,28 @@ export default function NutritionPlanCreate({ history }) {
 					>
 						Back To List
 					</Button>
+					<br></br>
+					<br></br>
+					<br></br>
 					<Card
 						style={{
 							width: "80%",
 							borderWidth: 0,
 							padding: 25,
-							background: "none",
-							borderRadius: 10,
 							outline: "none",
 							marginLeft: 60,
+							background: "rgba(231, 238, 238, 0.8)",
+							borderRadius: 45,
 						}}
 					>
 						<Card.Body>
-							<br></br>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Plan Detail
@@ -115,7 +122,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										User NIC
@@ -137,7 +143,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Start Date
@@ -158,7 +163,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										End Date
@@ -177,8 +181,9 @@ export default function NutritionPlanCreate({ history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Meal Detail
@@ -194,7 +199,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Breakfast
@@ -217,7 +221,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Lunch
@@ -239,7 +242,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dinner
@@ -261,7 +263,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Pre Workout Snack
@@ -281,8 +282,9 @@ export default function NutritionPlanCreate({ history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Additional Detail
@@ -298,7 +300,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dos
@@ -320,7 +321,6 @@ export default function NutritionPlanCreate({ history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Donts
@@ -338,11 +338,11 @@ export default function NutritionPlanCreate({ history }) {
 									/>
 								</Form.Group>
 								{loading && <Loading size={50} />}
-								<Button style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }} type="submit" variant="primary">
+								<Button style={{ fontSize: 20, marginTop: 10 }} type="submit" variant="primary">
 									Submit
 								</Button>
 								<Button
-									style={{ fontSize: 20, marginTop: 10, borderRadius: 0 }}
+									style={{ fontSize: 20, marginTop: 10 }}
 									className="mx-2"
 									onClick={resetHandler}
 									variant="danger"
@@ -355,15 +355,16 @@ export default function NutritionPlanCreate({ history }) {
 									style={{
 										fontSize: 20,
 										marginTop: 10,
-										borderRadius: 0,
 									}}
 								>
 									Demo
 								</Button>
 							</Form>
 						</Card.Body>
-						<br></br>
 					</Card>
+					<br></br>
+					<br></br>
+					<br></br>
 				</MainScreen>
 			</div>
 		);

@@ -59,7 +59,7 @@ export default function NutritionPlanCustomerView({ match, history }) {
 										borderBlockColor: "#4D5551",
 										color: "#000000",
 										fontWeight: 700,
-										marginLeft: 780,
+										marginLeft: 820,
 									}}
 									variant="primary"
 									className="logoutBtn"
@@ -70,24 +70,27 @@ export default function NutritionPlanCustomerView({ match, history }) {
 							</Link>
 						</Col>
 					</Row>
+					<br></br>
+					<br></br>
+					<br></br>
 					<Card
 						style={{
 							width: "80%",
 							borderWidth: 0,
 							padding: 25,
-							background: "none",
-							borderRadius: 10,
 							outline: "none",
 							marginLeft: 60,
+							background: "rgba(231, 238, 238, 0.8)",
+							borderRadius: 45,
 						}}
 					>
 						<Card.Body>
-							<br></br>
 							<Form>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Plan Detail
@@ -103,7 +106,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Start Date
@@ -123,7 +125,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										End Date
@@ -141,8 +142,9 @@ export default function NutritionPlanCustomerView({ match, history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Meal Detail
@@ -158,7 +160,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Breakfast
@@ -180,7 +181,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Lunch
@@ -200,7 +200,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dinner
@@ -220,7 +219,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Pre Workout Snack
@@ -239,8 +237,9 @@ export default function NutritionPlanCustomerView({ match, history }) {
 								<br></br>
 								<h2
 									style={{
-										color: "#29C379",
+										color: "#00995d",
 										fontStyle: "bold",
+										fontSize: 25,
 									}}
 								>
 									Additional Detail
@@ -256,7 +255,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Dos
@@ -276,7 +274,6 @@ export default function NutritionPlanCustomerView({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Donts
@@ -294,8 +291,10 @@ export default function NutritionPlanCustomerView({ match, history }) {
 								</Form.Group>
 							</Form>
 						</Card.Body>
-						<br></br>
 					</Card>
+					<br></br>
+					<br></br>
+					<br></br>
 				</MainScreen>
 			</div>
 		);

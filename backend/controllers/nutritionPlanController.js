@@ -33,10 +33,10 @@ const createNutritionPlan = asyncHandler(async (req, res) => {
 		res.status(201).json(createdNutritionPlan);
 	} else if (nutritionplans != null) {
 		res.status(404);
-		throw new Error("You have already created a nutrition plan for this customer");
+		throw new Error("Nutrition Plan Exists");
 	} else {
 		res.status(404);
-		throw new Error("Cannot create a nutrition plan for not registered customer");
+		throw new Error("Not a registered customer");
 	}
 });
 

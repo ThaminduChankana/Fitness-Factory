@@ -48,12 +48,12 @@ const AdminDashboardPage = ({ history }) => {
 								<br></br>
 								<div>
 									<Link to="/admin-view">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											My Account
 										</Button>
 									</Link>
 									<Link to="/admin-register">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Create New Admin Account
 										</Button>
 									</Link>
@@ -61,12 +61,12 @@ const AdminDashboardPage = ({ history }) => {
 								<br></br>
 								<div>
 									<Link to="/admin-customers">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Customer Account Management
 										</Button>
 									</Link>
 									<Link to="/admin-trainers">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Trainer Account Management
 										</Button>
 									</Link>
@@ -74,12 +74,12 @@ const AdminDashboardPage = ({ history }) => {
 								<br></br>
 								<div>
 									<Link to="/nutritionPlan-admin-view">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Meal Plan Management
 										</Button>
 									</Link>
 									<Link to="/">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Q & A Management
 										</Button>
 									</Link>
@@ -87,12 +87,12 @@ const AdminDashboardPage = ({ history }) => {
 								<br></br>
 								<div>
 									<Link to="/">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Employee Leave Management
 										</Button>
 									</Link>
 									<Link to="/">
-										<Button variant="success" size="lg" className="landingbutton">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Workout Management
 										</Button>
 									</Link>

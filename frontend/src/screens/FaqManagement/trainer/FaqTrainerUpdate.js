@@ -99,7 +99,6 @@ export default function FaqTrainerUpdate({ match, history }) {
 										type="reply"
 										value={reply}
 										onChange={(e) => setReply(e.target.value)}
-										required
 										style={{
 											height: 100,
 											fontSize: 18,
@@ -108,7 +107,7 @@ export default function FaqTrainerUpdate({ match, history }) {
 								</Form.Group>
 
 								{loading && <Loading size={50} />}
-								<Button style={{ fontSize: 15, marginTop: 10, borderRadius: 0 }} type="submit" variant="primary">
+								<Button style={{ fontSize: 15, marginTop: 10 }} type="submit" variant="primary">
 									Submit
 								</Button>
 							</Form>

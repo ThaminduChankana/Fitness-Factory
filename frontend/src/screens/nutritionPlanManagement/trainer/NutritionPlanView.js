@@ -65,7 +65,7 @@ export default function NutritionPlanView() {
 	}, [dispatch, history, trainerInfo, successUpdate, successDelete]);
 	if (trainerInfo) {
 		return (
-			<div style={{ minHeight: 900, background: "#002700" }}>
+			<div style={{ minHeight: 900, background: "rgb(48, 58, 54)" }}>
 				<br></br>
 				<br></br>
 				<MainScreen title="Nutrition Plan List">
@@ -77,7 +77,7 @@ export default function NutritionPlanView() {
 									<Button
 										style={{
 											padding: "8px",
-											fontSize: "15px",
+											fontSize: "18px",
 											fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
 									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
 											width: "150px",
@@ -85,6 +85,7 @@ export default function NutritionPlanView() {
 											borderBlockColor: "#4D5551",
 											color: "#000000",
 											fontWeight: 700,
+											marginLeft: 10,
 										}}
 										variant="primary"
 										className="logoutBtn"
@@ -95,13 +96,20 @@ export default function NutritionPlanView() {
 								</Link>
 							</Col>
 							<Col>
-								<div className="search" style={{ marginTop: 5 }}>
+								<div className="search" style={{ marginTop: 5, marginLeft: 160 }}>
 									<Form inline>
 										<input
 											type="text"
 											placeholder="Search..."
 											onChange={inputHandler}
-											style={{ width: 260, height: 40, borderRadius: 50, padding: "10px", paddingLeft: "15px" }}
+											style={{
+												width: 260,
+												height: 40,
+												borderRadius: 50,
+												padding: "10px",
+												paddingLeft: "15px",
+												fontSize: 15,
+											}}
 										/>
 									</Form>
 								</div>
@@ -125,18 +133,26 @@ export default function NutritionPlanView() {
 							>
 								<Card
 									style={{
+										margin: 10,
+										borderRadius: 25,
+										borderWidth: 1.0,
+										borderColor: "rgb(0,0,0,0.5)",
 										marginTop: 20,
-										width: 850,
-										background: "black",
+										paddingInline: 10,
+										background: "rgb(235, 235, 235)",
+										width: 1000,
 									}}
 									key={nutritionPlan._id}
 								>
 									<Card.Header
 										style={{
 											display: "flex",
+											paddingInline: 10,
+											borderRadius: 25,
 											marginTop: 10,
 											marginBottom: 10,
-											background: "white",
+											borderColor: "black",
+											background: "#76BA99",
 										}}
 									>
 										<span
@@ -152,6 +168,7 @@ export default function NutritionPlanView() {
 											<Accordion.Toggle
 												style={{
 													fontSize: 20,
+													fontStyle: "bold",
 												}}
 												as={Card.Text}
 												variant="link"
@@ -167,7 +184,7 @@ export default function NutritionPlanView() {
 												style={{
 													width: "70px",
 													color: "white",
-													borderRadius: 5,
+													fontSize: 15,
 												}}
 												variant="dark"
 												href={`/nutritionPlan/${nutritionPlan._id}`}
@@ -178,7 +195,7 @@ export default function NutritionPlanView() {
 										&emsp;
 										<div>
 											<Button
-												style={{ width: "70px", borderRadius: 0 }}
+												style={{ width: "90px", fontSize: 15 }}
 												variant="danger"
 												className="mx-2"
 												onClick={() => deleteHandler(nutritionPlan._id)}
@@ -189,16 +206,11 @@ export default function NutritionPlanView() {
 									</Card.Header>
 									<Accordion.Collapse
 										style={{
-											paddingLeft: 20,
-											background: "grey",
+											paddingLeft: 10,
 										}}
 										eventKey="0"
 									>
-										<Card.Body
-											style={{
-												color: "white",
-											}}
-										>
+										<Card.Body>
 											<Row>
 												<Col md={20}>
 													<h3

@@ -27,7 +27,7 @@ export default function NutritionPlanAdminView() {
 	}, [dispatch, history, adminInfo]);
 	if (adminInfo) {
 		return (
-			<div style={{ minHeight: 800, background: "#002700" }}>
+			<div style={{ minHeight: 800, background: "rgb(48, 58, 54)" }}>
 				<br></br>
 				<br></br>
 				<MainScreen title="Nutrition Plan List">
@@ -44,7 +44,8 @@ export default function NutritionPlanAdminView() {
 									borderRadius: 50,
 									padding: "10px",
 									paddingLeft: "15px",
-									marginLeft: 580,
+									marginLeft: 750,
+									fontSize: 15,
 								}}
 							/>
 						</Form>
@@ -64,18 +65,26 @@ export default function NutritionPlanAdminView() {
 							>
 								<Card
 									style={{
+										margin: 10,
+										borderRadius: 25,
+										borderWidth: 1.0,
+										borderColor: "rgb(0,0,0,0.5)",
 										marginTop: 20,
-										width: 850,
-										background: "black",
+										paddingInline: 10,
+										background: "rgb(235, 235, 235)",
+										width: 1000,
 									}}
 									key={nutritionPlan._id}
 								>
 									<Card.Header
 										style={{
 											display: "flex",
+											paddingInline: 10,
+											borderRadius: 25,
 											marginTop: 10,
 											marginBottom: 10,
-											background: "white",
+											borderColor: "black",
+											background: "#76BA99",
 										}}
 									>
 										<span
@@ -104,16 +113,11 @@ export default function NutritionPlanAdminView() {
 									</Card.Header>
 									<Accordion.Collapse
 										style={{
-											paddingLeft: 20,
-											background: "grey",
+											paddingLeft: 10,
 										}}
 										eventKey="0"
 									>
-										<Card.Body
-											style={{
-												color: "white",
-											}}
-										>
+										<Card.Body>
 											<Row>
 												<Col md={20}>
 													<h3

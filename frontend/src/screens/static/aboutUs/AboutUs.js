@@ -62,11 +62,11 @@ export const AboutUs = () => {
 										<br></br>
 
 										<img
-											src="https://res.cloudinary.com/dulshan/image/upload/v1631815226/avatar_bmbwov.png"
+											src="https://hairstylecamp.com/wp-content/uploads/hairstyle-for-middle-aged-men.jpg"
 											alt="avatar"
 											height="160px"
 											width="150px"
-											style={{ marginLeft: "100px" }}
+											style={{ marginLeft: "100px", borderRadius: 90 }}
 										></img>
 									</div>
 									<br></br>

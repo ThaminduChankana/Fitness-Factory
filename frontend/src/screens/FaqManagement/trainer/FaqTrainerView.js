@@ -149,12 +149,8 @@ export default function FaqTrainerView() {
 												{faq.reply}
 											</td>
 											<td>
-												<Button
-													style={{ width: "70px", borderRadius: 0, fontSize: 20 }}
-													href={`/faq-trainer/${faq._id}`}
-													variant="dark"
-												>
-													Edit
+												<Button style={{ width: "90px", fontSize: 15 }} href={`/faq-trainer/${faq._id}`} variant="dark">
+													Reply
 												</Button>
 											</td>
 										</tr>
