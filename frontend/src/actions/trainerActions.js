@@ -117,7 +117,6 @@ export const trainerRegister =
 			setTimeout(function () {
 				window.location.href = "/admin-trainers";
 			}, 2000);
-			
 		} catch (error) {
 			dispatch({
 				type: TRAINER_REGISTER_FAIL,

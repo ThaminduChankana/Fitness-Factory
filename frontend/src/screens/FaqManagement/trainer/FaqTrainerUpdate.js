@@ -89,7 +89,7 @@ export default function FaqTrainerUpdate({ match, history }) {
 											color: "white",
 										}}
 									>
-										Reply
+										Edit
 									</Form.Label>
 									<br></br>
 									<br></br>
