@@ -61,7 +61,7 @@ const reducer = combineReducers({
 	customerViewById: customerViewByIdReducer,
 	customerUpdateById: customerUpdateByIdReducer,
 	list_Workout_Handling: workoutHandlingListReducer,
-	WorkoutHandlingCreate: workoutHandlingCreateReducer,
+	Workout_Handling_Create: workoutHandlingCreateReducer,
 	workoutHandlingUpdate: workoutHandlingUpdateReducer,
 	WorkoutHandlingDelete: workoutHandlingDeleteReducer,
 });

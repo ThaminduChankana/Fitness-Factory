@@ -16,80 +16,84 @@ import axios from "axios";
 import swal from "sweetalert";
 
 export const listWorkoutHandling = () => async (dispatch, getState) => {
-    try {
-        dispatch({
-            type: WORKOUT_LIST_REQUEST,
-        });
+	try {
+		dispatch({
+			type: WORKOUT_LIST_REQUEST,
+		});
 
-        	const {
-						trainer_Login: { trainerInfo },
-					} = getState();
+		const {
+			trainer_Login: { trainerInfo },
+		} = getState();
 
-					const config = {
-						headers: {
-							Authorization: `Bearer ${trainerInfo.token}`,
-						},
-					};
-        const { data } = await axios.get(`/user/trainer/workout/get`, config);
-        dispatch({
-            type: WORKOUT_LIST_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-        dispatch({
-            type: WORKOUT_LIST_FAIL,
-            payload: message,
-        });
-    }
+		const config = {
+			headers: {
+				Authorization: `Bearer ${trainerInfo.token}`,
+			},
+		};
+		const { data } = await axios.get(`/user/trainer/workout/get`, config);
+		dispatch({
+			type: WORKOUT_LIST_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
+		dispatch({
+			type: WORKOUT_LIST_FAIL,
+			payload: message,
+		});
+	}
 };
 export const createWorkoutHandlingAction =
-    (workoutID, name, workoutCategory, instructions, repetitions, tips, image) => async (dispatch, getState) => {
-        try {
-            dispatch({
-                type: WORKOUT_CREATE_REQUEST,
-            });
-            const {
-                trainer_Login: { trainerInfo },
-            } = getState();
+	(workoutID, name, workoutCategory, instructions, repetitions, tips) => async (dispatch, getState) => {
+		try {
+			dispatch({
+				type: WORKOUT_CREATE_REQUEST,
+			});
+			const {
+				trainer_Login: { trainerInfo },
+			} = getState();
 
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${trainerInfo.token}`,
-                },
-            };
-            const { data } = await axios.post(`/user/trainer/workout/create`,
-            {
-                workoutID, name, workoutCategory, instructions, repetitions, tips, image,
-                    
-            },
-            config
-            );
-            dispatch({
-							type: WORKOUT_CREATE_SUCCESS,
-							payload: data,
-            });
-            	swal({
-								title: "Success !!!",
-								text: "A Workout successfully created.",
-								icon: "success",
-								timer: 2000,
-								button: false,
-                });
-          setTimeout(function () {
-						window.location.href = "/workout-Handling-View";
-					}, 2000);
-
-        } catch (error) {
-            const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-						dispatch({
-							type: WORKOUT_CREATE_FAIL,
-							payload: message,
-						});
-        }
-    };
+			const config = {
+				headers: {
+					Authorization: `Bearer ${trainerInfo.token}`,
+				},
+			};
+			const { data } = await axios.post(
+				`/user/trainer/workout/create`,
+				{
+					workoutID,
+					name,
+					workoutCategory,
+					instructions,
+					repetitions,
+					tips,
+				},
+				config
+			);
+			dispatch({
+				type: WORKOUT_CREATE_SUCCESS,
+				payload: data,
+			});
+			swal({
+				title: "Success !!!",
+				text: "A Workout successfully created.",
+				icon: "success",
+				timer: 2000,
+				button: false,
+			});
+			setTimeout(function () {
+				window.location.href = "/workout-handling-view";
+			}, 2000);
+		} catch (error) {
+			const message = error.response && error.response.data.message ? error.response.data.message : error.message;
+			dispatch({
+				type: WORKOUT_CREATE_FAIL,
+				payload: message,
+			});
+		}
+	};
 export const updateWorkouteHandlingAction =
-	(id,workoutID, name, workoutCategory, instructions, repetitions, tips) => async (dispatch, getState) => {
+	(id, workoutID, name, workoutCategory, instructions, repetitions, tips) => async (dispatch, getState) => {
 		try {
 			dispatch({
 				type: WORKOUT_UPDATE_REQUEST,
@@ -112,7 +116,7 @@ export const updateWorkouteHandlingAction =
 					workoutCategory,
 					instructions,
 					repetitions,
-					tips,				
+					tips,
 				},
 				config
 			);
@@ -128,7 +132,7 @@ export const updateWorkouteHandlingAction =
 				button: false,
 			});
 			setTimeout(function () {
-				window.location.href = "/workout-Handling-View";
+				window.location.href = "/workout-handling-view";
 			}, 2000);
 		} catch (error) {
 			const message = error.response && error.response.data.message ? error.response.data.message : error.message;
@@ -168,5 +172,4 @@ export const deleteWorkoutHandlingAction = (id) => async (dispatch, getState) =>
 			payload: message,
 		});
 	}
-
 };

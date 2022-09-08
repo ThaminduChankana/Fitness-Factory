@@ -5,7 +5,7 @@ import { createWorkoutHandlingAction } from "../../actions/workoutActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import MainScreen from "../../components/MainScreen";
-import "./workoutHandling.css" ;
+import "./workoutHandling.css";
 
 export default function WorkoutHandlingCreate({ history }) {
 	const [workoutID, setWorkoutID] = useState("");
@@ -18,10 +18,8 @@ export default function WorkoutHandlingCreate({ history }) {
 	const dispatch = useDispatch();
 	const trainer_Login = useSelector((state) => state.trainer_Login);
 	const { trainerInfo } = trainer_Login;
-	const WorkoutHandlingCreate = useSelector((state) => state.WorkoutHandlingCreate);
-	const { loading, error, workoutHandling } = WorkoutHandlingCreate;
-
-	console.log(workoutHandling);
+	const Workout_Handling_Create = useSelector((state) => state.Workout_Handling_Create);
+	const { loading, error } = Workout_Handling_Create;
 
 	const resetHandler = () => {
 		setWorkoutID("");
@@ -34,22 +32,21 @@ export default function WorkoutHandlingCreate({ history }) {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-
-		if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips) return;
+		console.log("hello");
+		// if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips) return;
 		dispatch(createWorkoutHandlingAction(workoutID, name, workoutCategory, instructions, repetitions, tips));
 
 		resetHandler();
-		history.push("/workout-Handling-View");
+		history.push("/workout-handling-view");
 	};
 	const demoHandler = async (e) => {
 		e.preventDefault();
-			setWorkoutID("101");
-			setName("Jumping jack");
-			setWorkoutCategory("chest");
-			setInstructions("do it");
-			setRepetitions("10");
-			setTips("use ur legs");
-		
+		setWorkoutID("06");
+		setName("Side Planks");
+		setWorkoutCategory("Legs");
+		setInstructions("Lie on your side with your knees bent, and prop your upper body up on your elbow then raise your hips off the floor, and hold for 6 seconds");
+		setRepetitions("10");
+		setTips("Switch to your other side and repeat steps 1 through 4");
 	};
 	useEffect(() => {}, []);
 	if (trainerInfo) {
@@ -58,16 +55,15 @@ export default function WorkoutHandlingCreate({ history }) {
 				{" "}
 				<MainScreen title={"CREATE A WORKOUT"}>
 					<Button
-						style={{
-							float: "left",
-							fontSize: 15,
-							marginLeft: 10,
-						}}
-						href="/workout-Handling-View"
+						variant="success"
+						style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+						size="lg"
+						href="/workout-handling-view"
 					>
 						{" "}
 						Back to workout List
 					</Button>
+					<br></br>
 					<br></br>
 					<br></br>
 					<Card
@@ -83,29 +79,17 @@ export default function WorkoutHandlingCreate({ history }) {
 							background: "rgba(231, 238, 238, 0.9)",
 						}}
 					>
-						<Card.Header
-							style={{
-								borderRadius: 45,
-								borderWidth: 2.0,
-								marginTop: 20,
-								paddingInline: 10,
-								background: "white",
-							}}
-						>
-							<div className="Sheader">
-								{" "}
-								<h3>Create a New Workout</h3>
-							</div>
-						</Card.Header>
 						<Card.Body>
+							<br></br>
+
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								<Form.Group controlId="workoutID">
-									<Form.Label>WORKOUT ID</Form.Label>
+									<Form.Label>Workout ID</Form.Label>
 									<Form.Control
 										type="workoutID"
 										value={workoutID}
-										placeholder="Enter the NIC"
+										placeholder="Enter the workout ID"
 										onChange={(e) => setWorkoutID(e.target.value)}
 										required
 									/>
@@ -116,7 +100,7 @@ export default function WorkoutHandlingCreate({ history }) {
 									<Form.Control
 										value={name}
 										placeholder="Enter the workout name"
-										rows={4}
+										// rows={4}
 										onChange={(e) => setName(e.target.value)}
 										required
 									/>
@@ -124,35 +108,32 @@ export default function WorkoutHandlingCreate({ history }) {
 
 								<div className="form-group">
 									<label className="WorkoutCategory">Workout Category</label>
-									<select
-										className="form-control"
-										id="WorkoutCategory"
-										value={workoutCategory}
-										onChange={(e) => setWorkoutCategory(e.target.value)}
+									<select className="form-control" onChange={(e) => setWorkoutCategory(e.target.value)} required>
+										<option value="Select Workout Category">Select workout category</option>
+										<option value="Legs">Legs</option>
+										<option value="Chest">Chest</option>
 										required
-									>
-										<option>Select Workout Category</option>
-										<option value={workoutCategory.Legs}>Legs</option>
-										<option value={workoutCategory.Chest}>Chest</option>
 									</select>
 								</div>
-
 								<Form.Group controlId="instructions">
 									<Form.Label>Instructions</Form.Label>
 									<Form.Control
+										as="textarea"
 										type="instructions"
 										value={instructions}
-										placeholder="Enter the Instruction "
+										placeholder="Enter the instruction "
 										onChange={(e) => setInstructions(e.target.value)}
+										required
 									/>
 								</Form.Group>
 
 								<Form.Group controlId="repetitions">
 									<Form.Label>Repetitions</Form.Label>
 									<Form.Control
-										type=""
+										type="number"
 										value={repetitions}
-										placeholder=""
+										min="1"
+										max="20"
 										onChange={(e) => setRepetitions(e.target.value)}
 										required
 									/>

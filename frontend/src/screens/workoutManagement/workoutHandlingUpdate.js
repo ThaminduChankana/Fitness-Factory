@@ -9,8 +9,7 @@ import { authHeader } from "../../actions/trainerActions";
 import "./workoutHandling.css";
 import MainScreen from "../../components/MainScreen";
 
-
-export default function WorkoutHandlingUpdate({match, history}) {
+export default function WorkoutHandlingUpdate({ match, history }) {
 	const [workoutID, setWorkoutID] = useState("");
 	const [name, setName] = useState("");
 	const [workoutCategory, setWorkoutCategory] = useState("");
@@ -28,7 +27,7 @@ export default function WorkoutHandlingUpdate({match, history}) {
 		if (window.confirm("Are you sure?")) {
 			dispatch(deleteWorkoutHandlingAction(id));
 		}
-		history.push("/workout-Handling-View");
+		history.push("/workout-handling-view");
 	};
 
 	useEffect(() => {
@@ -53,11 +52,11 @@ export default function WorkoutHandlingUpdate({match, history}) {
 		e.preventDefault();
 
 		dispatch(
-			updateWorkouteHandlingAction(match.params.id,workoutID, name, workoutCategory, instructions, repetitions, tips)
+			updateWorkouteHandlingAction(match.params.id, workoutID, name, workoutCategory, instructions, repetitions, tips)
 		);
 		if (!workoutID || !name || !workoutCategory || !instructions || !repetitions || !tips) return;
 
-		history.push("/workout-Handling-View");
+		history.push("/workout-handling-view");
 	};
 	if (trainerInfo) {
 		return (
@@ -65,12 +64,10 @@ export default function WorkoutHandlingUpdate({match, history}) {
 				{" "}
 				<MainScreen title={"UPDATE A WORKOUT"}>
 					<Button
-						style={{
-							float: "left",
-							fontSize: 15,
-							marginLeft: 10,
-						}}
-						href="/workout-Handling-View"
+						variant="success"
+						style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+						size="lg"
+						href="/workout-handling-view"
 					>
 						{" "}
 						Back to Workout List
@@ -91,26 +88,13 @@ export default function WorkoutHandlingUpdate({match, history}) {
 						}}
 					>
 						<br></br>
-						<Card.Header
-							style={{
-								borderRadius: 45,
-								borderWidth: 2.0,
-								marginTop: 20,
-								paddingInline: 10,
-								background: "white",
-							}}
-						>
-							<div className="Sheader">
-								{" "}
-								<h3>Update Workout</h3>
-							</div>
-						</Card.Header>
+
 						<Card.Body>
 							<Form onSubmit={updateHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 
 								<Form.Group controlId="workoutID">
-									<Form.Label>workoutID</Form.Label>
+									<Form.Label>Workout ID</Form.Label>
 									<Form.Control
 										type="workoutID"
 										value={workoutID}
@@ -147,18 +131,21 @@ export default function WorkoutHandlingUpdate({match, history}) {
 								<Form.Group controlId="instructionsme">
 									<Form.Label>Instructions</Form.Label>
 									<Form.Control
+										as="textarea"
 										type=" "
 										placeholder="Enter the instructions"
 										value={instructions}
 										onChange={(e) => setInstructions(e.target.value)}
 									/>
 								</Form.Group>
-								<Form.Group controlId="Description">
-									<Form.Label>Description</Form.Label>
+								<Form.Group controlId="Repetitions">
+									<Form.Label>Repetitions</Form.Label>
 									<Form.Control
-										type=""
+										type="number"
 										value={repetitions}
-										placeholder="Enter the repetitions"
+										min="1"
+										max="20"
+										placeholder=""
 										onChange={(e) => setRepetitions(e.target.value)}
 									/>
 								</Form.Group>
@@ -196,13 +183,3 @@ export default function WorkoutHandlingUpdate({match, history}) {
 		);
 	}
 }
-
-
-
-
-
-
-
-
-
-

@@ -58,9 +58,14 @@ const TrainerDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<a href="/workout-Handling-View">
+									<a href="/workout-handling-view">
 										<Button variant="success" size="lg" className="landingbutton">
-											Customer Workout Management
+											Workout Management
+										</Button>
+									</a>
+									<a href="/#">
+										<Button variant="success" size="lg" className="landingbutton">
+											Customer Schedule Management
 										</Button>
 									</a>
 								</div>
