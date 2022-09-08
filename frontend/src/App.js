@@ -27,6 +27,19 @@ import TrainerDashboardPage from "./screens/static/dashboards/TrainerDashboard";
 import AccessDenied from "./components/AccessDenied";
 import Inquiries from "./screens/static/inquiries/Inquiries";
 import CustomerPrint from "./screens/reports/CustomerReports/CustomerPrint";
+import NutritionPlanCreate from "./screens/nutritionPlanManagement/trainer/NutritionPlanCreate";
+import NutritionPlanView from "./screens/nutritionPlanManagement/trainer/NutritionPlanView";
+import NutritionPlanUpdate from "./screens/nutritionPlanManagement/trainer/NutritionPlanUpdate";
+import NutritionPlanAdminView from "./screens/nutritionPlanManagement/admin/NutritionPlanAdminView";
+import NutritionPlanCustomerView from "./screens/nutritionPlanManagement/customer/NutritionPlanCustomerView";
+import FaqCreate from "./screens/FaqManagement/customer/FaqCreate";
+import FaqView from "./screens/FaqManagement/customer/FaqView";
+import FaqUpdate from "./screens/FaqManagement/customer/FaqUpdate";
+import FaqTrainerView from "./screens/FaqManagement/trainer/FaqTrainerView";
+import FaqTrainerUpdate from "./screens/FaqManagement/trainer/FaqTrainerUpdate";
+import AddProgress from "./screens/customerProgressManagement/AddProgress";
+import ProgressPrint from "./screens/reports/ProgressReports/ProgressPrint";
+import { AboutUs } from "./screens/static/aboutUs/AboutUs";
 
 import WorkoutHandlingCreate from "./screens/workoutManagement/workoutHandlingCreate";
 import WorkoutHandlingView from "./screens/workoutManagement/WorkoutHandlingView";
@@ -61,7 +74,19 @@ const App = () => {
 				<Route path="/bmi-calculator" component={CalculateBMIScreen} exact />
 				<Route path="/contactus" component={Inquiries} exact />
 				<Route path="/admin-customer-report" component={CustomerPrint} exact />
-
+				<Route path="/nutrition-plan-create-trainer" component={NutritionPlanCreate} exact />
+				<Route path="/nutrition-plan-trainer-view" component={NutritionPlanView} exact />
+				<Route path="/nutrition-plan/:id" component={NutritionPlanUpdate} exact />
+				<Route path="/nutrition-plan-admin-view" component={NutritionPlanAdminView} exact />
+				<Route path="/nutrition-plan-customer-view" component={NutritionPlanCustomerView} exact />
+				<Route path="/faq-create-customer" component={FaqCreate} exact />
+				<Route path="/faq-customer-view" component={FaqView} exact />
+				<Route path="/faq/:id" component={FaqUpdate} exact />
+				<Route path="/faq-trainer-view" component={FaqTrainerView} exact />
+				<Route path="/faq-trainer/:id" component={FaqTrainerUpdate} exact />
+				<Route path="/progress-create-customer" component={AddProgress} exact />
+				<Route path="/progress-customer-report" component={ProgressPrint} exact />
+				<Route path="/aboutUs" component={AboutUs} exact />
 				<Route path="/workout-handling-create" component={WorkoutHandlingCreate} exact />
 				<Route path="/workout-handling-view" component={WorkoutHandlingView} exact />
 				<Route path="/workout-handling/:id" component={WorkoutHandlingUpdate} exact />

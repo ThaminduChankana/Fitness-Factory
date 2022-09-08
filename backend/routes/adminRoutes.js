@@ -15,6 +15,7 @@ const {
 	registerCustomer,
 	getCustomerCount,
 } = require("../controllers/customerController");
+const { getNutritionPlans } = require("../controllers/nutritionPlanController");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
@@ -44,5 +45,7 @@ router.route("/customers").get(protect, getCustomers);
 router.route("/customers/count").get(protect, getCustomerCount);
 
 
+//Routes for admin nutrition plan operations
+router.route("/nutrition_plan/get").get(protect, getNutritionPlans);
 
 module.exports = router;

@@ -1,0 +1,6 @@
+.nutritonPlanView {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809480/images/nutrition-plan-customer_ucav25.jpg");
+	background-position: center;
+	background-size: cover;
+}

@@ -38,6 +38,25 @@ import {
 	workoutHandlingDeleteReducer,
 } from "./reducers/workoutReducers";
 
+import {
+	nutritionPlanCreateReducer,
+	nutritionPlanListReducer,
+	nutritionPlanUpdateReducer,
+	nutritionPlanDeleteReducer,
+	nutritionPlanListAdminReducer,
+} from "./reducers/nutritionPlanReducer";
+
+import {
+	faqCreateReducer,
+	faqListReducer,
+	faqUpdateReducer,
+	faqListTrainerReducer,
+	faqUpdateReducerForTrainer,
+	faqDeleteReducer,
+} from "./reducers/faqReducer";
+
+import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -60,6 +79,19 @@ const reducer = combineReducers({
 	customerDelete: customerDeleteReducer,
 	customerViewById: customerViewByIdReducer,
 	customerUpdateById: customerUpdateByIdReducer,
+	nutritionPlanList: nutritionPlanListReducer,
+	nutritionPlanCreate: nutritionPlanCreateReducer,
+	nutritionPlanUpdate: nutritionPlanUpdateReducer,
+	nutritionPlanDelete: nutritionPlanDeleteReducer,
+	nutritionPlanAdminList: nutritionPlanListAdminReducer,
+	faqList: faqListReducer,
+	faqCreate: faqCreateReducer,
+	faqUpdate: faqUpdateReducer,
+	faqDelete: faqDeleteReducer,
+	faqTrainerList: faqListTrainerReducer,
+	faqTrainerUpdate: faqUpdateReducerForTrainer,
+	progressList: progressListReducer,
+	progressCreate: progressCreateReducer,
 	list_Workout_Handling: workoutHandlingListReducer,
 	Workout_Handling_Create: workoutHandlingCreateReducer,
 	workoutHandlingUpdate: workoutHandlingUpdateReducer,
