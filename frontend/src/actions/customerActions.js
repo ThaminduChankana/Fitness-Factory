@@ -121,7 +121,6 @@ export const customerRegister =
 			setTimeout(function () {
 				window.location.href = "/admin-customers";
 			}, 2000);
-
 		} catch (error) {
 			dispatch({
 				type: CUSTOMER_REGISTER_FAIL,

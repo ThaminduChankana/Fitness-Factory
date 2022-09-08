@@ -100,7 +100,6 @@ export const adminRegister = (name, dob, nic, telephone, address, email, passwor
 		setTimeout(function () {
 			window.location.href = "/admin";
 		}, 2000);
-
 	} catch (error) {
 		dispatch({
 			type: ADMIN_REGISTER_FAIL,

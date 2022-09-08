@@ -1,0 +1,39 @@
+.faqCreate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809462/images/faq-create_aipbby.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.faqUpdate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809454/images/customer-faq-update_minrdj.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.faqTrainerUpdate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809543/images/trainer-faq-update_wcug7m.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.progressCreate {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660809440/images/add-progress_s8kkwf.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.customerFaqView {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660815866/images/customer-faq-view_k66yjz.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.trainerFaqView {
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660816305/images/faq-trainer-view_f5yx0g.jpg");
+	background-position: center;
+	background-size: cover;
+}
