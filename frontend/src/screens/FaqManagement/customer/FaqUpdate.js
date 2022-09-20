@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFaqAction, updateFaqAction } from "../../../actions/faqAction";
+import { updateFaqAction } from "../../../actions/faqAction";
 import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
 import { authHeader } from "../../../actions/customerActions";
-import swal from "sweetalert";
 import MainScreen from "../../../components/MainScreen";
 import "./faq.css";
 
@@ -24,34 +23,9 @@ export default function FaqUpdate({ match, history }) {
 	const faqDelete = useSelector((state) => state.faqDelete);
 	const { loading: loadingDelete, error: errorDelete } = faqDelete;
 
-	const deleteHandler = (id) => {
-		swal({
-			title: "Are you sure?",
-			text: "Once deleted, you will not be able to recover these details!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-			.then((willDelete) => {
-				if (willDelete) {
-					dispatch(deleteFaqAction(id));
-					swal({
-						title: "Success!",
-						text: "Deleted FAQ Successfully",
-						icon: "success",
-						timer: 2000,
-						button: false,
-					});
-					history.push("/faq-customer-view");
-				}
-			})
-			.catch((err) => {
-				swal({
-					title: "Error!",
-					text: "Couldn't Delete FAQ",
-					type: "error",
-				});
-			});
+	const resetHandler = () => {
+		setQuestionType("");
+		setQuestionDescription("");
 	};
 
 	useEffect(() => {
@@ -78,22 +52,16 @@ export default function FaqUpdate({ match, history }) {
 					<br></br>
 					<br></br>
 					<Button
+						variant="success"
 						style={{
-							padding: "8px",
-							fontSize: "15px",
-							fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-							width: "150px",
-							backgroundColor: "#29C379",
-							borderBlockColor: "#4D5551",
-							color: "#000000",
-							fontWeight: 700,
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
 						}}
-						variant="primary"
-						className="logoutBtn"
 						href="/faq-customer-view"
 					>
-						Back To List
+						{" "}
+						Back To FAQ List
 					</Button>
 					<br></br>
 					<br></br>
@@ -103,10 +71,10 @@ export default function FaqUpdate({ match, history }) {
 							width: "60%",
 							borderWidth: 0,
 							padding: 15,
-							background: "black",
-							borderRadius: 10,
 							outline: "none",
 							marginLeft: 300,
+							background: "rgba(231, 238, 238, 0.8)",
+							borderRadius: 45,
 						}}
 					>
 						<Card.Body>
@@ -119,7 +87,6 @@ export default function FaqUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Question Type
@@ -148,7 +115,6 @@ export default function FaqUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 20,
-											color: "white",
 										}}
 									>
 										Question Description
@@ -175,9 +141,9 @@ export default function FaqUpdate({ match, history }) {
 									style={{ fontSize: 20, marginTop: 10 }}
 									className="mx-2"
 									variant="danger"
-									onClick={() => deleteHandler(match.params.id)}
+									onClick={() => resetHandler()}
 								>
-									Delete
+									Reset
 								</Button>
 							</Form>
 						</Card.Body>
