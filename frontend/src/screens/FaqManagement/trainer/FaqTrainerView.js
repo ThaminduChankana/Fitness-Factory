@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,25 +32,41 @@ export default function FaqTrainerView() {
 				<br />
 				<MainScreen title="FAQ List">
 					<br />
-					<br />
-					<br />
-					<div className="search" style={{ marginTop: 5 }}>
-						<Form inline>
-							<input
-								type="text"
-								placeholder="Search..."
-								onChange={inputHandler}
+					<Row>
+						<Col>
+							<Button
+								variant="success"
 								style={{
-									width: 260,
-									height: 40,
-									borderRadius: 50,
-									padding: "10px",
-									paddingLeft: "15px",
-									marginLeft: 900,
+									float: "left",
+									marginTop: 5,
+									fontSize: 15,
 								}}
-							/>
-						</Form>
-					</div>
+								href="/trainer"
+							>
+								{" "}
+								Back To Dashboard
+							</Button>
+						</Col>
+						<Col>
+							<div className="search" style={{ marginTop: 5 }}>
+								<Form inline>
+									<input
+										type="text"
+										placeholder="Search..."
+										onChange={inputHandler}
+										style={{
+											width: 260,
+											height: 40,
+											borderRadius: 50,
+											padding: "10px",
+											paddingLeft: "15px",
+											marginLeft: 900,
+										}}
+									/>
+								</Form>
+							</div>
+						</Col>
+					</Row>
 					<br />
 					<br />
 					<br />
@@ -149,7 +165,7 @@ export default function FaqTrainerView() {
 												{faq.reply}
 											</td>
 											<td>
-												<Button style={{ width: "90px", fontSize: 15 }} href={`/faq-trainer/${faq._id}`} variant="dark">
+												<Button style={{ width: "90px", fontSize: 15 }} href={`/faq-trainer/${faq._id}`}>
 													Reply
 												</Button>
 											</td>
