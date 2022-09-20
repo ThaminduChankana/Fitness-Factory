@@ -60,9 +60,17 @@ const TrainerDashboardPage = ({ history }) => {
 								<div>
 									<a href="/">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
-											Customer Workout Management
+											Workout Management
 										</Button>
 									</a>
+									<a href="/">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
+											Customer Schedule Management
+										</Button>
+									</a>
+								</div>
+								<br></br>
+								<div>
 									<a href="/faq-trainer-view">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Q & A Management
@@ -103,3 +111,4 @@ const TrainerDashboardPage = ({ history }) => {
 };
 
 export default TrainerDashboardPage;
+

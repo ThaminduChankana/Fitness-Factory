@@ -73,22 +73,14 @@ const AdminDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/nutrition-plan-admin-view">
-										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
-											Meal Plan Management
-										</Button>
-									</Link>
-								</div>
-								<br></br>
-								<div>
 									<Link to="/">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Employee Leave Management
 										</Button>
 									</Link>
-									<Link to="/">
+									<Link to="/nutrition-plan-admin-view">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
-											Workout Management
+											Meal Plan Management
 										</Button>
 									</Link>
 								</div>
