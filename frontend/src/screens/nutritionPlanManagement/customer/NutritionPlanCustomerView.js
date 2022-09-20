@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Card, Form, Row, Col } from "react-bootstrap";
+import { Button, Card, Form, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { authHeader } from "../../../actions/customerActions";
 import MainScreen from "../../../components/MainScreen";
-import { Link } from "react-router-dom";
 import "./nutritionPlanCustomer.css";
 
 export default function NutritionPlanCustomerView({ match, history }) {
@@ -45,31 +44,15 @@ export default function NutritionPlanCustomerView({ match, history }) {
 				<MainScreen title="My Nutrition Plan">
 					<br></br>
 					<br></br>
-					<Row>
-						<Col>
-							<Link to="/progress-customer-report">
-								<Button
-									style={{
-										padding: "8px",
-										fontSize: "15px",
-										fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-										width: "150px",
-										backgroundColor: "#29C379",
-										borderBlockColor: "#4D5551",
-										color: "#000000",
-										fontWeight: 700,
-										marginLeft: 820,
-									}}
-									variant="primary"
-									className="logoutBtn"
-									href="/progress-customer-report"
-								>
-									My Progress
-								</Button>
-							</Link>
-						</Col>
-					</Row>
+					<ButtonGroup variant="success" className="mb-2" size="lg" style={{ width: "81%", marginLeft: 50 }}>
+						<Button variant="success" href="/customer">
+							Back To Dashboard
+						</Button>
+
+						<Button variant="success" href="/progress-customer-report">
+							My Progress
+						</Button>
+					</ButtonGroup>
 					<br></br>
 					<br></br>
 					<br></br>
