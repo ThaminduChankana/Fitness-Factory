@@ -68,23 +68,18 @@ export default function NutritionPlanCreate({ history }) {
 					<br></br>
 					<br></br>
 					<Button
+						variant="success"
 						style={{
-							padding: "8px",
-							fontSize: "15px",
-							fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-							width: "150px",
-							backgroundColor: "#29C379",
-							borderBlockColor: "#4D5551",
-							color: "#000000",
-							fontWeight: 700,
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
 						}}
-						variant="primary"
-						className="logoutBtn"
 						href="/nutrition-plan-trainer-view"
 					>
-						Back To List
+						{" "}
+						Back to Plan List
 					</Button>
+					<br></br>
 					<br></br>
 					<br></br>
 					<br></br>

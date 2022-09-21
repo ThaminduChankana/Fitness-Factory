@@ -1,11 +1,12 @@
 import { useHistory } from "react-router-dom";
-import { Form, Card, Accordion, Row, Col } from "react-bootstrap";
+import { Form, Card, Accordion, Row, Col, Button } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listNutritionPlansAdmin } from "../../../actions/nutritionPlanAction";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import MainScreen from "../../../components/MainScreen";
 
 export default function NutritionPlanAdminView() {
@@ -50,6 +51,18 @@ export default function NutritionPlanAdminView() {
 							/>
 						</Form>
 					</div>
+					<br></br>
+					<div>
+						<Col>
+							<Link to="/admin">
+								<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
+									Back to Dashboard
+								</Button>
+							</Link>
+						</Col>
+					</div>
+					<br></br>
+					<br></br>
 					<br></br>
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{loading && <Loading />}

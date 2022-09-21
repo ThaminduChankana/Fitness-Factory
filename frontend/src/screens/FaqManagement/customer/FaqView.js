@@ -1,5 +1,5 @@
-import { useHistory } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { Form, Button, Col, Row } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,52 +69,44 @@ export default function FaqView() {
 			<div style={{ minHeight: 700 }} className="customerFaqView">
 				<br></br>
 				<MainScreen title="FAQ List">
-					<br></br>
-					<br></br>
-
-					<Row>
-						<Col>
-							<Button
+					<div className="search" style={{ marginTop: 5 }}>
+						<Form inline>
+							<input
+								type="text"
+								placeholder="Search..."
+								onChange={inputHandler}
 								style={{
-									padding: "8px",
-									fontSize: "15px",
-									fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-									width: "150px",
-									backgroundColor: "#29C379",
-									borderBlockColor: "#4D5551",
-									color: "#000000",
-									fontWeight: 700,
+									width: 260,
+									height: 40,
+									borderRadius: 50,
+									padding: "10px",
+									paddingLeft: "15px",
+									marginLeft: 900,
 								}}
-								variant="primary"
-								className="logoutBtn"
-								href="/faq-create-customer"
-							>
-								+ New FAQ
-							</Button>
-						</Col>
-						<Col>
-							<div className="search" style={{ marginTop: 5 }}>
-								<Form inline>
-									<input
-										type="text"
-										placeholder="Search..."
-										onChange={inputHandler}
-										style={{
-											width: 260,
-											height: 40,
-											borderRadius: 50,
-											padding: "10px",
-											paddingLeft: "15px",
-											marginLeft: 300,
-										}}
-									/>
-								</Form>
-							</div>
-						</Col>
-					</Row>
-					<br />
-					<br />
+							/>
+						</Form>
+					</div>
+					<br></br>
+					<br></br>
+					<div>
+						<Row>
+							<Col>
+								<Link to="/customer">
+									<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
+										Back to Dashboard
+									</Button>
+								</Link>
+							</Col>
+							<Col>
+								<Link to="/faq-create-customer">
+									<Button variant="success" style={{ marginLeft: 400, marginBottom: 6, fontSize: 15 }} size="lg">
+										+ Create New FAQ
+									</Button>
+								</Link>
+							</Col>
+						</Row>
+					</div>
+
 					<br />
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loadingDelete && <Loading />}
@@ -197,7 +189,7 @@ export default function FaqView() {
 												{faq.reply}
 											</td>
 											<td>
-												<Button style={{ width: "70px", fontSize: 18 }} href={`/faq/${faq._id}`} variant="dark">
+												<Button style={{ width: "70px", fontSize: 18 }} href={`/faq/${faq._id}`}>
 													Edit
 												</Button>
 
