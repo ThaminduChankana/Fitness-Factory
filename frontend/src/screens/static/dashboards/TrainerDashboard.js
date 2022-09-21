@@ -111,4 +111,3 @@ const TrainerDashboardPage = ({ history }) => {
 };
 
 export default TrainerDashboardPage;
-

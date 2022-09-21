@@ -41,6 +41,7 @@ import AddProgress from "./screens/customerProgressManagement/AddProgress";
 import ProgressPrint from "./screens/reports/ProgressReports/ProgressPrint";
 import { AboutUs } from "./screens/static/aboutUs/AboutUs";
 import LoginSelectorPage from "./screens/static/loginSelector/LoginSelectorPage";
+import HomePage from "./screens/static/homePage/HomePage";
 
 const App = () => {
 	return (
@@ -85,6 +86,7 @@ const App = () => {
 				<Route path="/progress-customer-report" component={ProgressPrint} exact />
 				<Route path="/aboutus" component={AboutUs} exact />
 				<Route path="/login-select" component={LoginSelectorPage} exact />
+				<Route path="/" component={HomePage} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
