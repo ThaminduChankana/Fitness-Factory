@@ -69,32 +69,8 @@ export default function NutritionPlanView() {
 				<br></br>
 				<br></br>
 				<MainScreen title="Nutrition Plan List">
-					<br></br>
 					<div>
 						<Row>
-							<Col>
-								<Link to="/nutrition-plan-create-trainer">
-									<Button
-										style={{
-											padding: "8px",
-											fontSize: "18px",
-											fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-											width: "150px",
-											backgroundColor: "#29C379",
-											borderBlockColor: "#4D5551",
-											color: "#000000",
-											fontWeight: 700,
-											marginLeft: 10,
-										}}
-										variant="primary"
-										className="logoutBtn"
-										href="/nutrition-plan-create-trainer"
-									>
-										+ New Plan
-									</Button>
-								</Link>
-							</Col>
 							<Col>
 								<div className="search" style={{ marginTop: 5, marginLeft: 160 }}>
 									<Form inline>
@@ -109,6 +85,7 @@ export default function NutritionPlanView() {
 												padding: "10px",
 												paddingLeft: "15px",
 												fontSize: 15,
+												marginLeft: 580,
 											}}
 										/>
 									</Form>
@@ -116,7 +93,30 @@ export default function NutritionPlanView() {
 							</Col>
 						</Row>
 					</div>
-					<br />
+					<br></br>
+					<br></br>
+					<div>
+						<Row>
+							<Col>
+								<Link to="/trainer">
+									<Button
+										variant="success"
+										style={{ marginLeft: 10, marginBottom: 6, float: "left", fontSize: 15 }}
+										size="lg"
+									>
+										Back to Dashboard
+									</Button>
+								</Link>
+							</Col>
+							<Col>
+								<Link to="/nutrition-plan-create-trainer">
+									<Button variant="success" style={{ marginLeft: 260, marginBottom: 6, fontSize: 15 }} size="lg">
+										+ Create New Plan
+									</Button>
+								</Link>
+							</Col>
+						</Row>
+					</div>
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loadingDelete && <Loading />}
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
@@ -186,7 +186,6 @@ export default function NutritionPlanView() {
 													color: "white",
 													fontSize: 15,
 												}}
-												variant="dark"
 												href={`/nutrition-plan/${nutritionPlan._id}`}
 											>
 												Edit

@@ -27,7 +27,7 @@ function Header({ setSearch }) {
 							HOME
 						</Button>
 
-						<Button variant="" style={{ color: "#29C379", fontSize: "20px", marginLeft: "35px" }} href="/aboutUs">
+						<Button variant="" style={{ color: "#29C379", fontSize: "20px", marginLeft: "35px" }} href="/aboutus">
 							ABOUT US
 						</Button>
 

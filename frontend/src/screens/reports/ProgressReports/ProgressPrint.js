@@ -43,7 +43,6 @@ const ProgressPrint = () => {
 						<Button
 							style={{ marginLeft: 780, left: "70%", positon: "center", width: "15%", fontSize: 12 }}
 							onClick={handlePrint}
-							variant="dark"
 						>
 							Generate PDF
 						</Button>

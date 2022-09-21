@@ -18,6 +18,10 @@ export default function FaqTrainerUpdate({ match, history }) {
 	const faqTrainerUpdate = useSelector((state) => state.faqTrainerUpdate);
 	const { loading, error } = faqTrainerUpdate;
 
+	const resetHandler = () => {
+		setReply("");
+	};
+
 	useEffect(() => {
 		const fetching = async () => {
 			const { data } = await axios.get(`/user/trainer/faq/get/${match.params.id}`, {
@@ -49,33 +53,30 @@ export default function FaqTrainerUpdate({ match, history }) {
 					<br></br>
 
 					<Button
+						variant="success"
 						style={{
-							padding: "8px",
-							fontSize: "15px",
-							fontFamily: `"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-									Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-							width: "150px",
-							backgroundColor: "#29C379",
-							borderBlockColor: "#4D5551",
-							color: "#000000",
-							fontWeight: 700,
+							float: "left",
+							marginTop: 5,
+							fontSize: 15,
 						}}
-						variant="primary"
-						className="logoutBtn"
 						href="/faq-trainer-view"
 					>
-						Back To List
+						{" "}
+						Back To FAQ List
 					</Button>
-
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
 					<Card
 						style={{
 							width: "60%",
 							borderWidth: 0,
 							padding: 15,
-							background: "black",
-							borderRadius: 10,
 							outline: "none",
 							marginLeft: 300,
+							background: "rgba(231, 238, 238, 0.8)",
+							borderRadius: 45,
 						}}
 					>
 						<Card.Body>
@@ -86,10 +87,9 @@ export default function FaqTrainerUpdate({ match, history }) {
 									<Form.Label
 										style={{
 											fontSize: 25,
-											color: "white",
 										}}
 									>
-										Edit
+										Reply
 									</Form.Label>
 									<br></br>
 									<br></br>
@@ -109,6 +109,14 @@ export default function FaqTrainerUpdate({ match, history }) {
 								{loading && <Loading size={50} />}
 								<Button style={{ fontSize: 15, marginTop: 10 }} type="submit" variant="primary">
 									Submit
+								</Button>
+								<Button
+									style={{ fontSize: 15, marginTop: 10 }}
+									className="mx-2"
+									onClick={resetHandler}
+									variant="danger"
+								>
+									Reset
 								</Button>
 							</Form>
 						</Card.Body>
