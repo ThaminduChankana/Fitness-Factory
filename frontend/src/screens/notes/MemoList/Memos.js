@@ -1,38 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { Accordion, Button, Card, Row, Col, Form } from "react-bootstrap";
-import MainScreen from "../../../../components/MainScreen";
-import { Link, useHistory } from "react-router-dom";
+import { Accordion, Button, Card, Row, Col, Form, Badge } from "react-bootstrap";
+import MainScreen from "../../../components/MainScreen";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { trainerDeleteProfile, trainersList } from "../../../../actions/trainerActions";
-import Loading from "../../../../components/Loading";
-import ErrorMessage from "./../../../../components/ErrorMessage";
+import { deleteNoteAction, listNotes } from "../../../actions/notesActions";
+import Loading from "../../../components/Loading";
+import ErrorMessage from "../../../components/ErrorMessage";
 import swal from "sweetalert";
+import "./lists.css";
 
-const TrainerListForAdminScreen = () => {
+const Memos = () => {
 	const dispatch = useDispatch();
 
-	const trainerList = useSelector((state) => state.trainerList);
-	const { loading, trainers, error } = trainerList;
+	const noteList = useSelector((state) => state.noteList);
+	const { loading, notes, error } = noteList;
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const trainerUpdate = useSelector((state) => state.trainerUpdate);
-	const { success: successUpdate } = trainerUpdate;
+	const noteCreate = useSelector((state) => state.noteCreate);
+	const { success: successCreate } = noteCreate;
 
-	const trainerDelete = useSelector((state) => state.trainerDelete);
-	const { loading: loadingDelete, error: errorDelete, success: successDelete } = trainerDelete;
+	const noteUpdate = useSelector((state) => state.noteUpdate);
+	const { success: successUpdate } = noteUpdate; //taking out note update state from redux
 
 	const [search, setSearch] = useState("");
 
-	const history = useHistory();
-
-	useEffect(() => {
-		dispatch(trainersList());
-		if (!adminInfo) {
-			history.push("/access-denied");
-		}
-	}, [dispatch, history, adminInfo, trainerDelete, successDelete, successUpdate]);
+	const noteDelete = useSelector((state) => state.noteDelete);
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = noteDelete;
 
 	const deleteHandler = (id) => {
 		swal({
@@ -44,10 +39,10 @@ const TrainerListForAdminScreen = () => {
 		})
 			.then((willDelete) => {
 				if (willDelete) {
-					dispatch(trainerDeleteProfile(id));
+					dispatch(deleteNoteAction(id));
 					swal({
 						title: "Success!",
-						text: "Deleted Account Successfully",
+						text: "Deleted Note Successfully",
 						icon: "success",
 						timer: 2000,
 						button: false,
@@ -57,19 +52,26 @@ const TrainerListForAdminScreen = () => {
 			.catch((err) => {
 				swal({
 					title: "Error!",
-					text: "Couldn't Delete Account",
+					text: "Couldn't Delete Note",
 					type: "error",
 				});
 			});
 	};
-
 	const searchHandler = (e) => {
 		setSearch(e.target.value.toLowerCase());
 	};
 
+	const history = useHistory();
+
+	useEffect(() => {
+		dispatch(listNotes());
+		if (!adminInfo) {
+			history.push("/access-denied");
+		}
+	}, [dispatch, successCreate, history, adminInfo, successUpdate, successDelete]);
 	if (adminInfo) {
 		return (
-			<div className="trainerList">
+			<div className="notesList">
 				<br></br>
 				<MainScreen title={`Welcome Back ${adminInfo && adminInfo.name}..`}>
 					<Row>
@@ -83,7 +85,7 @@ const TrainerListForAdminScreen = () => {
 									fontStyle: "italic",
 								}}
 							>
-								Trainers List
+								Memos List
 							</h1>
 						</Col>
 						<Col>
@@ -120,35 +122,30 @@ const TrainerListForAdminScreen = () => {
 							</Link>
 						</Col>
 						<Col>
-							<Link to="/trainer-register">
+							<Link to="/admin-notes/create">
 								<Button
 									variant="success"
 									style={{ marginRight: 10, marginBottom: 6, float: "right", fontSize: 15 }}
 									size="lg"
 								>
-									+ Create New Trainer Account
+									+ Create A New Memo
 								</Button>
 							</Link>
 						</Col>
 					</div>
 					<br></br>
 					<br></br>
-
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loading && <Loading />}
 					{loadingDelete && <Loading />}
 					<br></br>
-					{trainers &&
-						trainers
-							.filter(
-								(filteredTrainers) =>
-									filteredTrainers.name.toLowerCase().includes(search.toLowerCase()) ||
-									filteredTrainers.nic.includes(search)
-							)
+					{notes &&
+						notes
+							.filter((filteredTrainers) => filteredTrainers.title.toLowerCase().includes(search.toLowerCase()))
 							.reverse()
-							.map((trainerList) => (
-								<div key={trainerList._id}>
+							.map((note) => (
+								<div key={note._id}>
 									<Accordion>
 										<Card
 											style={{
@@ -184,31 +181,20 @@ const TrainerListForAdminScreen = () => {
 												>
 													<Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
 														<label className="nic" style={{ paddingInline: 20, marginTop: 10, fontSize: 18 }}>
-															Trainer NIC : &emsp;
-															{trainerList.nic}&emsp;
+															Title : &emsp;{note.title}
 														</label>{" "}
-														<br></br>
-														<label className="name" style={{ paddingInline: 20, fontSize: 18 }}>
-															Trainer Name : &emsp;
-															{trainerList.name}
-														</label>
 													</Accordion.Toggle>
 												</span>
-												<div>
-													<Button
-														style={{ marginTop: 20, fontSize: 15 }}
-														href={`/admin-trainer-edit/${trainerList._id}`}
-													>
+
+												<div style={{ marginTop: 5 }}>
+													<Button style={{ fontSize: 15 }} href={`/admin-notes-edit/${note._id}`}>
 														Edit
 													</Button>
-												</div>
-												&emsp;
-												<div>
 													<Button
-														style={{ marginTop: 20, fontSize: 15 }}
+														style={{ fontSize: 15 }}
 														variant="danger"
 														className="mx-2"
-														onClick={() => deleteHandler(trainerList._id)}
+														onClick={() => deleteHandler(note._id)}
 													>
 														Delete
 													</Button>
@@ -216,41 +202,13 @@ const TrainerListForAdminScreen = () => {
 											</Card.Header>
 											<Accordion.Collapse eventKey="0">
 												<Card.Body>
-													<Row>
-														<Col md={6}>
-															<h5>Name - {trainerList.name}</h5>
-															<h5>Date of Birth - {trainerList.dob}</h5>
-															<h5>Gender - {trainerList.gender}</h5>
-															<h5>NIC - {trainerList.nic}</h5>
-															<h5>Telephone - {trainerList.telephone}</h5>
-															<h5>Address - {trainerList.address}</h5>
-															<h5>Email - {trainerList.email}</h5>
-															<h5>Qualifications - {trainerList.qualifications}</h5>
-															<h5>Experience - {trainerList.yrsexp}</h5>
-														</Col>
-														<Col
-															style={{
-																display: "flex",
-																alignItems: "center",
-																width: "500px",
-																justifyContent: "center",
-															}}
-														>
-															<img
-																tyle={{
-																	width: "100%",
-																	height: "100%",
-																}}
-																src={trainerList.pic}
-																alt={trainerList.name}
-																className="profilePic"
-															/>
-														</Col>
-													</Row>
-													<br></br>
+													<h4>
+														<Badge variant="success">Category - {note.category}</Badge>
+													</h4>
 													<blockquote className="blockquote mb-0">
-														<Card.Footer style={{ borderRadius: 20, background: "white" }} className="text-muted">
-															Registered Date - <cite title="Source Title"> {trainerList.regDate}</cite>
+														<p>{note.content}</p>
+														<Card.Footer style={{ marginBottom: 10, borderRadius: 10 }} className="text-muted">
+															Created on -<cite title="Source Title"> {note.createdAt.substring(0, 10)}</cite>
 														</Card.Footer>
 													</blockquote>
 												</Card.Body>
@@ -273,4 +231,4 @@ const TrainerListForAdminScreen = () => {
 	}
 };
 
-export default TrainerListForAdminScreen;
+export default Memos;
