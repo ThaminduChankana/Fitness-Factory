@@ -22,7 +22,7 @@ const CustomerListForAdminScreen = () => {
 	const { success: successUpdate } = customerUpdate;
 
 	const customerDelete = useSelector((state) => state.customerDelete);
-	const { success: successDelete } = customerDelete;
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = customerDelete;
 
 	const history = useHistory();
 
@@ -125,7 +125,9 @@ const CustomerListForAdminScreen = () => {
 					<br></br>
 
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loading && <Loading />}
+					{loadingDelete && <Loading />}
 					<br></br>
 					{customers &&
 						customers
