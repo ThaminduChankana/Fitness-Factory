@@ -21,7 +21,7 @@ const TrainerListForAdminScreen = () => {
 	const { success: successUpdate } = trainerUpdate;
 
 	const trainerDelete = useSelector((state) => state.trainerDelete);
-	const { error: errorDelete, success: successDelete } = trainerDelete;
+	const { loading: loadingDelete, error: errorDelete, success: successDelete } = trainerDelete;
 
 	const [search, setSearch] = useState("");
 
@@ -137,7 +137,7 @@ const TrainerListForAdminScreen = () => {
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
 					{loading && <Loading />}
-
+					{loadingDelete && <Loading />}
 					<br></br>
 					{trainers &&
 						trainers
