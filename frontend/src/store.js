@@ -51,6 +51,8 @@ import {
 
 import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
 
+import { noteCreateReducer, noteDeleteReducer, noteListReducer, noteUpdateReducer } from "./reducers/notesReducer";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -86,6 +88,10 @@ const reducer = combineReducers({
 	faqTrainerUpdate: faqUpdateReducerForTrainer,
 	progressList: progressListReducer,
 	progressCreate: progressCreateReducer,
+	noteList: noteListReducer,
+	noteCreate: noteCreateReducer,
+	noteUpdate: noteUpdateReducer,
+	noteDelete: noteDeleteReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
