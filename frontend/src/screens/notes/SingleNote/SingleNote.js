@@ -7,7 +7,7 @@ import { deleteNoteAction, updateNoteAction } from "../../../actions/notesAction
 import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
 import swal from "sweetalert";
-import "./SingleNote.css";
+import "./SingleNote.css"
 
 function SingleNote({ match, history }) {
 	const [title, setTitle] = useState();
@@ -15,7 +15,7 @@ function SingleNote({ match, history }) {
 	const [category, setCategory] = useState();
 	const [date, setDate] = useState("");
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(); 
 
 	const noteUpdate = useSelector((state) => state.noteUpdate);
 	const { loading, error } = noteUpdate;
@@ -63,7 +63,7 @@ function SingleNote({ match, history }) {
 
 	useEffect(() => {
 		const fetching = async () => {
-			const { data } = await axios.get(`/user/admin/notes/${match.params.id}`);
+			const { data } = await axios.get(`/user/admin/notes/${match.params.id}`); 
 
 			setTitle(data.title);
 			setContent(data.content);
@@ -74,6 +74,7 @@ function SingleNote({ match, history }) {
 		fetching();
 	}, [match.params.id, date]);
 
+
 	const updateHandler = (e) => {
 		e.preventDefault();
 		dispatch(updateNoteAction(match.params.id, title, content, category));
@@ -82,12 +83,12 @@ function SingleNote({ match, history }) {
 		resetHandler();
 		history.push("/admin-notes");
 	};
-	if (adminInfo) {
-		return (
-			<div className="memoEditBg">
+if(adminInfo){
+	return (
+		<div className="memoEditBg">
 				<br></br>
-				<MainScreen title="Edit Your Memo">
-					<Button
+		<MainScreen title="Edit Your Memo">
+		<Button
 						variant="success"
 						style={{
 							float: "left",
@@ -114,85 +115,81 @@ function SingleNote({ match, history }) {
 							background: "rgba(231, 238, 238, 0.9)",
 						}}
 					>
-						<div className="memoContainer">
+				<div className="memoContainer">
 							<div>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 								{loading && <Loading />}
 							</div>
-							<Form onSubmit={updateHandler}>
-								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-								{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
-								<Form.Group controlId="title">
-									<Form.Label>Title</Form.Label>
-									<Form.Control
-										type="title"
-										placeholder="Enter the title"
-										value={title}
-										onChange={(e) => setTitle(e.target.value)}
-										required
-									/>
-								</Form.Group>
-								<Form.Group controlId="content">
-									<Form.Label>Content</Form.Label>
-									<Form.Control
-										as="textarea"
-										placeholder="Enter the content"
-										rows={4}
-										value={content}
-										onChange={(e) => setContent(e.target.value)}
-										required
-									/>
-								</Form.Group>
-								<Form.Group controlId="content">
-									<Form.Label>Category</Form.Label>
-									<Form.Control
-										type="content"
-										placeholder="Enter the Category"
-										value={category}
-										onChange={(e) => setCategory(e.target.value)}
-										required
-									/>
-								</Form.Group>
-								{loading && <Loading size={50} />}
-								<Button
-									variant="primary"
+					<Form onSubmit={updateHandler}>
+						{loadingDelete && <Loading />}
+						{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+						{errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
+						<Form.Group controlId="title">
+							<Form.Label>Title</Form.Label>
+							<Form.Control
+								type="title"
+								placeholder="Enter the title"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+								required
+							/>
+						</Form.Group>
+
+						<Form.Group controlId="content">
+							<Form.Label>Content</Form.Label>
+							<Form.Control
+								as="textarea"
+								placeholder="Enter the content"
+								rows={4}
+								value={content}
+								onChange={(e) => setContent(e.target.value)}
+								required
+							/>
+						</Form.Group>
+
+						<Form.Group controlId="content">
+							<Form.Label>Category</Form.Label>
+							<Form.Control
+								type="content"
+								placeholder="Enter the Category"
+								value={category}
+								onChange={(e) => setCategory(e.target.value)}required
+							/>
+						</Form.Group>
+						{loading && <Loading size={50} />}
+						<Button variant="primary"
 									type="submit"
 									style={{
 										fontSize: 15,
 										marginTop: 10,
-									}}
-								>
-									Update Note
-								</Button>
-								&emsp;
-								<Button
-									className="mx-2"
-									variant="danger"
+									}}>
+							Update Note
+						</Button>&emsp;
+						<Button className="mx-2" variant="danger"
+									
 									style={{
 										fontSize: 15,
 										marginTop: 10,
-									}}
-									onClick={() => deleteHandler(match.params.id)}
-								>
-									Delete Note
-								</Button>
-							</Form>
-						</div>
-						<Card.Footer className="text-muted" style={{ marginBottom: 10, borderRadius: 10 }}>
-							Updated on - {date.substring(0, 10)}
-						</Card.Footer>
-					</Card>
-				</MainScreen>
-			</div>
-		);
-	} else {
-		return (
-			<div className="denied">
-				<MainScreen />
-				<br></br>
-			</div>
-		);
-	}
+									}} onClick={() => deleteHandler(match.params.id)}>
+							Delete Note
+						</Button>
+					</Form>
+			
+</div>
+				<Card.Footer className="text-muted" style={{ marginBottom: 10, borderRadius: 10 }}>Updated on - {date.substring(0, 10)}</Card.Footer>
+			</Card>
+		</MainScreen>
+		</div>
+	);
+}else {
+	return (
+		<div className="denied">
+			<MainScreen />
+			<br></br>
+		</div>
+	);
+}
+
 }
 
 export default SingleNote;
