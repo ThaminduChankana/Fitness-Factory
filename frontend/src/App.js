@@ -42,6 +42,9 @@ import ProgressPrint from "./screens/reports/ProgressReports/ProgressPrint";
 import { AboutUs } from "./screens/static/aboutUs/AboutUs";
 import LoginSelectorPage from "./screens/static/loginSelector/LoginSelectorPage";
 import HomePage from "./screens/static/homePage/HomePage";
+import CreateNote from "./screens/notes/CreateNote/CreateNote";
+import SingleNote from "./screens/notes/SingleNote/SingleNote";
+import Memos from "./screens/notes/MemoList/Memos";
 
 const App = () => {
 	return (
@@ -87,6 +90,9 @@ const App = () => {
 				<Route path="/aboutus" component={AboutUs} exact />
 				<Route path="/login-select" component={LoginSelectorPage} exact />
 				<Route path="/" component={HomePage} exact />
+				<Route path="/admin-notes" component={Memos} exact />
+				<Route path="/admin-notes/create" component={CreateNote} exact />
+				<Route path="/admin-notes-edit/:id" component={SingleNote} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>

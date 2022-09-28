@@ -84,8 +84,18 @@ const AdminDashboardPage = ({ history }) => {
 										</Button>
 									</Link>
 								</div>
+								<br></br>
+								<div>
+									<Link to="/admin-notes">
+										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
+											Memos
+										</Button>
+									</Link>
+								</div>
+								<br></br>
 							</div>
 							<br></br>
+
 							<br></br>
 						</Card>
 					</div>

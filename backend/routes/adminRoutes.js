@@ -16,6 +16,7 @@ const {
 	getCustomerCount,
 } = require("../controllers/customerController");
 const { getNutritionPlans } = require("../controllers/nutritionPlanController");
+const { getNotes, createNote, getNoteById, updateNote, deleteNote } = require("../controllers/noteController");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
@@ -46,5 +47,10 @@ router.route("/customers/count").get(protect, getCustomerCount);
 
 //Routes for admin nutrition plan operations
 router.route("/nutrition_plan/get").get(protect, getNutritionPlans);
+
+//Routes for admin to create notes
+router.route("/notes").get(protect, getNotes);
+router.route("/notes/create").post(protect, createNote);
+router.route("/notes/:id").get(getNoteById).put(protect, updateNote).delete(protect, deleteNote);
 
 module.exports = router;
