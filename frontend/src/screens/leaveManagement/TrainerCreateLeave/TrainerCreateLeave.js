@@ -88,14 +88,13 @@ const TrainerCreateLeave = () => {
 					<br></br>
 					<br></br>
 					<Card
-						className="profileCont"
+						
 						style={{
 							borderRadius: 45,
-							borderWidth: 2.0,
+							borderWidth: 5.0,
 							marginTop: 20,
 							paddingInline: 10,
-							paddingLeft: 25,
-							paddingRight: 25,
+							paddingLeft: 0,
 							background: "rgba(231, 238, 238, 0.8)",
 						}}
 					>
@@ -111,7 +110,12 @@ const TrainerCreateLeave = () => {
 								<Col md={6}>
 									<Form onSubmit={submitHandler}>
 										<Form.Group controlId="trainerName">
-											<Form.Label>FullName</Form.Label>
+											<Form.Label 
+											style={{
+											       fontSize: 25,
+												  
+										}}
+									       >FullName</Form.Label>
 											<Form.Control
 												type="name"
 												value={fullName}
@@ -119,10 +123,19 @@ const TrainerCreateLeave = () => {
 												onChange={(e) => setfullName(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="trainerFormBasicNic">
-											<Form.Label>NIC</Form.Label>
+											<Form.Label style={{
+											       fontSize: 25,
+												  
+										    }}>
+												NIC</Form.Label>
 											<Form.Control
 												type="text"
 												value={nic}
@@ -130,16 +143,29 @@ const TrainerCreateLeave = () => {
 												onChange={(e) => setnic(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<div className="form-group">
-											<label className="trainerGender">division</label>
+											<label style={{
+											       fontSize: 25,
+												  
+										}} className="trainerGender">division</label>
 											<select
 												className="form-control"
 												id="trainerdivision"
 												value={division}
 												onChange={(e) => setdivision(e.target.value)}
 												required
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											>
 												<option>Select division</option>
 												<option value={division.Sick}>Sick</option>
@@ -151,52 +177,88 @@ const TrainerCreateLeave = () => {
 											</select>
 										</div>
 										<Form.Group controlId="trainerFormBasicTelephone">
-											<Form.Label>Number of days leave apply</Form.Label>
+											<Form.Label style={{
+											       fontSize: 25,
+												  
+										}}>Number of days leave apply</Form.Label>
 											<Form.Control
 												type="number"
 												value={number_of_days}
 												placeholder="Enter Number"
 												onChange={(e) => setnumber_of_days(e.target.value)}
 												required
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 												maxLength={10}
 											/>
 										</Form.Group>
 										
 										<Form.Group controlId="trainerFormBasicEmail">
-											<Form.Label>Date for commencing leave</Form.Label>
+											<Form.Label style={{
+											       fontSize: 25,
+												  
+										 }}>
+											Date for commencing leave</Form.Label>
 											<Form.Control
 												type="date"
 												value={date_for_commencing_leave}
 												placeholder="Enter date"
 												onChange={(e) => setdate_for_commencing_leave(e.target.value)}
 												required
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="formBasicPassword">
-											<Form.Label>Date for resuming duties</Form.Label>
+											<Form.Label style={{
+											       fontSize: 25,
+												  
+										}}>
+											Date for resuming duties</Form.Label>
 											<Form.Control
 												type="date"
 												value={date_for_resuming_duties}
 												placeholder="Enter date"
 												onChange={(e) => setdate_for_resuming_duties(e.target.value)}
 												required
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="confirmPassword">
-											<Form.Label>Reasons for leave</Form.Label>
+											<Form.Label style={{
+											       fontSize: 25,
+												  
+										 }}>
+											Reasons for leave</Form.Label>
 											<Form.Control
-												type="textarea"
+												as="textarea"
 												value={reasons_for_leave}
 												placeholder="Enter Reason"
 												onChange={(e) => setreasons_for_leave(e.target.value)}
+												style={{
+													height: 80,
+													fontSize: 18,
+													width:780
+												}}
 											/>
+										
 										</Form.Group>
 										
 										<Button
 											variant="primary"
 											type="submit"
 											style={{
-												fontSize: 15,
+												fontSize: 20,
 												marginTop: 10,
 											}}
 										>
@@ -207,7 +269,7 @@ const TrainerCreateLeave = () => {
 											variant="danger"
 											onClick={resetHandler}
 											style={{
-												fontSize: 15,
+												fontSize: 20,
 												marginTop: 10,
 											}}
 										>
@@ -218,7 +280,7 @@ const TrainerCreateLeave = () => {
 											variant="info"
 											onClick={demoHandler}
 											style={{
-												fontSize: 15,
+												fontSize: 20,
 												marginTop: 10,
 											}}
 										>

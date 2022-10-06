@@ -2,12 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	margin: 20px;
-	margin-left: 230px;
+	margin-left: 90px;
    
 }
-.profileCont {
-	background: rgba(196, 201, 201, 0.5);
-}
+
 .trainerLeaveCreateBg{
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1662270858/TrainerLeave_prkwkf.jpg");
 	background-position: center;
