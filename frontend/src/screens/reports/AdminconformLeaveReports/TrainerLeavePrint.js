@@ -21,18 +21,6 @@ const TrainerLeavePrint = () => {
 				<MainScreen>
 					<div style={{ minHeight: 700 }}>
 						<br></br>
-						<Button
-							variant="success"
-							style={{
-								float: "left",
-								marginTop: 5,
-								fontSize: 15,
-							}}
-							href="/admin-customers"
-						>
-							{" "}
-							Back to Customers List
-						</Button>
 						<br></br>
 
 						<br></br>
