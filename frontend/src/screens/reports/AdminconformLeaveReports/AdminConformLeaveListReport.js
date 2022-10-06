@@ -45,7 +45,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 		return (
 			<div style={{ minHeight: 700 }} className="AdminLeaveReportbg">
 				<br></br>
-				<MainScreen title="Trainer Leave List Report">
+				<MainScreen title="Leave List Report">
 					<div className="search" style={{ marginTop: 5 }}>
 						<Form inline>
 							<input
@@ -58,7 +58,8 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 									borderRadius: 50,
 									padding: "10px",
 									paddingLeft: "15px",
-									marginLeft: 900,
+								    marginLeft:"350px",
+									fontSize:20
 								}}
 							/>
 						</Form>
