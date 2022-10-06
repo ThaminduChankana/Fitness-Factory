@@ -18,12 +18,9 @@ const TrainerLeavePrint = () => {
 	if (adminInfo) {
 		return (
 			<div className="customerReportBg">
-				<MainScreen>
+				<MainScreen title="Admin Conform Leave List">
 					<div style={{ minHeight: 700 }}>
-						<br></br>
-						<br></br>
-
-						<br></br>
+						
 						<Card
 							style={{
 								margin: 50,
@@ -42,7 +39,7 @@ const TrainerLeavePrint = () => {
 
 							<br></br>
 							<Button
-								style={{ marginLeft: "80%", width: "20%", height: "20%" }}
+								style={{ marginLeft: "80%", width: "15%", height: "20%",fontSize:15 }}
 								onClick={handlePrint}
 								variant="success"
 							>
