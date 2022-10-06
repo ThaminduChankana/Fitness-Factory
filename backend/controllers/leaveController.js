@@ -94,6 +94,18 @@ const updateTrainerLeave = asyncHandler(async (req, res) => {
 	}
 });
 
+const deleteTrainerLeave = asyncHandler(async (req, res) => {
+	const leave = await TrainerLeave.findById(req.params.id);
+
+	if (leave) {
+		await leave.remove();
+		res.json({ message: "Leave Removed" });
+	} else {
+		res.status(404);
+		throw new Error("Leave not Found");
+	}
+});
+
 const approveTrainerLeaveByAdmin = asyncHandler(async (req, res) => {
 	const { approved } = req.body;
 
@@ -110,19 +122,6 @@ const approveTrainerLeaveByAdmin = asyncHandler(async (req, res) => {
 	}
 });
 
-
-
-const deleteTrainerLeave = asyncHandler(async (req, res) => {
-	const leave = await TrainerLeave.findById(req.params.id);
-
-	if (leave) {
-		await leave.remove();
-		res.json({ message: "Leave Removed" });
-	} else {
-		res.status(404);
-		throw new Error("Leave not Found");
-	}
-});
 
 module.exports = {
 	getTrainerLeave,
