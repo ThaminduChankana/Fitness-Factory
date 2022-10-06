@@ -45,6 +45,9 @@ import HomePage from "./screens/static/homePage/HomePage";
 import CreateNote from "./screens/notes/CreateNote/CreateNote";
 import SingleNote from "./screens/notes/SingleNote/SingleNote";
 import Memos from "./screens/notes/MemoList/Memos";
+import TrainerLeaveList from "./screens/leaveMangement/TrainerLeaveList/TrainerLeaveList";
+import TrainerCreateLeave from "./screens/leaveMangement/TrainerCreateLeave/TrainerCreateLeave";
+import TrainerUpdateLeave from "./screens/leaveMangement/TrainerUpdateLeave/TrainerUpdateLeave";
 
 const App = () => {
 	return (
@@ -93,6 +96,9 @@ const App = () => {
 				<Route path="/admin-notes" component={Memos} exact />
 				<Route path="/admin-notes/create" component={CreateNote} exact />
 				<Route path="/admin-notes-edit/:id" component={SingleNote} exact />
+				<Route path="/trainerLeave" component={TrainerLeaveList} exact/>
+				<Route path="/createLeave" component={TrainerCreateLeave} exact/>
+				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact/>
 			</main>
 			<Footer />
 		</BrowserRouter>
