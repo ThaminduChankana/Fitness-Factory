@@ -1,12 +1,12 @@
 import { useState,useEffect } from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
-import {updateAdminApproveLeaveAction  } from "../../actions/leaveActions";
-import MainScreen from "../../components/MainScreen";
+import Loading from "../../../components/Loading";
+import ErrorMessage from "../../../components/ErrorMessage";
+import {updateAdminApproveLeaveAction  } from "../../../actions/leaveActions";
+import MainScreen from "../../../components/MainScreen";
 import axios from "axios";
-import {authHeader} from "../../actions/trainerActions"
+import {authHeader} from "../../../actions/trainerActions"
 //import './trainerUpdateLeave.css'
 
  export default function AdminConformApproveOrReject({match}) {

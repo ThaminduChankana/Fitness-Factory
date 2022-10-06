@@ -45,9 +45,11 @@ import HomePage from "./screens/static/homePage/HomePage";
 import CreateNote from "./screens/notes/CreateNote/CreateNote";
 import SingleNote from "./screens/notes/SingleNote/SingleNote";
 import Memos from "./screens/notes/MemoList/Memos";
-import TrainerLeaveList from "./screens/leaveMangement/TrainerLeaveList/TrainerLeaveList";
-import TrainerCreateLeave from "./screens/leaveMangement/TrainerCreateLeave/TrainerCreateLeave";
-import TrainerUpdateLeave from "./screens/leaveMangement/TrainerUpdateLeave/TrainerUpdateLeave";
+import TrainerLeaveList from "./screens/leaveManagement/TrainerLeaveList/TrainerLeaveList";
+import TrainerCreateLeave from "./screens/leaveManagement/TrainerCreateLeave/TrainerCreateLeave";
+import TrainerUpdateLeave from "./screens/leaveManagement/TrainerUpdateLeave/TrainerUpdateLeave";
+import AdminConformLeave from "./screens/leaveManagement/AdminConformLeaveList/AdminConformLeave";
+import AdminConformApproveOrReject from "./screens/leaveManagement/AdminConformApproveOrReject/AdminConformApproveOrReject";
 
 const App = () => {
 	return (
@@ -99,6 +101,9 @@ const App = () => {
 				<Route path="/trainerLeave" component={TrainerLeaveList} exact/>
 				<Route path="/createLeave" component={TrainerCreateLeave} exact/>
 				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact/>
+				<Route path="/adminConformLeave" component={AdminConformLeave}exact/>
+				<Route path="/trainer/trainer_leaves/approve/:id"component={AdminConformApproveOrReject}exact/>
+			   
 			</main>
 			<Footer />
 		</BrowserRouter>

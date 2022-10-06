@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Accordion, Button, Card, Row, Col, Form } from "react-bootstrap";
-import MainScreen from "../../components/MainScreen";
+import MainScreen from "../../../components/MainScreen";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listTrainerLeave } from "../../actions/leaveActions";
-import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
-import { adminConformLeaveActions } from "../../actions/leaveActions";
+import { listTrainerLeave } from "../../../actions/leaveActions";
+import Loading from "../../../components/Loading";
+import ErrorMessage from "../../../components/ErrorMessage";
+import { adminConformLeaveActions } from "../../../actions/leaveActions";
 import * as moment from 'moment';
 
 const AdminConformLeave = () => {
