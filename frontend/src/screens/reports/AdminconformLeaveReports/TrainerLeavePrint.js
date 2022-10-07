@@ -3,8 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useReactToPrint } from "react-to-print";
 import MainScreen from "../../../components/MainScreen";
-import {AdminConformLeaveListReport} from "./AdminConformLeaveListReport";
-
+import { AdminConformLeaveListReport } from "./AdminConformLeaveListReport";
 
 const TrainerLeavePrint = () => {
 	const componentRef = useRef();
@@ -19,9 +18,8 @@ const TrainerLeavePrint = () => {
 	if (adminInfo) {
 		return (
 			<div className="AdminLeaveReportbg">
-				<MainScreen title="Admin Conform Leave List">
+				<MainScreen title="Admin Confirm Leave List">
 					<div style={{ minHeight: 700 }}>
-						
 						<Card
 							style={{
 								margin: 50,
@@ -40,7 +38,7 @@ const TrainerLeavePrint = () => {
 
 							<br></br>
 							<Button
-								style={{ marginLeft: "80%", width: "15%", height: "20%",fontSize:15 }}
+								style={{ marginLeft: "80%", width: "15%", height: "20%", fontSize: 15 }}
 								onClick={handlePrint}
 								variant="success"
 							>

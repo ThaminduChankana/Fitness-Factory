@@ -100,15 +100,13 @@ const App = () => {
 				<Route path="/admin-notes" component={Memos} exact />
 				<Route path="/admin-notes/create" component={CreateNote} exact />
 				<Route path="/admin-notes-edit/:id" component={SingleNote} exact />
-				<Route path="/trainerLeave" component={TrainerLeaveList} exact/>
-				<Route path="/createLeave" component={TrainerCreateLeave} exact/>
-				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact/>
-				<Route path="/adminConformLeave" component={AdminConformLeave}exact/>
-				<Route path="/trainer/trainer_leaves/approve/:id"component={AdminConformApproveOrReject}exact/>
-			    <Route path="/admin-leave-report"component={TrainerLeavePrint}exact/>
-				<Route path="/tearms-and-conditions"component={TermsAndCondition}exact>	
-				</Route>
-
+				<Route path="/trainerLeave" component={TrainerLeaveList} exact />
+				<Route path="/createLeave" component={TrainerCreateLeave} exact />
+				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact />
+				<Route path="/adminConformLeave" component={AdminConformLeave} exact />
+				<Route path="/trainer/trainer_leaves/approve/:id" component={AdminConformApproveOrReject} exact />
+				<Route path="/admin-leave-report" component={TrainerLeavePrint} exact />
+				<Route path="/tearms-and-conditions" component={TermsAndCondition} exact></Route>
 			</main>
 			<Footer />
 		</BrowserRouter>

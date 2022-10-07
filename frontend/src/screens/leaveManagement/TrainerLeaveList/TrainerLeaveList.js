@@ -4,47 +4,42 @@ import MainScreen from "../../../components/MainScreen";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listTrainerLeave } from "../../../actions/leaveActions";
-import {trainerLeaveDelete} from "../../../actions/leaveActions";
+import { trainerLeaveDelete } from "../../../actions/leaveActions";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import "./trainerLeaveList.css";
 import swal from "sweetalert";
 
-
 const TrainerLeaveList = () => {
 	const dispatch = useDispatch();
 
-	const  LeaveList = useSelector((state) => state.LeaveList);
-	const { loading, trainerLeave, error } = LeaveList ;
+	const LeaveList = useSelector((state) => state.LeaveList);
+	const { loading, trainerLeave, error } = LeaveList;
 
 	const trainer_Login = useSelector((state) => state.trainer_Login);
 	const { trainerInfo } = trainer_Login;
 
-	console.log(trainerLeave)
+	console.log(trainerLeave);
 
-    const leaveUpdate = useSelector((state) => state.leaveUpdate);
-	const { success: successUpdate} = leaveUpdate;
+	const leaveUpdate = useSelector((state) => state.leaveUpdate);
+	const { success: successUpdate } = leaveUpdate;
 
 	const leaveCreate = useSelector((state) => state.leaveCreate);
-	const { success: successCreate} = leaveCreate;
+	const { success: successCreate } = leaveCreate;
 
 	const leaveDelete = useSelector((state) => state.leaveDelete);
-    const { success: successDelete } = leaveDelete;
+	const { success: successDelete } = leaveDelete;
 
-	
 	const history = useHistory();
 
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
-		dispatch( listTrainerLeave ());
+		dispatch(listTrainerLeave());
 		if (!trainerInfo) {
 			history.push("/access-denied");
 		}
-		 }
-	
-	, [dispatch, history, trainerInfo,successUpdate,successCreate,successDelete]);
-
+	}, [dispatch, history, trainerInfo, successUpdate, successCreate, successDelete]);
 
 	const deleteHandler = (id) => {
 		swal({
@@ -111,7 +106,6 @@ const TrainerLeaveList = () => {
 											padding: "10px",
 											paddingLeft: "15px",
 											fontSize: 18,
-											
 										}}
 										onChange={searchHandler}
 									/>
@@ -130,7 +124,6 @@ const TrainerLeaveList = () => {
 									</Button>
 								</Link>
 							</Col>
-							
 						</Row>
 					</div>
 
@@ -139,9 +132,7 @@ const TrainerLeaveList = () => {
 					<br></br>
 					{trainerLeave &&
 						trainerLeave
-							.filter(
-								(filteredTrainers) =>
-									filteredTrainers.division.toLowerCase().includes(search.toLowerCase())) 
+							.filter((filteredTrainers) => filteredTrainers.division.toLowerCase().includes(search.toLowerCase()))
 							.reverse()
 							.map((trainerLeaveList) => (
 								<div key={trainerLeaveList._id} className="listContainer">
@@ -185,50 +176,59 @@ const TrainerLeaveList = () => {
 														</label>{" "}
 														<br></br>
 														<label className="resons" style={{ paddingInline: 20, fontSize: 18 }}>
-														   Reasons for leave: &emsp;
+															Reasons for leave: &emsp;
 															{trainerLeaveList.reasons_for_leave}
-														</label><br></br>
-														
+														</label>
+														<br></br>
 													</Accordion.Toggle>
 												</span>
 												<div>
 													{console.log(trainerLeaveList)}
-													{trainerLeaveList.approved === "Pending" ?  
-													<Button 
-													style={{ 
-														marginLeft: 20, 
-														float: "left", 
-														fontSize: 18, 
-														marginTop:27}} 
-														href={`/trainer-leave/${trainerLeaveList._id}`}
+													{trainerLeaveList.approved === "Pending" ? (
+														<Button
+															style={{
+																marginLeft: 20,
+																float: "left",
+																fontSize: 18,
+																marginTop: 20,
+															}}
+															href={`/trainer-leave/${trainerLeaveList._id}`}
 														>
 															Edit
-															</Button>
-															:
+														</Button>
+													) : (
+														<Button
+															variant="btn btn-light"
+															style={{
+																color: trainerLeaveList.approved === "Rejected" ? "red" : "green",
+																marginTop: 20,
+																fontSize: 20,
+																marginRight: 40,
+															}}
+														>
+															{trainerLeaveList.approved}
+														</Button>
+													)}
 
-															<Button variant="btn btn-light"style={{color:trainerLeaveList.approved === "Rejected" ?"red":"green",marginTop:25,fontSize: 20, marginRight:65,}}>{trainerLeaveList.approved}</Button>}
-
-                                                        {trainerLeaveList.approved === "Pending" ?
-															<Button
+													{trainerLeaveList.approved === "Pending" ? (
+														<Button
 															variant="danger"
 															className="mx-2"
-															style={{ marginLeft: 20, float: "left", fontSize: 18,marginTop:27 }}
+															style={{ marginLeft: 20, float: "left", fontSize: 18, marginTop: 20 }}
 															onClick={() => deleteHandler(trainerLeaveList._id)}
-															>
+														>
 															Delete
-														 </Button>
-														 :
-							
-														 <div style={{color:trainerLeaveList.approved === "Rejected" ?"red":"green"}}></div>}	
-                                                
-                                               
-											  </div>
+														</Button>
+													) : (
+														<div style={{ color: trainerLeaveList.approved === "Rejected" ? "red" : "green" }}></div>
+													)}
+												</div>
 											</Card.Header>
 											<Accordion.Collapse eventKey="0">
 												<Card.Body>
 													<Row>
 														<Col md={6}>
-															<h5>FullName - {trainerLeaveList.fullName}</h5>
+															<h5>Full Name - {trainerLeaveList.fullName}</h5>
 															<h5>NIC - {trainerLeaveList.nic}</h5>
 															<h5>Division - {trainerLeaveList.division}</h5>
 															<h5>Number of days- {trainerLeaveList.number_of_days}</h5>
@@ -245,12 +245,9 @@ const TrainerLeaveList = () => {
 																width: "500px",
 																justifyContent: "center",
 															}}
-														>
-															
-														</Col>
+														></Col>
 													</Row>
 													<br></br>
-													
 												</Card.Body>
 											</Accordion.Collapse>
 										</Card>

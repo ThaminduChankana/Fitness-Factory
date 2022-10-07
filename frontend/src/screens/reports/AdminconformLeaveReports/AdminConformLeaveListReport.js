@@ -9,83 +9,75 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import React, { useState } from "react";
 import MainScreen from "../../../components/MainScreen";
 import { adminConformLeaveActions } from "../../../actions/leaveActions";
-import * as moment from 'moment';
-import './adminLeaveApproval.css'
-
+import * as moment from "moment";
+import "./adminLeaveApproval.css";
 
 export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 	const dispatch = useDispatch();
 
-    useEffect(()=>{
+	useEffect(() => {
 		dispatch(adminConformLeaveActions());
-	},[dispatch])
+	}, [dispatch]);
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const  ConformLeaveList = useSelector((state) => state.ConformLeaveList);
-	const { loading, trainerLeave, error } = ConformLeaveList ;
+	const ConformLeaveList = useSelector((state) => state.ConformLeaveList);
+	const { loading, trainerLeave, error } = ConformLeaveList;
 
 	const ConformLeaveUpdate = useSelector((state) => state.ConformLeaveUpdate);
-	const { success: successUpdate} = ConformLeaveUpdate;
+	const { success: successUpdate } = ConformLeaveUpdate;
 
-	
 	const [search, setSearch] = useState("");
 	let inputHandler = (e) => {
 		var lowerCase = e.target.value.toLowerCase();
 		setSearch(lowerCase);
 	};
 
-	
 	const history = useHistory();
 	useEffect(() => {
 		dispatch(listTrainerLeave());
 	}, [dispatch, history, adminInfo, successUpdate]);
 	if (adminInfo) {
 		return (
-			<div style={{ minHeight: 700 }} >
+			<div style={{ minHeight: 700 }}>
 				<br></br>
 				<MainScreen title="Leave List Report">
-					<div className="search" style={{ marginTop: 5 }}>
-						<Form inline>
-							<input
-								type="text"
-								placeholder="Search..."
-								onChange={inputHandler}
-								style={{
-									width: 400,
-									height: 40,
-									borderRadius: 50,
-									padding: "10px",
-									paddingLeft: "15px",
-								    marginLeft:"350px",
-									fontSize:20
-								}}
-							/>
-						</Form>
-					</div>
-					<br></br>
-					<br></br>
-					<div>
-						<Row>
-							<Col>
-								<Link to="/AdminConformLeave">
-									<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
-										Back to Leave List Page
-									</Button>
-								</Link>
-							</Col>
-							
-						</Row>
-					</div>
+					<Row>
+						<Col>
+							<Link to="/AdminConformLeave">
+								<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
+									Back to Leave List Page
+								</Button>
+							</Link>
+						</Col>
+						<Col>
+							<Form inline>
+								<input
+									type="text"
+									placeholder="Search..."
+									onChange={inputHandler}
+									style={{
+										width: 400,
+										height: 40,
+										borderRadius: 50,
+										padding: "10px",
+										paddingLeft: "15px",
+										marginLeft: 150,
+										fontSize: 20,
+									}}
+								/>
+							</Form>
+						</Col>
+					</Row>
 
 					<br />
-					
+
 					{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 					{loading && <Loading />}
-					<Table ref={ref}  style={{ background: "white" }}>
+					<Table ref={ref} style={{ background: "white" }}>
 						<>
-                        <thead>
+							<thead>
 								<tr
 									style={{
 										boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
@@ -98,7 +90,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 											fontSize: 20,
 										}}
 									>
-										 FullName
+										Full Name
 									</th>
 									<th
 										style={{
@@ -125,7 +117,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 										Number of days Leave Apply
 									</th>
 
-                                    <th
+									<th
 										style={{
 											width: 10,
 											fontSize: 20,
@@ -134,7 +126,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 										Date for commencing leave
 									</th>
 
-                                    <th
+									<th
 										style={{
 											width: 10,
 											fontSize: 20,
@@ -143,13 +135,13 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 										Date for resuming duties
 									</th>
 
-                                    <th
+									<th
 										style={{
 											width: 10,
 											fontSize: 20,
 										}}
 									>
-										Reasons for leave 
+										Reasons for leave
 									</th>
 
 									<th
@@ -158,10 +150,10 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 											fontSize: 20,
 										}}
 									>
-									 Approved Date
+										Approved Date
 									</th>
-                                    
-                                    <th
+
+									<th
 										style={{
 											width: 10,
 											fontSize: 20,
@@ -203,28 +195,28 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 											>
 												{trainerLeaveList.division}
 											</td>
-                                            <td
+											<td
 												style={{
 													fontSize: 20,
 												}}
 											>
 												{trainerLeaveList.number_of_days}
 											</td>
-                                            <td
+											<td
 												style={{
 													fontSize: 20,
 												}}
 											>
 												{trainerLeaveList.date_for_commencing_leave}
 											</td>
-                                            <td
+											<td
 												style={{
 													fontSize: 20,
 												}}
 											>
 												{trainerLeaveList.date_for_resuming_duties}
 											</td>
-                                            <td
+											<td
 												style={{
 													fontSize: 20,
 												}}
@@ -234,25 +226,21 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 											<td
 												style={{
 													fontSize: 20,
-													
 												}}
 											>
 												{moment(trainerLeaveList.updatedAt).format("DD-MMM-YYYY  LT")}
 											</td>
-                                            <td
+											<td
 												style={{
 													fontSize: 20,
 												}}
 											>
 												{trainerLeaveList.approved}
 											</td>
-                                           
-											
 										</tr>
 									))}
 							</tbody>
 						</>
-						
 					</Table>
 					<br></br>
 				</MainScreen>
@@ -266,8 +254,4 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 			</div>
 		);
 	}
-}
-
-
-)
-
+});

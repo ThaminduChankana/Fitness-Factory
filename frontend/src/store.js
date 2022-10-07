@@ -49,15 +49,14 @@ import {
 	faqDeleteReducer,
 } from "./reducers/faqReducer";
 
-import{
-	LeaveCreateReducer ,
-	TrainerLeaveListReducer , 
-	LeaveUpdateReducer, 
+import {
+	LeaveCreateReducer,
+	TrainerLeaveListReducer,
+	LeaveUpdateReducer,
 	LeaveDeleteReducer,
 	AdminConformLeaveListReducer,
-	AdminConformLeaveUpdateReducer 
-	
-}from "./reducers/leaveReducer";
+	AdminConformLeaveUpdateReducer,
+} from "./reducers/leaveReducer";
 
 import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
 
@@ -102,11 +101,11 @@ const reducer = combineReducers({
 	noteCreate: noteCreateReducer,
 	noteUpdate: noteUpdateReducer,
 	noteDelete: noteDeleteReducer,
-	LeaveList:TrainerLeaveListReducer,
-    leaveCreate: LeaveCreateReducer,
-    leaveUpdate:LeaveUpdateReducer,
-	leaveDelete:LeaveDeleteReducer,
-	ConformLeaveList:AdminConformLeaveListReducer,
+	LeaveList: TrainerLeaveListReducer,
+	leaveCreate: LeaveCreateReducer,
+	leaveUpdate: LeaveUpdateReducer,
+	leaveDelete: LeaveDeleteReducer,
+	ConformLeaveList: AdminConformLeaveListReducer,
 	ConformLeaveUpdate: AdminConformLeaveUpdateReducer,
 });
 

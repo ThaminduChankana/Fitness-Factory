@@ -40,10 +40,8 @@ const trainerLeaveSchema = mongoose.Schema(
 		approved: {
 			type: String,
 			required: true,
-			default: 'Pending',
+			default: "Pending",
 		},
-
-		
 	},
 	{
 		timestamps: true,
