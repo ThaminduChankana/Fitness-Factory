@@ -11,11 +11,13 @@ function TermsAndCondtions() {
 				<br></br>
 				<Card
 					style={{
-						borderWidth: 2.0,
+						borderWidth: 5.0,
 						borderRadius: 20,
 						marginBottom: 90,
 						paddingInline: 10,
-						background: "#f6f6f6f0",
+						background: "rgba(200, 200, 230, 0.8)",
+						width:1200,
+						marginLeft:10
 					}}
 				>
 					<div
