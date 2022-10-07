@@ -79,7 +79,7 @@ const TrainerCreateLeave = () => {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/trainerLeave"
+						href="/trainer-leaves"
 					>
 						{" "}
 						Back to Trainers Leave List

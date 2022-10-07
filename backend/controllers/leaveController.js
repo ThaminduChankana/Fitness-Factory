@@ -2,7 +2,7 @@ const TrainerLeave = require("../models/trainerLeaveModel");
 const Trainer = require("../models/trainerModel");
 const asyncHandler = require("express-async-handler");
 
-const getTrainerLeave = asyncHandler(async (req, res) => {
+const getTrainerLeaves = asyncHandler(async (req, res) => {
 	const leave = await TrainerLeave.find();
 	res.json(leave);
 });
@@ -16,7 +16,6 @@ const getTrainerLeaveForEachTrainer = asyncHandler(async (req, res) => {
 });
 
 const createTrainerLeave = asyncHandler(async (req, res) => {
-	console.log("Request Body:", req.body);
 	const {
 		fullName,
 		nic,
@@ -123,7 +122,7 @@ const approveTrainerLeaveByAdmin = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-	getTrainerLeave,
+	getTrainerLeaves,
 	createTrainerLeave,
 	getTrainerLeaveById,
 	updateTrainerLeave,

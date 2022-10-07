@@ -6,25 +6,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { listTrainerLeave } from "../../../actions/leaveActions";
 import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { adminConformLeaveActions } from "../../../actions/leaveActions";
+import { adminConfirmLeaveActions } from "../../../actions/leaveActions";
 import * as moment from "moment";
 
-const AdminConformLeave = () => {
+const AdminConfirmLeave = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(adminConformLeaveActions());
+		dispatch(adminConfirmLeaveActions());
 	}, [dispatch]);
 
-	const ConformLeaveList = useSelector((state) => state.ConformLeaveList);
-	const { loading, trainerLeave, error } = ConformLeaveList;
+	const ConfirmLeaveList = useSelector((state) => state.ConfirmLeaveList);
+	const { loading, trainerLeave, error } = ConfirmLeaveList;
 	const [shortedList, setShortedList] = useState([]);
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const ConformLeaveUpdate = useSelector((state) => state.ConformLeaveUpdate);
-	const { success: successUpdate } = ConformLeaveUpdate;
+	const ConfirmLeaveUpdate = useSelector((state) => state.ConfirmLeaveUpdate);
+	const { success: successUpdate } = ConfirmLeaveUpdate;
 
 	useEffect(() => {
 		if (trainerLeave && trainerLeave.length > 0) {
@@ -100,7 +100,7 @@ const AdminConformLeave = () => {
 						</Col>
 
 						<Col>
-							<Link to="/admin-leave-report">
+							<Link to="/admin-trainer-leave-report">
 								<Button variant="success" style={{ marginLeft: 190, fontSize: 15, marginTop: 10 }} size="lg">
 									Trainer Leave Details confirmation Report
 								</Button>
@@ -175,7 +175,7 @@ const AdminConformLeave = () => {
 												<div>
 													<Button
 														style={{ marginRight: 50, float: "left", fontSize: 18, marginTop: 15 }}
-														href={`trainer/trainer_leaves/approve/${trainerLeaveList._id}`}
+														href={`/admin-approve-trainer-leave/${trainerLeaveList._id}`}
 													>
 														Approve
 													</Button>
@@ -226,4 +226,4 @@ const AdminConformLeave = () => {
 	}
 };
 
-export default AdminConformLeave;
+export default AdminConfirmLeave;

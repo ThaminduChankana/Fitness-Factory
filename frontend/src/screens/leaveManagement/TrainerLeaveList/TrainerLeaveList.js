@@ -19,8 +19,6 @@ const TrainerLeaveList = () => {
 	const trainer_Login = useSelector((state) => state.trainer_Login);
 	const { trainerInfo } = trainer_Login;
 
-	console.log(trainerLeave);
-
 	const leaveUpdate = useSelector((state) => state.leaveUpdate);
 	const { success: successUpdate } = leaveUpdate;
 
@@ -118,7 +116,7 @@ const TrainerLeaveList = () => {
 					<div>
 						<Row>
 							<Col>
-								<Link to="/createLeave">
+								<Link to="/trainer-create-leave">
 									<Button variant="success" style={{ marginLeft: 10, float: "left", fontSize: 15 }} size="lg">
 										+ Apply new leave
 									</Button>
@@ -183,7 +181,6 @@ const TrainerLeaveList = () => {
 													</Accordion.Toggle>
 												</span>
 												<div>
-													{console.log(trainerLeaveList)}
 													{trainerLeaveList.approved === "Pending" ? (
 														<Button
 															style={{
