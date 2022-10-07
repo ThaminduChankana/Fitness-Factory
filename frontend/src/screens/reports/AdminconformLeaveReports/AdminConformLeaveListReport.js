@@ -9,8 +9,8 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import React, { useState } from "react";
 import MainScreen from "../../../components/MainScreen";
 import { adminConformLeaveActions } from "../../../actions/leaveActions";
-//import './adminLeaveApproval.css'
 import * as moment from 'moment';
+import './adminLeaveApproval.css'
 
 
 export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
@@ -43,7 +43,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 	}, [dispatch, history, adminInfo, successUpdate]);
 	if (adminInfo) {
 		return (
-			<div style={{ minHeight: 700 }} className="AdminLeaveReportbg">
+			<div style={{ minHeight: 700 }} >
 				<br></br>
 				<MainScreen title="Leave List Report">
 					<div className="search" style={{ marginTop: 5 }}>

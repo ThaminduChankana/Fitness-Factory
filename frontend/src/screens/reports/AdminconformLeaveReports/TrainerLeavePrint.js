@@ -5,6 +5,7 @@ import { useReactToPrint } from "react-to-print";
 import MainScreen from "../../../components/MainScreen";
 import {AdminConformLeaveListReport} from "./AdminConformLeaveListReport";
 
+
 const TrainerLeavePrint = () => {
 	const componentRef = useRef();
 
@@ -17,21 +18,21 @@ const TrainerLeavePrint = () => {
 
 	if (adminInfo) {
 		return (
-			<div className="customerReportBg">
+			<div className="AdminLeaveReportbg">
 				<MainScreen title="Admin Conform Leave List">
 					<div style={{ minHeight: 700 }}>
 						
 						<Card
 							style={{
 								margin: 50,
-								marginLeft: "10%",
-								marginRight: "10%",
-								width: "100%",
+								marginLeft: "0%",
+								marginRight: "5%",
+								width: "120%",
 								padding: 40,
 								borderRadius: 20,
 								borderColor: "#808080",
-								borderWidth: 0.5,
-								background: "rgba(255, 255, 255, 0.8)",
+								borderWidth: 0.8,
+								background: "rgba(200, 200, 230, 0.8)",
 							}}
 						>
 							<AdminConformLeaveListReport ref={componentRef} />
