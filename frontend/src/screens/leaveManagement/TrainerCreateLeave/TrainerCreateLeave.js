@@ -164,7 +164,7 @@ const TrainerCreateLeave = () => {
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											>
 												<option>Select division</option>
@@ -182,16 +182,17 @@ const TrainerCreateLeave = () => {
 												  
 										}}>Number of days leave apply</Form.Label>
 											<Form.Control
+											 style={{
+												height: 45,
+												fontSize: 18,
+												width:780
+											 }}
 												type="number"
 												value={number_of_days}
 												placeholder="Enter Number"
 												onChange={(e) => setnumber_of_days(e.target.value)}
 												required
-												style={{
-													height: 45,
-													fontSize: 18,
-													width:780
-												}}
+												
 												maxLength={10}
 											/>
 										</Form.Group>
@@ -203,35 +204,40 @@ const TrainerCreateLeave = () => {
 										 }}>
 											Date for commencing leave</Form.Label>
 											<Form.Control
+											style={{
+												height: 45,
+											    fontSize: 18,
+												
+											}}
 												type="date"
+												required
 												value={date_for_commencing_leave}
 												placeholder="Enter date"
 												onChange={(e) => setdate_for_commencing_leave(e.target.value)}
-												required
-												style={{
-													height: 45,
-													fontSize: 18,
-													width:780
-												}}
+												
+												
 											/>
 										</Form.Group>
+
 										<Form.Group controlId="formBasicPassword">
-											<Form.Label style={{
+											<Form.Label 
+											style={{
 											       fontSize: 25,
 												  
 										}}>
 											Date for resuming duties</Form.Label>
 											<Form.Control
+												style={{
+														height: 45,
+														fontSize: 18,
+													
+												}}
 												type="date"
 												value={date_for_resuming_duties}
 												placeholder="Enter date"
 												onChange={(e) => setdate_for_resuming_duties(e.target.value)}
 												required
-												style={{
-													height: 45,
-													fontSize: 18,
-													width:780
-												}}
+												
 											/>
 										</Form.Group>
 										<Form.Group controlId="confirmPassword">

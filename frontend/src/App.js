@@ -51,6 +51,7 @@ import TrainerUpdateLeave from "./screens/leaveManagement/TrainerUpdateLeave/Tra
 import AdminConformLeave from "./screens/leaveManagement/AdminConformLeaveList/AdminConformLeave";
 import AdminConformApproveOrReject from "./screens/leaveManagement/AdminConformApproveOrReject/AdminConformApproveOrReject";
 import TrainerLeavePrint from "./screens/reports/AdminconformLeaveReports/TrainerLeavePrint";
+import TermsAndCondition from "./screens/static/termsAndConditions/TermsAndCondition";
 
 const App = () => {
 	return (
@@ -104,7 +105,9 @@ const App = () => {
 				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact/>
 				<Route path="/adminConformLeave" component={AdminConformLeave}exact/>
 				<Route path="/trainer/trainer_leaves/approve/:id"component={AdminConformApproveOrReject}exact/>
-			    <Route path="/admin-leave-report"component={TrainerLeavePrint}exact></Route>
+			    <Route path="/admin-leave-report"component={TrainerLeavePrint}exact/>
+				<Route path="/tearms-and-conditions"component={TermsAndCondition}exact>	
+				</Route>
 
 			</main>
 			<Footer />
