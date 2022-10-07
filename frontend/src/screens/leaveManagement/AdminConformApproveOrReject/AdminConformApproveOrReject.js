@@ -99,18 +99,18 @@ import {authHeader} from "../../../actions/trainerActions"
 					<br></br>
 					<br></br>
 					<Card
-						className="profileCont"
+						
 						style={{
-							borderRadius: 45,
-							borderWidth: 5.0,
-							marginTop: 20,
-							paddingInline: 10,
-							paddingLeft: 25,
-							paddingRight: 25,
-							background: "rgba(231, 238, 238, 0.8)",
+							width: "80%",
+							borderWidth: 0,
+                            padding: 25,
+                            outline: "none",
+                            marginLeft: 60,
+                            background: "rgba(231, 238, 238, 0.8)",
+                            borderRadius: 45,
 						}}
 					>
-						<div className="Container">
+						<div className="approvecontainer">
 							<br></br>
 							<div>
                         
@@ -119,10 +119,9 @@ import {authHeader} from "../../../actions/trainerActions"
 								{loading && <Loading />}
 							</div>
 							<br></br>
-							<Row className="trainerProfileContainer">
-								<Col md={6}>
+							
 									<Form onSubmit={updateHandler}>
-										<Form.Group controlId="trainerName">
+										<Form.Group controlId="Name">
 											<Form.Label 
 											style={{
 												fontSize: 25,
@@ -138,11 +137,11 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicNic">
+										<Form.Group controlId="Nic">
 											<Form.Label
 											style={{
 												fontSize: 25,
@@ -158,12 +157,12 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
 
-										<Form.Group controlId="trainerFormBasicNic">
+										<Form.Group controlId="division">
 											<Form.Label
 											style={{
 												fontSize: 25,
@@ -179,7 +178,7 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
@@ -202,7 +201,7 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 												maxLength={10}
 											/>
@@ -224,7 +223,7 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
@@ -244,7 +243,7 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
@@ -263,7 +262,7 @@ import {authHeader} from "../../../actions/trainerActions"
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										</Form.Group>
@@ -280,7 +279,7 @@ import {authHeader} from "../../../actions/trainerActions"
 											style={{
 												height: 45,
 												fontSize: 18,
-												width:780
+												
 											}}
 												className="form-control"
 												value={approved}
@@ -302,7 +301,7 @@ import {authHeader} from "../../../actions/trainerActions"
 											variant="primary"
 											type="submit"
 											style={{
-												fontSize: 15,
+												fontSize: 20,
 												marginTop: 10,
 											}}
 										>
@@ -312,17 +311,7 @@ import {authHeader} from "../../../actions/trainerActions"
 										
 										
 									</Form>
-								</Col>
-								<Col
-									style={{
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
-									
-								</Col>
-							</Row>
+								
 							<br></br>
 						</div>
 					</Card>
