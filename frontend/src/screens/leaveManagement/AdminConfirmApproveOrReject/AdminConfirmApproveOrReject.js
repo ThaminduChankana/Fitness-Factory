@@ -6,9 +6,9 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import { updateAdminApproveLeaveAction } from "../../../actions/leaveActions";
 import MainScreen from "../../../components/MainScreen";
 import axios from "axios";
-import { authHeader } from "../../../actions/trainerActions";
+import { authHeader } from "../../../actions/adminActions";
 
-export default function AdminConformApproveOrReject({ match }) {
+export default function AdminConfirmApproveOrReject({ match }) {
 	const [fullName, setfullName] = useState("");
 	const [nic, setnic] = useState("");
 	const [division, setdivision] = useState("");
@@ -17,23 +17,21 @@ export default function AdminConformApproveOrReject({ match }) {
 	const [date_for_resuming_duties, setdate_for_resuming_duties] = useState("");
 	const [reasons_for_leave, setreasons_for_leave] = useState("");
 	const [approved, setapproved] = useState("");
-	const [admin_conform_date, setadmin_conform_date] = useState("");
+	const [admin_confirm_date, setadmin_confirm_date] = useState("");
 
 	const dispatch = useDispatch();
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const ConformLeaveUpdate = useSelector((state) => state.ConformLeaveUpdate);
-	const { loading, error } = ConformLeaveUpdate;
+	const ConfirmLeaveUpdate = useSelector((state) => state.ConfirmLeaveUpdate);
+	const { loading, error } = ConfirmLeaveUpdate;
 
 	useEffect(() => {
 		const fetching = async () => {
-			const { data } = await axios.get(`/user/trainer/personal/trainer_leave/${match.params.id}`, {
+			const { data } = await axios.get(`/user/admin/trainer/trainer_leaves/approve/${match.params.id}`, {
 				headers: authHeader(),
 			});
-
-			console.log(data);
 
 			setfullName(data.fullName);
 			setnic(data.nic);
@@ -43,7 +41,7 @@ export default function AdminConformApproveOrReject({ match }) {
 			setdate_for_resuming_duties(data.date_for_resuming_duties);
 			setreasons_for_leave(data.reasons_for_leave);
 			setapproved(data.approved);
-			setadmin_conform_date(data.admin_conform_date);
+			setadmin_confirm_date(data.admin_confirm_date);
 		};
 
 		fetching();
@@ -62,7 +60,7 @@ export default function AdminConformApproveOrReject({ match }) {
 				date_for_resuming_duties,
 				reasons_for_leave,
 				approved,
-				admin_conform_date
+				admin_confirm_date
 			)
 		);
 		if (
@@ -90,7 +88,7 @@ export default function AdminConformApproveOrReject({ match }) {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/AdminConformLeave"
+						href="/AdminConfirmLeave"
 					>
 						{" "}
 						Back to Admin Confirm Leave page List

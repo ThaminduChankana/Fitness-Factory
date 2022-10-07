@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useReactToPrint } from "react-to-print";
 import MainScreen from "../../../components/MainScreen";
-import { AdminConformLeaveListReport } from "./AdminConformLeaveListReport";
+import { AdminConfirmLeaveListReport } from "./AdminConfirmLeaveListReport";
 
 const TrainerLeavePrint = () => {
 	const componentRef = useRef();
@@ -33,7 +33,7 @@ const TrainerLeavePrint = () => {
 								background: "rgba(200, 200, 230, 0.8)",
 							}}
 						>
-							<AdminConformLeaveListReport ref={componentRef} />
+							<AdminConfirmLeaveListReport ref={componentRef} />
 							<br></br>
 
 							<br></br>

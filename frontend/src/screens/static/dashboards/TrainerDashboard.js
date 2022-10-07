@@ -85,7 +85,7 @@ const TrainerDashboardPage = ({ history }) => {
 										</Button>
 									</a>
 									&emsp;
-									<a href="/trainerLeave">
+									<a href="/trainer-leaves">
 										<Button variant="success" size="lg" style={{ width: 350, height: 75 }}>
 											Leave Management
 										</Button>

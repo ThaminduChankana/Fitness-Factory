@@ -54,8 +54,8 @@ import {
 	TrainerLeaveListReducer,
 	LeaveUpdateReducer,
 	LeaveDeleteReducer,
-	AdminConformLeaveListReducer,
-	AdminConformLeaveUpdateReducer,
+	AdminConfirmLeaveListReducer,
+	AdminConfirmLeaveUpdateReducer,
 } from "./reducers/leaveReducer";
 
 import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
@@ -105,8 +105,8 @@ const reducer = combineReducers({
 	leaveCreate: LeaveCreateReducer,
 	leaveUpdate: LeaveUpdateReducer,
 	leaveDelete: LeaveDeleteReducer,
-	ConformLeaveList: AdminConformLeaveListReducer,
-	ConformLeaveUpdate: AdminConformLeaveUpdateReducer,
+	ConfirmLeaveList: AdminConfirmLeaveListReducer,
+	ConfirmLeaveUpdate: AdminConfirmLeaveUpdateReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

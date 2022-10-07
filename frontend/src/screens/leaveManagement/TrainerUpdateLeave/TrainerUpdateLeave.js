@@ -32,8 +32,6 @@ export default function TrainerUpdateLeave({ match }) {
 				headers: authHeader(),
 			});
 
-			console.log(data);
-
 			setfullName(data.fullName);
 			setnic(data.nic);
 			setdivision(data.division);
@@ -94,7 +92,7 @@ export default function TrainerUpdateLeave({ match }) {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/trainerLeave"
+						href="/trainer-leaves"
 					>
 						{" "}
 						Back to Trainers Leave List

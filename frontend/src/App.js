@@ -48,9 +48,9 @@ import Memos from "./screens/notes/MemoList/Memos";
 import TrainerLeaveList from "./screens/leaveManagement/TrainerLeaveList/TrainerLeaveList";
 import TrainerCreateLeave from "./screens/leaveManagement/TrainerCreateLeave/TrainerCreateLeave";
 import TrainerUpdateLeave from "./screens/leaveManagement/TrainerUpdateLeave/TrainerUpdateLeave";
-import AdminConformLeave from "./screens/leaveManagement/AdminConformLeaveList/AdminConformLeave";
-import AdminConformApproveOrReject from "./screens/leaveManagement/AdminConformApproveOrReject/AdminConformApproveOrReject";
-import TrainerLeavePrint from "./screens/reports/AdminconformLeaveReports/TrainerLeavePrint";
+import AdminConfirmLeave from "./screens/leaveManagement/AdminConfirmLeaveList/AdminConfirmLeave";
+import AdminConfirmApproveOrReject from "./screens/leaveManagement/AdminConfirmApproveOrReject/AdminConfirmApproveOrReject";
+import TrainerLeavePrint from "./screens/reports/AdminConfirmLeaveReports/TrainerLeavePrint";
 import TermsAndCondition from "./screens/static/termsAndConditions/TermsAndCondition";
 
 const App = () => {
@@ -100,13 +100,13 @@ const App = () => {
 				<Route path="/admin-notes" component={Memos} exact />
 				<Route path="/admin-notes/create" component={CreateNote} exact />
 				<Route path="/admin-notes-edit/:id" component={SingleNote} exact />
-				<Route path="/trainerLeave" component={TrainerLeaveList} exact />
-				<Route path="/createLeave" component={TrainerCreateLeave} exact />
+				<Route path="/trainer-leaves" component={TrainerLeaveList} exact />
+				<Route path="/trainer-create-leave" component={TrainerCreateLeave} exact />
 				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact />
-				<Route path="/adminConformLeave" component={AdminConformLeave} exact />
-				<Route path="/trainer/trainer_leaves/approve/:id" component={AdminConformApproveOrReject} exact />
-				<Route path="/admin-leave-report" component={TrainerLeavePrint} exact />
-				<Route path="/tearms-and-conditions" component={TermsAndCondition} exact></Route>
+				<Route path="/admin-/trainer-leaves" component={AdminConfirmLeave} exact />
+				<Route path="/admin-approve-trainer-leave/:id" component={AdminConfirmApproveOrReject} exact />
+				<Route path="/admin-trainer-leave-report" component={TrainerLeavePrint} exact />
+				<Route path="/terms-and-conditions" component={TermsAndCondition} exact></Route>
 			</main>
 			<Footer />
 		</BrowserRouter>

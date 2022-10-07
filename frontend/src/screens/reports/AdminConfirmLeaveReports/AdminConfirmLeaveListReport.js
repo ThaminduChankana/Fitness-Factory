@@ -8,25 +8,25 @@ import Loading from "../../../components/Loading";
 import ErrorMessage from "../../../components/ErrorMessage";
 import React, { useState } from "react";
 import MainScreen from "../../../components/MainScreen";
-import { adminConformLeaveActions } from "../../../actions/leaveActions";
+import { adminConfirmLeaveActions } from "../../../actions/leaveActions";
 import * as moment from "moment";
 import "./adminLeaveApproval.css";
 
-export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
+export const AdminConfirmLeaveListReport = React.forwardRef((props, ref) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(adminConformLeaveActions());
+		dispatch(adminConfirmLeaveActions());
 	}, [dispatch]);
 
 	const admin_Login = useSelector((state) => state.admin_Login);
 	const { adminInfo } = admin_Login;
 
-	const ConformLeaveList = useSelector((state) => state.ConformLeaveList);
-	const { loading, trainerLeave, error } = ConformLeaveList;
+	const ConfirmLeaveList = useSelector((state) => state.ConfirmLeaveList);
+	const { loading, trainerLeave, error } = ConfirmLeaveList;
 
-	const ConformLeaveUpdate = useSelector((state) => state.ConformLeaveUpdate);
-	const { success: successUpdate } = ConformLeaveUpdate;
+	const ConfirmLeaveUpdate = useSelector((state) => state.ConfirmLeaveUpdate);
+	const { success: successUpdate } = ConfirmLeaveUpdate;
 
 	const [search, setSearch] = useState("");
 	let inputHandler = (e) => {
@@ -45,7 +45,7 @@ export const AdminConformLeaveListReport = React.forwardRef((props, ref) => {
 				<MainScreen title="Leave List Report">
 					<Row>
 						<Col>
-							<Link to="/AdminConformLeave">
+							<Link to="/AdminConfirmLeave">
 								<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
 									Back to Leave List Page
 								</Button>
