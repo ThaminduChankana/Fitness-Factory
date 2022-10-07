@@ -6,7 +6,7 @@ function TermsAndCondtions() {
 	return (
 		<div className="TermsAndCondtionBackground">
 			<br></br>
-			<MainScreen title="Terms & Conditions">
+			< MainScreen title="Terms & Conditions">
 				<br></br>
 				<br></br>
 				<Card
@@ -28,35 +28,43 @@ function TermsAndCondtions() {
 						}}
 					>
 						<br></br>
-						<h2> FAMILY DENTAL CLINIC TERMS & CONDITIONS</h2>
+						<h1 style={{fontSize:55}}><b>Welcome to our site</b> </h1>
 						<br></br>
 						<ul>
-							<li
+							<div
 								style={{
 									fontSize: 20,
 								}}
 							>
-								we”, “us”, “FAMILY DENTAL CLINIC” refers to the clinic run by dental clinic.
-							</li>
-							<li
-								style={{
-									fontSize: 20,
-								}}
-							>
-								you”, “client”, “patient” refers to a customer of Absolute Health.
-							</li>
+								The "Fitness Factory" is a fully stocked gym run by a competent proprietor with knowledgeable trainers. It is highly advised for women looking for a respectable location for physical personal training, to maintain fitness and excellent health, as it is situated in the center of Galle Town. At Fitness Factory, monitoring clients, trainers, client meal plans, employee leave requests, and workouts are the key manual duties still being done.
+                                The existing management of the gym has generated several issues regarding efficiency, time wastage, and difficulty in managing members and personnel. For the gym, a suitable administration system was required. We have taken the initiative to design a gym administration system to address these concerns and complications that occur while performing jobs manually, from straightforward chores like making workout plans to significant tasks like managing personnel.
+                                The trainers, customers, and the owner will use the system as the system admin. Our primary goal in developing this system is to make things that were previously completed manually in the gym easier. The system's tasks are divided into several categories, including managing members, trainers, workouts, member meals, and employee leave. The efficiency of the tasks carried out in the gym can be increased thanks to this system, and we anticipate that all system users will benefit from better service
+
+							</div>
+							
 						</ul>
 						<br></br>
 						<br></br>
-						<h2> GENERAL</h2>
+						<h2 style={{fontSize:40}}> Membership</h2>
 						<ul>
 							<li
 								style={{
 									fontSize: 20,
 								}}
 							>
-								By becoming or being a customer at the Absolute Health Clinic, your agreement with these terms and
-								conditions is implied.
+								All memberships are Non-Transferable & Non-Refundable.
+                                All members must be over 16 to avail of facilities and services provided at Goldstone Gym & Fitness.
+                                Goldstone Gym & Fitness is a private members club and the management reserve the right to refuse membership to any individual without cause. Refrences may be required on a case by case basis and Garda checks will also be run on a case by case basis. Failure to pass a Garda check will result in membership termination and the refusal of entry again.
+                                Covid-19 restrictions, members will be required to follow government guidance and advice from the National Public Health Emergency Team (NPHET). These restrictions may include reduced services, restricted access and or temporary closure of the club. In the event of any government ordered temporary closure all memberships will be frozen for the closed period and will restart upon reopening; no time will be lost on membership agreements and no fees will be deducted during closure. Refunds will not be available as a result of Covid-19 restrictions or closures. 
+                                Membership may be renewed on payment of the prevailing fee and in accordance with the terms and conditions then in force.
+                                By joining the club, members automatically accept and agree to be bound by these conditions of membership.
+                                The club may withdraw use of all or part of the club for the purpose of undertaking maintenance work or any other work considered necessary for a maximum period of seven working days.
+                                All members must scan their finger for access to the building on each visit to the club.
+                                Entry will only be permitted to those with a valid membership, in date and in credit. If you have an amount due to be paid on your account you won’t be able to enter the building.
+                                As a member you agree to comply with the rules of the club with regards to use of the facilities, opening hours and your conduct. The club may make reasonable changes to these rules, from time to time, provided the club gives advance notice of these changes.
+                                You may, at your own discretion and expense, obtain personal insurance for loss, injury or damage that you might sustain arising from use of the club. You exercise at your own discretion and accept any injury or illness brought on by exercise is your own responsibility.
+                                Members wishing to report on accidents, incidents, or problems with services at the club should contact the Duty Manager (simply ask at reception desk upstairs) or can email join@goldstonefitness.ie in confidence.
+                                In the event of a breach of membership rules and regulations the Club reserves the right of admission and may reserve the right to require any member or guest to leave the premises. Any member found in breach of rules or commiting an illegal act, including theft, will be asked to permanently leave the club and be barred from ever entering the club again. 
 							</li>
 							<li
 								style={{
