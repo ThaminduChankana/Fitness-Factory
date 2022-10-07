@@ -1,11 +1,3 @@
-.LeaveContainer {
-	display: flex;
-	flex-direction: column;
-	margin: 20px;
-	margin-left: 90px;
-	
-   
-}
 
 .trainerLeaveCreateBg{
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1662270858/TrainerLeave_prkwkf.jpg");
@@ -13,10 +5,7 @@
 	background-size: cover;
 }
 
-.card{
-    margin-left: 8%;    
-    margin-right: 8%; 
-}
+
 .denied {
 	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
 	background-position: center;

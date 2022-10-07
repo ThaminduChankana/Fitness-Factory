@@ -1,17 +1,4 @@
-.profilePic {
-	display: flex;
-	align-items: center;
-	padding: 5px;
-}
-.Container {
-	display: flex;
-	margin: 20px;
-	flex-direction: column;
-	margin-left: 60px;
-   
-	
 
-}
 @media only screen and (max-width: 768px) {
 	.profileContainer {
 		flex-direction: column-reverse;

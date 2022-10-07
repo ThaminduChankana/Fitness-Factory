@@ -90,12 +90,13 @@ const TrainerCreateLeave = () => {
 					<Card
 						
 						style={{
-							borderRadius: 45,
-							borderWidth: 5.0,
-							marginTop: 20,
-							paddingInline: 10,
-							paddingLeft: 0,
-							background: "rgba(231, 238, 238, 0.8)",
+							width: "80%",
+							borderWidth: 0,
+                            padding: 25,
+                            outline: "none",
+                            marginLeft: 60,
+                            background: "rgba(231, 238, 238, 0.8)",
+                            borderRadius: 45,
 						}}
 					>
 						<div className="LeaveContainer">
@@ -106,10 +107,10 @@ const TrainerCreateLeave = () => {
 								{loading && <Loading />}
 							</div>
 							<br></br>
-							<Row className="trainerProfileContainer">
-								<Col md={6}>
+							
+								
 									<Form onSubmit={submitHandler}>
-										<Form.Group controlId="trainerName">
+										<Form.Group controlId="Name">
 											<Form.Label 
 											style={{
 											       fontSize: 25,
@@ -126,11 +127,12 @@ const TrainerCreateLeave = () => {
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+													
+													
 												}}
 											/>
 										</Form.Group>
-										<Form.Group controlId="trainerFormBasicNic">
+										<Form.Group controlId="Nic">
 											<Form.Label style={{
 											       fontSize: 25,
 												  
@@ -146,7 +148,7 @@ const TrainerCreateLeave = () => {
 												style={{
 													height: 45,
 													fontSize: 18,
-													width:780
+												
 												}}
 											/>
 										</Form.Group>
@@ -154,12 +156,12 @@ const TrainerCreateLeave = () => {
 											<label style={{
 											       fontSize: 25,
 												  
-										}} className="trainerGender">division</label>
+										}} className="division">division</label>
 											<select
 											style={{
 												height: 45,
 												fontSize: 18,
-												width:780
+												
 												
 											}}
 												className="form-control"
@@ -187,7 +189,7 @@ const TrainerCreateLeave = () => {
 											 style={{
 												height: 45,
 												fontSize: 18,
-												width:780
+												
 											 }}
 												type="number"
 												value={number_of_days}
@@ -221,7 +223,7 @@ const TrainerCreateLeave = () => {
 											/>
 										</Form.Group>
 
-										<Form.Group controlId="formBasicdutydate">
+										<Form.Group controlId="date">
 											<Form.Label 
 											style={{
 											       fontSize: 25,
@@ -230,15 +232,10 @@ const TrainerCreateLeave = () => {
 											Date for resuming duties</Form.Label>
 											<Form.Control
 											   
-												style={{
-														height: 45,
-														fontSize: 18,
-														width:780
-													
-												}}
+											
 												type="date"
 												value={date_for_resuming_duties}
-												placeholder="Enter date"
+										
 												onChange={(e) => setdate_for_resuming_duties(e.target.value)}
 												required
 												
@@ -258,7 +255,7 @@ const TrainerCreateLeave = () => {
 												style={{
 													height: 80,
 													fontSize: 18,
-													width:780
+													
 												}}
 											/>
 										
@@ -297,17 +294,7 @@ const TrainerCreateLeave = () => {
 											Demo
 										</Button>
 									</Form>
-								</Col>
-								<Col
-									style={{
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
-									
-								</Col>
-							</Row>
+								
 							<br></br>
 						</div>
 					</Card>
