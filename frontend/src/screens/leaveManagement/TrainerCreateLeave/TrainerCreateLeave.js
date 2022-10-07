@@ -156,16 +156,18 @@ const TrainerCreateLeave = () => {
 												  
 										}} className="trainerGender">division</label>
 											<select
+											style={{
+												height: 45,
+												fontSize: 18,
+												width:780
+												
+											}}
 												className="form-control"
 												id="trainerdivision"
 												value={division}
 												onChange={(e) => setdivision(e.target.value)}
 												required
-												style={{
-													height: 45,
-													fontSize: 18,
-													
-												}}
+												
 											>
 												<option>Select division</option>
 												<option value={division.Sick}>Sick</option>
@@ -176,7 +178,7 @@ const TrainerCreateLeave = () => {
 												
 											</select>
 										</div>
-										<Form.Group controlId="trainerFormBasicTelephone">
+										<Form.Group controlId="trainerapplydate">
 											<Form.Label style={{
 											       fontSize: 25,
 												  
@@ -197,7 +199,7 @@ const TrainerCreateLeave = () => {
 											/>
 										</Form.Group>
 										
-										<Form.Group controlId="trainerFormBasicEmail">
+										<Form.Group controlId="trainercmdate">
 											<Form.Label style={{
 											       fontSize: 25,
 												  
@@ -219,7 +221,7 @@ const TrainerCreateLeave = () => {
 											/>
 										</Form.Group>
 
-										<Form.Group controlId="formBasicPassword">
+										<Form.Group controlId="formBasicdutydate">
 											<Form.Label 
 											style={{
 											       fontSize: 25,
@@ -227,9 +229,11 @@ const TrainerCreateLeave = () => {
 										}}>
 											Date for resuming duties</Form.Label>
 											<Form.Control
+											   
 												style={{
 														height: 45,
 														fontSize: 18,
+														width:780
 													
 												}}
 												type="date"
@@ -240,7 +244,7 @@ const TrainerCreateLeave = () => {
 												
 											/>
 										</Form.Group>
-										<Form.Group controlId="confirmPassword">
+										<Form.Group controlId="reason">
 											<Form.Label style={{
 											       fontSize: 25,
 												  

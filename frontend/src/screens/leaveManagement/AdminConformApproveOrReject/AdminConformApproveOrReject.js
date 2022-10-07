@@ -102,7 +102,7 @@ import {authHeader} from "../../../actions/trainerActions"
 						className="profileCont"
 						style={{
 							borderRadius: 45,
-							borderWidth: 2.0,
+							borderWidth: 5.0,
 							marginTop: 20,
 							paddingInline: 10,
 							paddingLeft: 25,
@@ -123,85 +123,165 @@ import {authHeader} from "../../../actions/trainerActions"
 								<Col md={6}>
 									<Form onSubmit={updateHandler}>
 										<Form.Group controlId="trainerName">
-											<Form.Label>FullName</Form.Label>
+											<Form.Label 
+											style={{
+												fontSize: 25,
+											   
+									         }}
+											>FullName</Form.Label>
 											<Form.Control
 												type="name"
 												value={fullName}
 												onChange={(e) => setfullName(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="trainerFormBasicNic">
-											<Form.Label>NIC</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									        }}
+											>NIC</Form.Label>
 											<Form.Control
 												type="text"
 												value={nic}
 												onChange={(e) => setnic(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 
 										<Form.Group controlId="trainerFormBasicNic">
-											<Form.Label>Division</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									        }}
+											>Division</Form.Label>
 											<Form.Control
 												type="text"
 												value={division}
 												onChange={(e) => setdivision(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 
 
 
 										<Form.Group controlId="date">
-											<Form.Label>Number of days leave apply</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									         }}
+											>Number of days leave apply</Form.Label>
 											<Form.Control
 												type="number"
 												value={number_of_days}
 												onChange={(e) => setnumber_of_days(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 												maxLength={10}
 											/>
 										</Form.Group>
 										
 										<Form.Group controlId="date">
-											<Form.Label>Date for commencing leave</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									        }}
+											>Date for commencing leave</Form.Label>
 											<Form.Control
 												type="date"
 												value={date_for_commencing_leave}
 												onChange={(e) => setdate_for_commencing_leave(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="date">
-											<Form.Label>Date for resuming duties</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									       }}
+											>Date for resuming duties</Form.Label>
 											<Form.Control
 												type="date"
 												value={date_for_resuming_duties}
 												onChange={(e) => setdate_for_resuming_duties(e.target.value)}
 												required
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 										<Form.Group controlId="reason">
-											<Form.Label>Reasons for leave</Form.Label>
+											<Form.Label
+											style={{
+												fontSize: 25,
+											   
+									       }}
+											>Reasons for leave</Form.Label>
 											<Form.Control
 												type="astextarea"
 												value={reasons_for_leave}
 												onChange={(e) => setreasons_for_leave(e.target.value)}
 												readOnly
+												style={{
+													height: 45,
+													fontSize: 18,
+													width:780
+												}}
 											/>
 										</Form.Group>
 
                                         <Form.Group controlId="approve">
 										<div className="form-group">
-											<label className="adminApprove">Conform Leave</label>
+											<label 
+											style={{
+												fontSize: 25,
+											   
+									         }}
+											className="adminApprove">Conform Leave</label>
 											<select
+											style={{
+												height: 45,
+												fontSize: 18,
+												width:780
+											}}
 												className="form-control"
 												value={approved}
 												onChange={(e) => setapproved(e.target.value)}
