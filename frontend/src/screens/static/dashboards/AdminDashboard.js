@@ -73,7 +73,7 @@ const AdminDashboardPage = ({ history }) => {
 								</div>
 								<br></br>
 								<div>
-									<Link to="/">
+									<Link to="/adminConformLeave">
 										<Button variant="success" size="lg" className="landingbutton" style={{ width: 350, height: 75 }}>
 											Employee Leave Management
 										</Button>

@@ -1,0 +1,9 @@
+.trainerLeaveList {
+	background: rgb(78, 97, 99);
+	background-repeat: no-repeat;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}
