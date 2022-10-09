@@ -155,7 +155,6 @@ export const adminUpdateProfile = (admin) => async (dispatch, getState) => {
 
 		const { data } = await axios.put("/user/admin/edit", admin, config);
 
-		console.log(data);
 		dispatch({ type: ADMIN_UPDATE_SUCCESS, payload: data });
 		swal({
 			title: "Success !!!",

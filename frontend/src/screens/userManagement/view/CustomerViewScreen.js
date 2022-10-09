@@ -42,7 +42,6 @@ const CustomerViewScreen = () => {
 
 	const dispatch = useDispatch();
 
-	console.log(customerInfo);
 	const logoutHandler = () => {
 		dispatch(customerLogout());
 		//history.push("/");

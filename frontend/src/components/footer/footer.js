@@ -35,7 +35,7 @@ function Footer() {
 									<br></br>
 									<a href="/">JOIN US</a>
 									<br></br>
-									<a href="/">TERMS & CONDITIONS</a>
+									<a href="/terms-and-conditions">TERMS & CONDITIONS</a>
 									<br></br>
 									<a href="/">SERVICES</a>
 								</li>

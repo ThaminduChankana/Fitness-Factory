@@ -1,0 +1,15 @@
+@media only screen and (max-width: 768px) {
+	.profileContainer {
+		flex-direction: column-reverse;
+	}
+}
+.leaveeditBg {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1662270894/EditTrainLeave_pkmnnv.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.denied {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1660761809/images/accessDenied_zhvugi.jpg");
+	background-position: center;
+	background-size: cover;
+}

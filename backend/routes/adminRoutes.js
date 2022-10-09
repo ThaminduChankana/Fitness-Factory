@@ -17,6 +17,7 @@ const {
 } = require("../controllers/customerController");
 const { getNutritionPlans } = require("../controllers/nutritionPlanController");
 const { getNotes, createNote, getNoteById, updateNote, deleteNote } = require("../controllers/noteController");
+const { getTrainerLeaves, approveTrainerLeaveByAdmin, getTrainerLeaveById } = require("../controllers/leaveController");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
@@ -52,5 +53,12 @@ router.route("/nutrition_plan/get").get(protect, getNutritionPlans);
 router.route("/notes").get(protect, getNotes);
 router.route("/notes/create").post(protect, createNote);
 router.route("/notes/:id").get(getNoteById).put(protect, updateNote).delete(protect, deleteNote);
+
+//Routes for Trainer leave management admin end
+router.route("/trainer/trainer_leaves").get(protect, getTrainerLeaves);
+router
+	.route("/trainer/trainer_leaves/approve/:id")
+	.put(protect, approveTrainerLeaveByAdmin)
+	.get(protect, getTrainerLeaveById);
 
 module.exports = router;

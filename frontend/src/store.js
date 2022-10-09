@@ -49,6 +49,15 @@ import {
 	faqDeleteReducer,
 } from "./reducers/faqReducer";
 
+import {
+	LeaveCreateReducer,
+	TrainerLeaveListReducer,
+	LeaveUpdateReducer,
+	LeaveDeleteReducer,
+	AdminConfirmLeaveListReducer,
+	AdminConfirmLeaveUpdateReducer,
+} from "./reducers/leaveReducer";
+
 import { progressCreateReducer, progressListReducer } from "./reducers/progressReducer";
 
 import { noteCreateReducer, noteDeleteReducer, noteListReducer, noteUpdateReducer } from "./reducers/notesReducer";
@@ -92,6 +101,12 @@ const reducer = combineReducers({
 	noteCreate: noteCreateReducer,
 	noteUpdate: noteUpdateReducer,
 	noteDelete: noteDeleteReducer,
+	LeaveList: TrainerLeaveListReducer,
+	leaveCreate: LeaveCreateReducer,
+	leaveUpdate: LeaveUpdateReducer,
+	leaveDelete: LeaveDeleteReducer,
+	ConfirmLeaveList: AdminConfirmLeaveListReducer,
+	ConfirmLeaveUpdate: AdminConfirmLeaveUpdateReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

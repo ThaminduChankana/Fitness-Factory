@@ -15,6 +15,13 @@ const {
 	deleteNutritionPlan,
 } = require("../controllers/nutritionPlanController");
 const { getFaqsForTrainer, updateFaqForTrainer, getFaqById } = require("../controllers/faqController");
+const {
+	createTrainerLeave,
+	getTrainerLeaveById,
+	updateTrainerLeave,
+	deleteTrainerLeave,
+	getTrainerLeaveForEachTrainer,
+} = require("../controllers/leaveController");
 const { protect } = require("../middleware/authTrainerMiddleware");
 const router = express.Router();
 
@@ -42,4 +49,12 @@ router
 router.route("/faq/get").get(protect, getFaqsForTrainer);
 router.route("/faq/get/:id").get(protect, getFaqById).put(protect, updateFaqForTrainer);
 
+//Routes for Trainer leave management by trainer
+router.route("/personal/trainer_leave/create").post(protect, createTrainerLeave);
+router.route("/personal/trainer_leaves/:id").get(protect, getTrainerLeaveForEachTrainer);
+router
+	.route("/personal/trainer_leave/:id")
+	.get(protect, getTrainerLeaveById)
+	.put(protect, updateTrainerLeave)
+	.delete(protect, deleteTrainerLeave);
 module.exports = router;
