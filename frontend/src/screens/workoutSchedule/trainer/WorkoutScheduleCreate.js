@@ -142,11 +142,11 @@ export default function WorkoutScheduleCreate({ history }) {
 								{loading && <Loading size={50} />}
 
 								<Button type="submit" variant="success">
-									 Submit
+									Submit
 								</Button>
 
 								<Button className="mx-2" onClick={resetHandler} variant="danger">
-									 Reset
+									Reset
 								</Button>
 								<Button variant="info" onClick={demoHandler}>
 									Demo
@@ -156,7 +156,6 @@ export default function WorkoutScheduleCreate({ history }) {
 					</Card>
 					<br></br>
 					<br></br>
-					
 				</MainScreen>
 			</div>
 		);

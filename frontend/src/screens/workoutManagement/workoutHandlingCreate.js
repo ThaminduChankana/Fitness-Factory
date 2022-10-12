@@ -54,7 +54,6 @@ export default function WorkoutHandlingCreate({ history }) {
 	if (trainerInfo) {
 		return (
 			<div className="WorkoutBackgroundCreate">
-			
 				<MainScreen title={"CREATE A WORKOUT"}>
 					<Button
 						variant="success"
@@ -62,7 +61,6 @@ export default function WorkoutHandlingCreate({ history }) {
 						size="lg"
 						href="/workout-handling-view"
 					>
-						
 						Back to workout List
 					</Button>
 					<br></br>
