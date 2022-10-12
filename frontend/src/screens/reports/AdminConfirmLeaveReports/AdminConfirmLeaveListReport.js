@@ -45,7 +45,7 @@ export const AdminConfirmLeaveListReport = React.forwardRef((props, ref) => {
 				<MainScreen title="Leave List Report">
 					<Row>
 						<Col>
-							<Link to="/AdminConfirmLeave">
+							<Link to="/admin-trainer-leaves">
 								<Button variant="success" style={{ marginBottom: 6, float: "left", fontSize: 15 }} size="lg">
 									Back to Leave List Page
 								</Button>

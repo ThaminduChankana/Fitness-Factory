@@ -88,7 +88,7 @@ export default function AdminConfirmApproveOrReject({ match }) {
 							marginTop: 5,
 							fontSize: 15,
 						}}
-						href="/AdminConfirmLeave"
+						href="/admin-trainer-leaves"
 					>
 						{" "}
 						Back to Admin Confirm Leave page List
