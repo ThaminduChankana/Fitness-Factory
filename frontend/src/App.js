@@ -103,7 +103,7 @@ const App = () => {
 				<Route path="/trainer-leaves" component={TrainerLeaveList} exact />
 				<Route path="/trainer-create-leave" component={TrainerCreateLeave} exact />
 				<Route path="/trainer-leave/:id" component={TrainerUpdateLeave} exact />
-				<Route path="/admin-/trainer-leaves" component={AdminConfirmLeave} exact />
+				<Route path="/admin-trainer-leaves" component={AdminConfirmLeave} exact />
 				<Route path="/admin-approve-trainer-leave/:id" component={AdminConfirmApproveOrReject} exact />
 				<Route path="/admin-trainer-leave-report" component={TrainerLeavePrint} exact />
 				<Route path="/terms-and-conditions" component={TermsAndCondition} exact></Route>
