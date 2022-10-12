@@ -33,7 +33,7 @@ function Footer() {
 								<li className="list-unstyled">
 									<a href="/contactus">CONTACT US</a>
 									<br></br>
-									<a href="/">JOIN US</a>
+									<a href="/login-select">JOIN US</a>
 									<br></br>
 									<a href="/terms-and-conditions">TERMS & CONDITIONS</a>
 									<br></br>

@@ -22,6 +22,25 @@ const {
 	deleteTrainerLeave,
 	getTrainerLeaveForEachTrainer,
 } = require("../controllers/leaveController");
+
+//route for schedule
+const {
+	getWorkoutSchedules,
+	createWorkoutSchedule,
+	getWorkoutScheduleId,
+	updateWorkoutSchedule,
+	deleteWorkoutSchedule,
+} = require("../controllers/scheduleController");
+
+//route for workout handle
+const {
+	getWorkoutHandling,
+	createWorkoutHandling,
+	getWorkoutHandlingId,
+	updateWorkoutHandling,
+	deleteWorkoutHandling,
+} = require("../controllers/workoutController");
+
 const { protect } = require("../middleware/authTrainerMiddleware");
 const router = express.Router();
 
@@ -57,4 +76,22 @@ router
 	.get(protect, getTrainerLeaveById)
 	.put(protect, updateTrainerLeave)
 	.delete(protect, deleteTrainerLeave);
+
+// Routes for Workout trainer to handle workout
+router.route("/workout/get").get(protect, getWorkoutHandling);
+router.route("/workout/create").post(protect, createWorkoutHandling);
+router
+	.route("/workout/get/:id")
+	.get(protect, getWorkoutHandlingId)
+	.put(protect, updateWorkoutHandling)
+	.delete(protect, deleteWorkoutHandling);
+// Routes for Trainer workout schedule mangement
+router.route("/schedule/get").get(protect, getWorkoutSchedules);
+router.route("/schedule/create").post(protect, createWorkoutSchedule);
+router
+	.route("/schedule/get/:id")
+	.get(protect, getWorkoutScheduleId)
+	.put(protect, updateWorkoutSchedule)
+	.delete(protect, deleteWorkoutSchedule);
+
 module.exports = router;

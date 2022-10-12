@@ -1,0 +1,14 @@
+.WorkoutBackgroundCreate {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1662126153/images/WorkoutBackgroundCreate_uxf1lh.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.WorkoutBackgroundUpdate {
+	background: url("https://res.cloudinary.com/bytesquad202202/image/upload/v1662126152/images/WorkoutBackgroundUpdate_vuapcj.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.WorkoutBackgroundView {
+	background-color: rgb(8, 90, 92);
+	background-size: cover;
+}
