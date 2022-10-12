@@ -34,7 +34,7 @@ export default function WorkoutScheduleCreate({ history }) {
 		setScheduleID("skyle34");
 		setNic("789");
 		setPreWorkout("Shifted Maximum Pre-Workout");
-		setMainWorkout("Reverse Lunge,Abdominal Crunches");
+		setMainWorkout("Reverse Lunge ,Abdominal Crunches");
 		setPostWorkout("Drink water &  Eat banana and yogurts");
 	};
 
