@@ -34,8 +34,8 @@ export default function WorkoutScheduleCreate({ history }) {
 		setScheduleID("skyle34");
 		setNic("789");
 		setPreWorkout("Shifted Maximum Pre-Workout");
-		setMainWorkout("Reverse Lunge,Abdominal Crunches");
-		setPostWorkout("Drink water &  Eat banana and yogurts");
+		setMainWorkout("Reverse Lunge ,Abdominal Crunches");
+		setPostWorkout("Drink water & Eat banana and yogurts");
 	};
 
 	const submitHandler = (e) => {
@@ -128,7 +128,7 @@ export default function WorkoutScheduleCreate({ history }) {
 									/>
 								</Form.Group>
 
-								<Form.Group controlId="PostWorkout">
+								<Form.Group controlId="Post-Workout">
 									<Form.Label>Post-Workout</Form.Label>
 									<Form.Control
 										type=""
@@ -154,7 +154,6 @@ export default function WorkoutScheduleCreate({ history }) {
 							</Form>
 						</Card.Body>
 					</Card>
-					<br></br>
 					<br></br>
 					<br></br>
 				</MainScreen>
