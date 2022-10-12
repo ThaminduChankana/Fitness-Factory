@@ -62,6 +62,22 @@ import { progressCreateReducer, progressListReducer } from "./reducers/progressR
 
 import { noteCreateReducer, noteDeleteReducer, noteListReducer, noteUpdateReducer } from "./reducers/notesReducer";
 
+import {
+	WorkoutScheduleListReducer,
+	WorkoutScheduleCreateReducer,
+	WorkoutScheduleUpdateReducer,
+	WorkoutScheduleDeleteReducer,
+} from "./reducers/scheduleReducers";
+import {
+	workoutHandlingListReducer,
+	workoutHandlingCreateReducer,
+	workoutHandlingUpdateReducer,
+	workoutHandlingDeleteReducer,
+	workoutHandlingCustomerListReducer,
+} from "./reducers/workoutReducers";
+
+import { TimeSpentListReducer, TimeSpentCreateReducer } from "./reducers/timeSpentReducers";
+
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistration: adminRegisterReducer,
@@ -107,6 +123,17 @@ const reducer = combineReducers({
 	leaveDelete: LeaveDeleteReducer,
 	ConfirmLeaveList: AdminConfirmLeaveListReducer,
 	ConfirmLeaveUpdate: AdminConfirmLeaveUpdateReducer,
+	list_Workout_Handling: workoutHandlingListReducer,
+	Workout_Handling_Create: workoutHandlingCreateReducer,
+	workoutHandlingUpdate: workoutHandlingUpdateReducer,
+	WorkoutHandlingDelete: workoutHandlingDeleteReducer,
+	workout_Schedule_List: WorkoutScheduleListReducer,
+	workout_Schedule_Create: WorkoutScheduleCreateReducer,
+	workout_Schedule_Update: WorkoutScheduleUpdateReducer,
+	workout_Schedule_Delete: WorkoutScheduleDeleteReducer,
+	workout_Customer_List: workoutHandlingCustomerListReducer,
+	time_spent_list: TimeSpentListReducer,
+	time_Spent_Create: TimeSpentCreateReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;
