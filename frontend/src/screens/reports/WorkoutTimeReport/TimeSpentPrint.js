@@ -5,7 +5,7 @@ import MainScreen from "../../../components/MainScreen";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 
 import { TimeSpentReport } from "./TimeSpentReport";
-    const TimeSpentPrint = () => {
+const TimeSpentPrint = () => {
 	const componentRef = useRef();
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
@@ -37,7 +37,7 @@ import { TimeSpentReport } from "./TimeSpentReport";
 							borderColor: "4b4e6d",
 							backgroundColor: "#ddfff7",
 							borderWidth: 0.5,
-							opacity:0.68
+							opacity: 0.68,
 						}}
 					>
 						<TimeSpentReport ref={componentRef} />

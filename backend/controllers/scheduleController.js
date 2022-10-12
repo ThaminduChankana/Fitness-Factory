@@ -3,8 +3,8 @@ const WorkoutSchedule = require("../models/scheduleModel");
 const Customer = require("../models/customerModel");
 
 const getWorkoutSchedules = asyncHandler(async (req, res) => {
-    const workoutSchedule = await WorkoutSchedule.find();
-    res.json(workoutSchedule);
+	const workoutSchedule = await WorkoutSchedule.find();
+	res.json(workoutSchedule);
 });
 
 const getWorkoutScheduleId = asyncHandler(async (req, res) => {
@@ -18,44 +18,41 @@ const getWorkoutScheduleId = asyncHandler(async (req, res) => {
 });
 
 const createWorkoutSchedule = asyncHandler(async (req, res) => {
-    const { ScheduleID,nic, PreWorkout, MainWorkout, PostWorkout } = req.body;
+	const { ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout } = req.body;
 	const customer = await Customer.findOne({ nic: nic });
-    const workoutSchedule = await WorkoutSchedule.findOne({ nic:nic });
+	const workoutSchedule = await WorkoutSchedule.findOne({ nic: nic });
 
-    if (!ScheduleID || !nic || !PreWorkout || !MainWorkout || !PostWorkout) {
-			res.status(400);
-			throw new Error("Please Fill all the feilds");
-		} else if (customer != null && workoutSchedule == null) {
-			const workoutSchedule = new WorkoutSchedule({
-				ScheduleID,
-				nic,
-				PreWorkout,
-				MainWorkout,
-				PostWorkout,
-			});
-			const createWorkoutSchedule = await workoutSchedule.save();
-	    	res.status(201).json(createWorkoutSchedule);
-		
-
-		} else if (workoutSchedule != null) {
-			res.status(404);
-			throw new Error("workoutSchedule Plan Exists");
-		} else {
-			res.status(404);
-			throw new Error("Not a registered customer");
-		}
+	if (!ScheduleID || !nic || !PreWorkout || !MainWorkout || !PostWorkout) {
+		res.status(400);
+		throw new Error("Please Fill all the feilds");
+	} else if (customer != null && workoutSchedule == null) {
+		const workoutSchedule = new WorkoutSchedule({
+			ScheduleID,
+			nic,
+			PreWorkout,
+			MainWorkout,
+			PostWorkout,
+		});
+		const createWorkoutSchedule = await workoutSchedule.save();
+		res.status(201).json(createWorkoutSchedule);
+	} else if (workoutSchedule != null) {
+		res.status(404);
+		throw new Error("workoutSchedule Plan Exists");
+	} else {
+		res.status(404);
+		throw new Error("Not a registered customer");
+	}
 });
 const updateWorkoutSchedule = asyncHandler(async (req, res) => {
-	const {nic,PreWorkout, MainWorkout, PostWorkout } = req.body;
+	const { nic, PreWorkout, MainWorkout, PostWorkout } = req.body;
 
 	const workoutSchedule = await WorkoutSchedule.findById(req.params.id);
 
 	if (workoutSchedule) {
 		workoutSchedule.nic = nic;
 		workoutSchedule.PreWorkout = PreWorkout;
-	    workoutSchedule.MainWorkout = MainWorkout;
-        workoutSchedule.PostWorkout = PostWorkout;
-
+		workoutSchedule.MainWorkout = MainWorkout;
+		workoutSchedule.PostWorkout = PostWorkout;
 
 		const updateWorkoutSchedule = await workoutSchedule.save();
 		res.json(updateWorkoutSchedule);

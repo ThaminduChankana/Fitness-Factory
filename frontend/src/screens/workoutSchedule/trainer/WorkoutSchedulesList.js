@@ -25,7 +25,6 @@ export default function WorkoutSchedulesList() {
 	const workoutScheduleDelete = useSelector((state) => state.workout_Schedule_Delete);
 	const { loading: loadingDelete, error: errorDelete, success: successDelete } = workoutScheduleDelete;
 
-
 	const [search, setSearch] = useState("");
 
 	const searchHandler = (e) => {
@@ -66,7 +65,7 @@ export default function WorkoutSchedulesList() {
 
 	useEffect(() => {
 		dispatch(listWorkoutSchedule());
-	}, [dispatch, history,successUpdate, trainerInfo, successDelete]);
+	}, [dispatch, history, successUpdate, trainerInfo, successDelete]);
 
 	if (trainerInfo) {
 		return (
@@ -180,7 +179,7 @@ export default function WorkoutSchedulesList() {
 											</span>
 											<div>
 												<Button
-													style={{ marginTop: 14, fontSize: 15}}
+													style={{ marginTop: 8, fontSize: 15 }}
 													href={`/workout-schedule/${workoutSchedule._id}`}
 												>
 													Edit
@@ -189,7 +188,7 @@ export default function WorkoutSchedulesList() {
 											&emsp;
 											<div>
 												<Button
-													style={{ marginTop: 14, fontSize: 15 }}
+													style={{ marginTop: 6, fontSize: 15 }}
 													variant="danger"
 													className="mx-2"
 													onClick={() => deleteHandler(workoutSchedule._id)}
@@ -205,7 +204,7 @@ export default function WorkoutSchedulesList() {
 												<Row>
 													<Col md={4}>
 														<h5> NIC : {workoutSchedule.nic}</h5>
-														<h5> Pre-Workout  : {workoutSchedule.PreWorkout}</h5>
+														<h5> Pre-Workout : {workoutSchedule.PreWorkout}</h5>
 														<h5> Main-Workout :{workoutSchedule.MainWorkout}</h5>
 														<h5> Post-Workout: {workoutSchedule.PostWorkout}</h5>
 													</Col>

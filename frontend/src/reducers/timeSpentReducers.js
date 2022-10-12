@@ -7,7 +7,6 @@ import {
 	TIME_CREATE_CUSTOMER_FAIL,
 } from "../constants/timeSpentConstants";
 
-
 export const TimeSpentListReducer = (state = { timeSpent: [] }, action) => {
 	switch (action.type) {
 		case TIME_LIST_CUSTOMER_REQUEST:

@@ -12,8 +12,8 @@ import {
 	WORKOUT_DELETE_SUCCESS,
 	WORKOUT_DELETE_FAIL,
 	WORKOUT_CUSTOMER_LIST_REQUEST,
-    WORKOUT_CUSTOMER_LIST_SUCCESS,
-    WORKOUT_CUSTOMER_LIST_FAIL,
+	WORKOUT_CUSTOMER_LIST_SUCCESS,
+	WORKOUT_CUSTOMER_LIST_FAIL,
 } from "../constants/workoutHandlingConstants";
 
 export const workoutHandlingListReducer = (state = { workouts: [] }, action) => {
@@ -29,40 +29,40 @@ export const workoutHandlingListReducer = (state = { workouts: [] }, action) => 
 	}
 };
 export const workoutHandlingCreateReducer = (state = {}, action) => {
-    switch (action.type) {
-        case WORKOUT_CREATE_REQUEST:
-            return { loading: true };
-        case WORKOUT_CREATE_SUCCESS:
-            return { loading: false, success: true };
-        case WORKOUT_CREATE_FAIL:
-            return { loading: false, error: action.payload };
-        default:
-            return state;
-    }
+	switch (action.type) {
+		case WORKOUT_CREATE_REQUEST:
+			return { loading: true };
+		case WORKOUT_CREATE_SUCCESS:
+			return { loading: false, success: true };
+		case WORKOUT_CREATE_FAIL:
+			return { loading: false, error: action.payload };
+		default:
+			return state;
+	}
 };
 export const workoutHandlingUpdateReducer = (state = {}, action) => {
-    switch (action.type) {
-        case WORKOUT_UPDATE_REQUEST:
-            return { loading: true };
-        case WORKOUT_UPDATE_SUCCESS:
-            return { loading: false, success: true };
-        case WORKOUT_UPDATE_FAIL:
-            return { loading: false, error: action.payload, success: false };
-        default:
-            return state;
-    }  
+	switch (action.type) {
+		case WORKOUT_UPDATE_REQUEST:
+			return { loading: true };
+		case WORKOUT_UPDATE_SUCCESS:
+			return { loading: false, success: true };
+		case WORKOUT_UPDATE_FAIL:
+			return { loading: false, error: action.payload, success: false };
+		default:
+			return state;
+	}
 };
 export const workoutHandlingDeleteReducer = (state = {}, action) => {
-    switch (action.type) {
-			case WORKOUT_DELETE_REQUEST:
-				return { loading: true };
-			case WORKOUT_DELETE_SUCCESS:
-				return { loading: false, success: true };
-			case WORKOUT_DELETE_FAIL:
-				return { loading: false, error: action.payload, success: false };
-			default:
-				return state;
-		}
+	switch (action.type) {
+		case WORKOUT_DELETE_REQUEST:
+			return { loading: true };
+		case WORKOUT_DELETE_SUCCESS:
+			return { loading: false, success: true };
+		case WORKOUT_DELETE_FAIL:
+			return { loading: false, error: action.payload, success: false };
+		default:
+			return state;
+	}
 };
 export const workoutHandlingCustomerListReducer = (state = { workouts: [] }, action) => {
 	switch (action.type) {
@@ -76,6 +76,3 @@ export const workoutHandlingCustomerListReducer = (state = { workouts: [] }, act
 			return state;
 	}
 };
-
-
-

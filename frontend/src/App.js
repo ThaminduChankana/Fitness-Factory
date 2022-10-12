@@ -116,18 +116,17 @@ const App = () => {
 				<Route path="/admin-trainer-leaves" component={AdminConfirmLeave} exact />
 				<Route path="/admin-approve-trainer-leave/:id" component={AdminConfirmApproveOrReject} exact />
 				<Route path="/admin-trainer-leave-report" component={TrainerLeavePrint} exact />
-				<Route path="/terms-and-conditions" component={TermsAndCondition} exact>
+				<Route path="/terms-and-conditions" component={TermsAndCondition} exact />
 				<Route path="/workout-handling-create" component={WorkoutHandlingCreate} exact />
 				<Route path="/workout-handling-view" component={WorkoutHandlingView} exact />
 				<Route path="/workout-handling/:id" component={WorkoutHandlingUpdate} exact />
 				<Route path="/workout-schedule-create" component={WorkoutScheduleCreate} exact />
 				<Route path="/workout-schedule-view" component={WorkoutSchedulesList} exact />
 				<Route path="/workout-schedule/:id" component={WorkoutScheduleUpdate} exact />
-				<Route path="/workout-List-customer" component={WorkoutHandlingCustomerView} exact />
+				<Route path="/workout-list-customer" component={WorkoutHandlingCustomerView} exact />
 				<Route path="/workout-schedule-customer" component={WorkoutScheduleCustomerView} exact />
 				<Route path="/time-create-customer" component={AddTimeSpent} exact />
 				<Route path="/time-customer-report" component={TimeSpentPrint} exact />
-				</Route>
 			</main>
 			<Footer />
 		</BrowserRouter>

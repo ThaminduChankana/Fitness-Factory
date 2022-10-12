@@ -23,7 +23,6 @@ const {
 	getTrainerLeaveForEachTrainer,
 } = require("../controllers/leaveController");
 
-
 //route for schedule
 const {
 	getWorkoutSchedules,
@@ -94,6 +93,5 @@ router
 	.get(protect, getWorkoutScheduleId)
 	.put(protect, updateWorkoutSchedule)
 	.delete(protect, deleteWorkoutSchedule);
-
 
 module.exports = router;

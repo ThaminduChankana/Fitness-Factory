@@ -5,19 +5,13 @@ import MainScreen from "../../../components/MainScreen";
 import { useSelector } from "react-redux";
 import { authHeader } from "../../../actions/customerActions";
 
-
-
 function WorkoutScheduleCustomerView() {
-
-
 	const [PreWorkout, setPreWorkout] = useState("");
 	const [MainWorkout, setMainWorkout] = useState("");
 	const [PostWorkout, setPostWorkout] = useState("");
 
-
-const customer_Login = useSelector((state) => state.customer_Login);
-const { customerInfo } = customer_Login;
-
+	const customer_Login = useSelector((state) => state.customer_Login);
+	const { customerInfo } = customer_Login;
 
 	useEffect(() => {
 		const fetching = async () => {
@@ -25,16 +19,12 @@ const { customerInfo } = customer_Login;
 				headers: authHeader(),
 			});
 
-
-				setPreWorkout(data.PreWorkout);
-				setMainWorkout(data.MainWorkout);
-				setPostWorkout(data.PostWorkout);
-
-				
+			setPreWorkout(data.PreWorkout);
+			setMainWorkout(data.MainWorkout);
+			setPostWorkout(data.PostWorkout);
 		};
-	
 
-			fetching();
+		fetching();
 	});
 
 	if (customerInfo) {

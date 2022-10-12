@@ -8,7 +8,6 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import "./workoutschedule.css";
 
 export default function WorkoutScheduleCreate({ history }) {
-
 	const [ScheduleID, setScheduleID] = useState("");
 	const [nic, setNic] = useState("");
 	const [PreWorkout, setPreWorkout] = useState("");
@@ -22,7 +21,6 @@ export default function WorkoutScheduleCreate({ history }) {
 	const workout_Schedule_Create = useSelector((state) => state.workout_Schedule_Create);
 	const { loading, error } = workout_Schedule_Create;
 
-	
 	const resetHandler = () => {
 		setScheduleID("");
 		setNic("");
@@ -43,7 +41,7 @@ export default function WorkoutScheduleCreate({ history }) {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		dispatch(createWorkoutScheduleAction(ScheduleID,nic, PreWorkout, MainWorkout, PostWorkout));
+		dispatch(createWorkoutScheduleAction(ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout));
 		resetHandler();
 		history.push("/workout-schedule-view");
 	};
@@ -53,7 +51,7 @@ export default function WorkoutScheduleCreate({ history }) {
 		return (
 			<div className="trainerWorkoutScheduleCreate">
 				<br></br>
-				<MainScreen title="Create Workout Plan">
+				<MainScreen title="Create Schedule Plan">
 					<br></br>
 					<br></br>
 					<Button
@@ -83,7 +81,7 @@ export default function WorkoutScheduleCreate({ history }) {
 						<Card.Body>
 							<Form onSubmit={submitHandler}>
 								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-							
+
 								<br></br>
 
 								<Form.Group controlId="ScheduleID">
@@ -143,7 +141,7 @@ export default function WorkoutScheduleCreate({ history }) {
 
 								{loading && <Loading size={50} />}
 
-								<Button type="submit" variant="primary">
+								<Button type="submit" variant="success">
 									Submit
 								</Button>
 

@@ -44,7 +44,9 @@ export default function WorkoutHandlingCreate({ history }) {
 		setWorkoutID("06");
 		setName("Side Planks");
 		setWorkoutCategory("Legs");
-		setInstructions("Lie on your side with your knees bent, and prop your upper body up on your elbow then raise your hips off the floor, and hold for 6 seconds");
+		setInstructions(
+			"Lie on your side with your knees bent, and prop your upper body up on your elbow then raise your hips off the floor, and hold for 6 seconds"
+		);
 		setRepetitions("10");
 		setTips("Switch to your other side and repeat steps 1 through 4");
 	};
@@ -154,7 +156,7 @@ export default function WorkoutHandlingCreate({ history }) {
 
 								{loading && <Loading size={50} />}
 
-								<Button type="submit" variant="primary">
+								<Button type="submit" variant="success">
 									Submit
 								</Button>
 

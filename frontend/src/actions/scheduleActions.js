@@ -1,16 +1,16 @@
 import {
-    WORKOUT_SCHEDULE_LIST_REQUEST,
-    WORKOUT_SCHEDULE_LIST_SUCCESS,
-    WORKOUT_SCHEDULE_LIST_FAIL,
-    WORKOUT_SCHEDULE_CREATE_REQUEST,
-    WORKOUT_SCHEDULE_CREATE_SUCCESS,
-    WORKOUT_SCHEDULE_CREATE_FAIL,
-    WORKOUT_SCHEDULE_UPDATE_REQUEST,
-    WORKOUT_SCHEDULE_UPDATE_SUCCESS,
-    WORKOUT_SCHEDULE_UPDATE_FAIL,
-    WORKOUT_SCHEDULE_DELETE_REQUEST,
-    WORKOUT_SCHEDULE_DELETE_SUCCESS,
-    WORKOUT_SCHEDULE_DELETE_FAIL,
+	WORKOUT_SCHEDULE_LIST_REQUEST,
+	WORKOUT_SCHEDULE_LIST_SUCCESS,
+	WORKOUT_SCHEDULE_LIST_FAIL,
+	WORKOUT_SCHEDULE_CREATE_REQUEST,
+	WORKOUT_SCHEDULE_CREATE_SUCCESS,
+	WORKOUT_SCHEDULE_CREATE_FAIL,
+	WORKOUT_SCHEDULE_UPDATE_REQUEST,
+	WORKOUT_SCHEDULE_UPDATE_SUCCESS,
+	WORKOUT_SCHEDULE_UPDATE_FAIL,
+	WORKOUT_SCHEDULE_DELETE_REQUEST,
+	WORKOUT_SCHEDULE_DELETE_SUCCESS,
+	WORKOUT_SCHEDULE_DELETE_FAIL,
 } from "../constants/scheduleConstant";
 import axios from "axios";
 import swal from "sweetalert";
@@ -45,7 +45,7 @@ export const listWorkoutSchedule = () => async (dispatch, getState) => {
 	}
 };
 export const createWorkoutScheduleAction =
-	(ScheduleID, nic,PreWorkout, MainWorkout, PostWorkout) => async (dispatch, getState) => {
+	(ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout) => async (dispatch, getState) => {
 		try {
 			dispatch({
 				type: WORKOUT_SCHEDULE_CREATE_REQUEST,
@@ -85,7 +85,6 @@ export const createWorkoutScheduleAction =
 				type: WORKOUT_SCHEDULE_CREATE_SUCCESS,
 				payload: data,
 			});
-			
 		} catch (error) {
 			const message = "Schedule creation failed";
 			dispatch({
@@ -95,7 +94,7 @@ export const createWorkoutScheduleAction =
 		}
 	};
 export const updateWorkouteScheduleAction =
-	(id,ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout) => async (dispatch, getState) => {
+	(id, ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout) => async (dispatch, getState) => {
 		try {
 			dispatch({
 				type: WORKOUT_SCHEDULE_UPDATE_REQUEST,
@@ -120,9 +119,8 @@ export const updateWorkouteScheduleAction =
 					PostWorkout,
 				},
 				config
-		
 			);
-				
+
 			dispatch({
 				type: WORKOUT_SCHEDULE_UPDATE_SUCCESS,
 				payload: data,

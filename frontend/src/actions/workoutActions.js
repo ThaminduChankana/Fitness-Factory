@@ -183,17 +183,16 @@ export const listWorkoutHandlingCustomer = () => async (dispatch, getState) => {
 			type: WORKOUT_CUSTOMER_LIST_REQUEST,
 		});
 
-       const {
-	      customer_Login: { customerInfo },
-            } = getState();
+		const {
+			customer_Login: { customerInfo },
+		} = getState();
 
-         const config = {
-	       headers: {
-		Authorization: `Bearer ${customerInfo.token}`,
-	},
-};
+		const config = {
+			headers: {
+				Authorization: `Bearer ${customerInfo.token}`,
+			},
+		};
 
-	
 		const { data } = await axios.get(`/user/customer/workout/get`, config);
 		dispatch({
 			type: WORKOUT_CUSTOMER_LIST_SUCCESS,

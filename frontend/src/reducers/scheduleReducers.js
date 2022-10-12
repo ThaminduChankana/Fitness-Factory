@@ -14,17 +14,17 @@ import {
 } from "../constants/scheduleConstant";
 
 export const WorkoutScheduleListReducer = (state = { workoutSchedules: [] }, action) => {
-    switch (action.type) {
-			case WORKOUT_SCHEDULE_LIST_REQUEST:
-				return { loading: true };
-			case WORKOUT_SCHEDULE_LIST_SUCCESS:
-				return { loading: false, workoutSchedules: action.payload };
-			case WORKOUT_SCHEDULE_LIST_FAIL:
-				return { loading: false, error: action.payload };
+	switch (action.type) {
+		case WORKOUT_SCHEDULE_LIST_REQUEST:
+			return { loading: true };
+		case WORKOUT_SCHEDULE_LIST_SUCCESS:
+			return { loading: false, workoutSchedules: action.payload };
+		case WORKOUT_SCHEDULE_LIST_FAIL:
+			return { loading: false, error: action.payload };
 
-			default:
-				return state;
-		}
+		default:
+			return state;
+	}
 };
 export const WorkoutScheduleCreateReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -41,7 +41,7 @@ export const WorkoutScheduleCreateReducer = (state = {}, action) => {
 };
 export const WorkoutScheduleUpdateReducer = (state = {}, action) => {
 	switch (action.type) {
-        case WORKOUT_SCHEDULE_UPDATE_REQUEST:
+		case WORKOUT_SCHEDULE_UPDATE_REQUEST:
 			return { loading: true };
 		case WORKOUT_SCHEDULE_UPDATE_SUCCESS:
 			return { loading: false, success: true };

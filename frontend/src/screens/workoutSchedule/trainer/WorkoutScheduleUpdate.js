@@ -10,7 +10,6 @@ import MainScreen from "../../../components/MainScreen";
 import "./workoutschedule.css";
 
 export default function WorkoutScheduleUpdate({ match, history }) {
-	
 	const [ScheduleID, setScheduleID] = useState("");
 	const [nic, setNic] = useState("");
 	const [PreWorkout, setPreWorkout] = useState("");
@@ -20,8 +19,6 @@ export default function WorkoutScheduleUpdate({ match, history }) {
 	const dispatch = useDispatch();
 	const trainer_Login = useSelector((state) => state.trainer_Login);
 	const { trainerInfo } = trainer_Login;
-
-
 
 	const workout_Schedule_Update = useSelector((state) => state.workout_Schedule_Update);
 	const { loading, error } = workout_Schedule_Update;
@@ -48,13 +45,11 @@ export default function WorkoutScheduleUpdate({ match, history }) {
 		fetching();
 	}, [match.params.id]);
 
-	
-
 	const updateHandler = (e) => {
 		e.preventDefault();
 
-		dispatch(updateWorkouteScheduleAction(match.params.id, ScheduleID,nic, PreWorkout, MainWorkout, PostWorkout));
-		if (!ScheduleID||!nic || !PreWorkout || !MainWorkout || !PostWorkout) return;
+		dispatch(updateWorkouteScheduleAction(match.params.id, ScheduleID, nic, PreWorkout, MainWorkout, PostWorkout));
+		if (!ScheduleID || !nic || !PreWorkout || !MainWorkout || !PostWorkout) return;
 		history.push("/workout-schedule-view");
 	};
 	if (trainerInfo) {

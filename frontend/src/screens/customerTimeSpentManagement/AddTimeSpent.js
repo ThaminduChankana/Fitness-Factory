@@ -43,10 +43,8 @@ export default function AddTimeSpent({ history }) {
 						style={{
 							padding: "8px",
 							fontSize: "15px",
-							backgroundColor: "#553939",
-							borderBlockColor: "#4D5551",
 						}}
-						variant="primary"
+						variant="success"
 						className="logoutBtn"
 						href="/time-customer-report"
 					>
@@ -116,7 +114,7 @@ export default function AddTimeSpent({ history }) {
 
 								{loading && <Loading size={50} />}
 								<br></br>
-								<Button style={{ fontSize: 13, marginTop: 10 }} type="submit" variant="primary">
+								<Button style={{ fontSize: 13, marginTop: 10 }} type="submit" variant="success">
 									Submit
 								</Button>
 

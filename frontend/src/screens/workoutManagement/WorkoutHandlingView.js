@@ -61,7 +61,7 @@ export default function WorkoutHandlingView() {
 	const history = useHistory();
 	useEffect(() => {
 		dispatch(listWorkoutHandling());
-	}, [dispatch,  trainerInfo, successUpdate, successDelete, history]);
+	}, [dispatch, trainerInfo, successUpdate, successDelete, history]);
 	if (trainerInfo) {
 		return (
 			<div className="WorkoutBackgroundView">
@@ -104,7 +104,7 @@ export default function WorkoutHandlingView() {
 					<br></br>
 
 					<ButtonGroup variant="success" className="mb-2" size="lg" style={{ width: "100%" }}>
-						<Button variant="success"  href="/trainer">
+						<Button variant="success" href="/trainer">
 							Back to Dashboard
 						</Button>
 
