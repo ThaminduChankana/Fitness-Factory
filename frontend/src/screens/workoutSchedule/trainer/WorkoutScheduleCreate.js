@@ -35,7 +35,7 @@ export default function WorkoutScheduleCreate({ history }) {
 		setNic("789");
 		setPreWorkout("Shifted Maximum Pre-Workout");
 		setMainWorkout("Reverse Lunge ,Abdominal Crunches");
-		setPostWorkout("Drink water &  Eat banana and yogurts");
+		setPostWorkout("Drink water & Eat banana and yogurts");
 	};
 
 	const submitHandler = (e) => {
