@@ -157,6 +157,7 @@ export default function WorkoutSchedulesList() {
 												background: "#C1D9B7",
 											}}
 										>
+											
 											<span
 												style={{
 													color: "black",
