@@ -128,7 +128,7 @@ export default function WorkoutScheduleCreate({ history }) {
 									/>
 								</Form.Group>
 
-								<Form.Group controlId="PostWorkout">
+								<Form.Group controlId="Pos-tWorkout">
 									<Form.Label>Post-Workout</Form.Label>
 									<Form.Control
 										type=""
