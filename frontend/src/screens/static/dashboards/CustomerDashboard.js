@@ -58,9 +58,16 @@ const CustomerDashboardPage = ({ history }) => {
 								</a>
 								<br></br>
 								<br></br>
-								<a href="/">
+								<a href="/workout-schedule-customer">
 									<Button variant="success" size="lg" style={{ width: 350, height: 75 }}>
 										View Workout Schedule
+									</Button>
+								</a>
+								<br></br>
+								<br></br>
+								<a href="/workout-list-customer">
+									<Button variant="success" size="lg" style={{ width: 350, height: 75 }}>
+										View Workout List
 									</Button>
 								</a>
 								<br></br>

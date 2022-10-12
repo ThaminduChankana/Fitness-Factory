@@ -8,6 +8,11 @@ const {
 } = require("../controllers/customerController");
 const { getNutririonPlanForeachCustomer } = require("../controllers/nutritionPlanController");
 const { getFaqs, getFaqById, deleteFaq, createFaq, updateFaq } = require("../controllers/faqController");
+
+const { getWorkoutScheduleForeachCustomer } = require("../controllers/scheduleController");
+const { getWorkoutHandling } = require("../controllers/workoutController");
+const { getTimeSpent, createTimeSpent } = require("../controllers/timeSpentController");
+
 const { getProgress, createProgress } = require("../controllers/progressController");
 const { protect } = require("../middleware/authCustomerMiddleware");
 const router = express.Router();
@@ -30,5 +35,15 @@ router.route("/faq/get/:id").get(protect, getFaqById).put(protect, updateFaq).de
 // Routes for customer progress operations
 router.route("/progress/get").get(protect, getProgress);
 router.route("/progress/create").post(protect, createProgress);
+
+// Route for customer workoutHandling
+router.route("/workout/get").get(protect, getWorkoutHandling);
+
+// Route for customer workout schedule
+router.route("/schedule/:id").get(protect, getWorkoutScheduleForeachCustomer);
+
+//Route for Time Spent
+router.route("/time/get").get(protect, getTimeSpent);
+router.route("/time/create").post(protect, createTimeSpent);
 
 module.exports = router;

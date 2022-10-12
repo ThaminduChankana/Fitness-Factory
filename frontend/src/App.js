@@ -52,6 +52,16 @@ import AdminConfirmLeave from "./screens/leaveManagement/AdminConfirmLeaveList/A
 import AdminConfirmApproveOrReject from "./screens/leaveManagement/AdminConfirmApproveOrReject/AdminConfirmApproveOrReject";
 import TrainerLeavePrint from "./screens/reports/AdminConfirmLeaveReports/TrainerLeavePrint";
 import TermsAndCondition from "./screens/static/termsAndConditions/TermsAndCondition";
+import WorkoutHandlingCreate from "./screens/workoutManagement/workoutHandlingCreate";
+import WorkoutHandlingView from "./screens/workoutManagement/WorkoutHandlingView";
+import WorkoutHandlingUpdate from "./screens/workoutManagement/workoutHandlingUpdate";
+import WorkoutHandlingCustomerView from "./screens/workoutManagement/WorkoutHandlingCustomerView";
+import WorkoutScheduleCreate from "./screens/workoutSchedule/trainer/WorkoutScheduleCreate";
+import WorkoutScheduleUpdate from "./screens/workoutSchedule/trainer/WorkoutScheduleUpdate";
+import WorkoutSchedulesList from "./screens/workoutSchedule/trainer/WorkoutSchedulesList";
+import WorkoutScheduleCustomerView from "./screens/workoutSchedule/customer/WorkoutScheduleCustomerView";
+import AddTimeSpent from "./screens/customerTimeSpentManagement/AddTimeSpent";
+import TimeSpentPrint from "./screens/reports/WorkoutTimeReport/TimeSpentPrint";
 
 const App = () => {
 	return (
@@ -106,7 +116,17 @@ const App = () => {
 				<Route path="/admin-trainer-leaves" component={AdminConfirmLeave} exact />
 				<Route path="/admin-approve-trainer-leave/:id" component={AdminConfirmApproveOrReject} exact />
 				<Route path="/admin-trainer-leave-report" component={TrainerLeavePrint} exact />
-				<Route path="/terms-and-conditions" component={TermsAndCondition} exact></Route>
+				<Route path="/terms-and-conditions" component={TermsAndCondition} exact />
+				<Route path="/workout-handling-create" component={WorkoutHandlingCreate} exact />
+				<Route path="/workout-handling-view" component={WorkoutHandlingView} exact />
+				<Route path="/workout-handling/:id" component={WorkoutHandlingUpdate} exact />
+				<Route path="/workout-schedule-create" component={WorkoutScheduleCreate} exact />
+				<Route path="/workout-schedule-view" component={WorkoutSchedulesList} exact />
+				<Route path="/workout-schedule/:id" component={WorkoutScheduleUpdate} exact />
+				<Route path="/workout-list-customer" component={WorkoutHandlingCustomerView} exact />
+				<Route path="/workout-schedule-customer" component={WorkoutScheduleCustomerView} exact />
+				<Route path="/time-create-customer" component={AddTimeSpent} exact />
+				<Route path="/time-customer-report" component={TimeSpentPrint} exact />
 			</main>
 			<Footer />
 		</BrowserRouter>
