@@ -146,7 +146,7 @@ export default function WorkoutScheduleCreate({ history }) {
 								</Button>
 
 								<Button className="mx-2" onClick={resetHandler} variant="danger">
-									Reset
+									 Reset
 								</Button>
 								<Button variant="info" onClick={demoHandler}>
 									Demo
@@ -156,7 +156,7 @@ export default function WorkoutScheduleCreate({ history }) {
 					</Card>
 					<br></br>
 					<br></br>
-					<br></br>
+					
 				</MainScreen>
 			</div>
 		);
