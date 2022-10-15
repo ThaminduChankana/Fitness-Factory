@@ -93,11 +93,11 @@ export const createWorkoutHandlingAction =
 				type: WORKOUT_CREATE_FAIL,
 				payload: message,
 			});
-				swal({
-					title: "Error!",
-					text: "Workout ID Is Alredy Exist",
-					type: "error",
-				});
+			swal({
+				title: "Error!",
+				text: "Workout ID Is Alredy Exist",
+				type: "error",
+			});
 		}
 	};
 export const updateWorkouteHandlingAction =
