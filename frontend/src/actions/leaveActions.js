@@ -269,7 +269,7 @@ export const updateAdminApproveLeaveAction =
 				button: false,
 			});
 			setTimeout(function () {
-				window.location.href = "/admin-/trainer-leaves";
+				window.location.href = "/admin-trainer-leaves";
 			}, 2000);
 
 			dispatch({ type: ADMIN_CONFIRM_LEAVE_UPDATE_SUCCESS, payload: data });
