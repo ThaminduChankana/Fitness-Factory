@@ -91,6 +91,13 @@ export const createWorkoutScheduleAction =
 				type: WORKOUT_SCHEDULE_CREATE_FAIL,
 				payload: message,
 			});
+			// alert("Schedule is alredy exist");
+
+				swal({
+					title: "Error!",
+					text: "NIC Is Not Exist",
+					type: "error",
+				});
 		}
 	};
 export const updateWorkouteScheduleAction =
