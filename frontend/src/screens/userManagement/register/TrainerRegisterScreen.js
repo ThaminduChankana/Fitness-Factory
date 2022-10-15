@@ -57,13 +57,13 @@ const TrainerRegisterScreen = () => {
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("Jim Halpert");
+		setName("John Legend");
 		setDob("1990-11-14");
-		setNic("199056854132");
+		setNic("199056854569");
 		setGender("Male");
 		setTelephone("0778569545");
 		setAddress("Negombo");
-		setEmail("jimhalpert@gmail.com");
+		setEmail("john@gmail.com");
 		setQualifications("International physical trainer certificate");
 		setYrsexp("3 years as a gym instructor");
 		setRegDate("2022-03-15");

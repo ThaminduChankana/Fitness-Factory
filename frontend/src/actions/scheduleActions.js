@@ -95,7 +95,7 @@ export const createWorkoutScheduleAction =
 
 			swal({
 				title: "Error!",
-				text: "NIC Is Not Exist",
+				text: "NIC Is Wrong",
 				type: "error",
 			});
 		}
