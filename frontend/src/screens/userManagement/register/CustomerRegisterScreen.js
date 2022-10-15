@@ -53,13 +53,13 @@ const CustomerRegisterScreen = () => {
 	const demoHandler = async (e) => {
 		e.preventDefault();
 
-		setName("Jan Levinson");
+		setName("Martha Stuart");
 		setDob("1985-12-06");
-		setNic("198545656585");
+		setNic("198545656589");
 		setGender("Female");
 		setTelephone("0776688556");
 		setAddress("Gampaha");
-		setEmail("janlevinson@gmail.com");
+		setEmail("martha@gmail.com");
 		setHeight(175);
 		setWeight(65);
 		setBmi();
